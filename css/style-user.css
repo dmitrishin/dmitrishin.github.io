@@ -1,0 +1,40 @@
+html p {
+    font-size: 1rem;
+}
+
+.menubar {
+    font-size: 14px;
+}
+
+
+a.anchor-link:link {
+    text-decoration: none;
+    visibility: hidden;
+}
+
+h5:hover a.anchor-link:link {
+    text-decoration: none;
+    visibility:visible;
+}
+
+footer {
+    font-size: 14px;
+    color: #777;
+}
+
+#social ion-icon {
+    font-size: 17px;
+    color: #343a40;
+}
+
+.text-nav {
+    color: #007bff;
+}
+
+
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
