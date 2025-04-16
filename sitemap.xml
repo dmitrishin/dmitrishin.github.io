@@ -1,183 +1,407 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <url>
-        <loc>https://dmitrishin.github.io/index.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_ar.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_ch.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_de.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_es.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_fa.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_fi.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_fr.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_ja.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_ko.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
-    <url>
-        <loc>https://dmitrishin.github.io/index_tr.html</loc>
-        <lastmod>2025-03-30T12:00:00+01:00</lastmod>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/index.html" />
-        <xhtml:link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/index_ar.html" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/index_ch.html" />
-        <xhtml:link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/index_de.html" />
-        <xhtml:link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/index_es.html" />
-        <xhtml:link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/index_fa.html" />
-        <xhtml:link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/index_fi.html" />
-        <xhtml:link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/index_fr.html" />
-        <xhtml:link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/index_ja.html" />
-        <xhtml:link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/index_ko.html" />
-        <xhtml:link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/index_tr.html" />
-    </url>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://dmitrishin.github.io/</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/af/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/am/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ar/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ay/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/az/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/be/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/bg/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/bn/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/bs/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ca/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/co/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/da/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/de/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/dv/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ee/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/el/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/es/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/et/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/eu/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/fa/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/fi/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/fj/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/fr/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ga/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/gd/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/gl/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/gu/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ha/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/he/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/hi/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/hr/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/hu/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/hy/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/id/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ig/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/is/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/it/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ja/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ka/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/kk/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/kn/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ko/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ky/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/lo/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/lt/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/lv/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/mk/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ml/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/mn/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/mr/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ms/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/mt/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/my/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ne/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/nl/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/no/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/or/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/pa/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/pl/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ps/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/pt-br/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/pt/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/qu/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/rm/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ro/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ru/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/rw/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/si/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/sk/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/sl/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/sn/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/so/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/sq/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/sr/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/sv/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/sw/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ta/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/te/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/tg/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/th/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ti/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/tk/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/tl/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/tr/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ts/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/tt/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/uk/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/ur/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/uz/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/vi/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/xh/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/yo/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/zh-tw/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/zh/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/zu/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/lang/index_list.txt</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/docs/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dmitrishin.github.io/assets/index.html</loc>
+    <lastmod>2025-04-16</lastmod>
+  </url>
 </urlset>
