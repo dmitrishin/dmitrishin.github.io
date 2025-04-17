@@ -168,10 +168,12 @@
     <!-- Image for Social -->
     <link rel="image_src" href="https://dmitrishin.github.io/image/dmt_2.jpg">
 
+    <!-- Person  -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Person",
+            "@id": "https://dmitrishin.github.io/#person",
             "name": "Dmitrishin Yuriy",
             "url": "https://dmitrishin.github.io",
             "image": "https://dmitrishin.github.io/image/dmt_2.jpg",
@@ -307,15 +309,23 @@
 
     </script>
 
+    <!-- Publications  -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": "Dmitrishin Yuriy Publications",
-            "url": "https://dmitrishin.github.io/publications/",
-            "description": "A curated collection of analytical articles, technical reports, and thought leadership publications by Dmitrishin Yuriy, covering topics in EPC contracting, nuclear engineering, construction management, STEM research, risk governance, project controls, large language models (LLMs), and data-driven decision-making."
-        }
-
+    {
+      "@context": "https://schema.org",
+      "@type":    "CollectionPage",
+      "@id":      "https://dmitrishin.github.io/publications/#collection",   <!-- канонический URI -->
+      
+      "name":        "Dmitrishin Yuriy — Publications",
+      "url":         "https://dmitrishin.github.io/publications/",
+      "inLanguage":  "en",
+      "description": "Curated analytical articles, technical reports and thought‑leadership pieces by Dmitrishin Yuriy on EPC contracting, nuclear engineering, construction management, risk governance, LLMs and data‑driven decision‑making.",
+    
+      "author":   { "@id": "https://dmitrishin.github.io/#person" },        <!-- ссылка на Person -->
+      "creator":  { "@id": "https://dmitrishin.github.io/#person" },
+      "publisher":{ "@id": "https://dmitrishin.github.io/#person" },
+      "isPartOf": { "@id": "https://dmitrishin.github.io/#website" }        <!-- опционально -->
+    }
     </script>
 
     <script type="application/ld+json">
