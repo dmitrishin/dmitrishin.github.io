@@ -3,6 +3,7 @@ https://dmitrishin.github.io/lang/am/index.html
 https://dmitrishin.github.io/lang/ar/index.html
 https://dmitrishin.github.io/lang/ay/index.html
 https://dmitrishin.github.io/lang/az/index.html
+https://dmitrishin.github.io/lang/ba/index.html
 https://dmitrishin.github.io/lang/be/index.html
 https://dmitrishin.github.io/lang/bg/index.html
 https://dmitrishin.github.io/lang/bn/index.html
@@ -37,10 +38,12 @@ https://dmitrishin.github.io/lang/ig/index.html
 https://dmitrishin.github.io/lang/is/index.html
 https://dmitrishin.github.io/lang/it/index.html
 https://dmitrishin.github.io/lang/ja/index.html
+https://dmitrishin.github.io/lang/jv/index.html
 https://dmitrishin.github.io/lang/ka/index.html
 https://dmitrishin.github.io/lang/kk/index.html
 https://dmitrishin.github.io/lang/kn/index.html
 https://dmitrishin.github.io/lang/ko/index.html
+https://dmitrishin.github.io/lang/ku/index.html
 https://dmitrishin.github.io/lang/ky/index.html
 https://dmitrishin.github.io/lang/lo/index.html
 https://dmitrishin.github.io/lang/lt/index.html
@@ -73,6 +76,7 @@ https://dmitrishin.github.io/lang/sn/index.html
 https://dmitrishin.github.io/lang/so/index.html
 https://dmitrishin.github.io/lang/sq/index.html
 https://dmitrishin.github.io/lang/sr/index.html
+https://dmitrishin.github.io/lang/su/index.html
 https://dmitrishin.github.io/lang/sv/index.html
 https://dmitrishin.github.io/lang/sw/index.html
 https://dmitrishin.github.io/lang/ta/index.html
