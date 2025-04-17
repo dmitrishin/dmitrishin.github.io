@@ -9,6 +9,7 @@ bn      – Bengali
 bs      – Bosnian  
 ca      – Catalan  
 co      – Corsican  
+cs      – Czech      
 da      – Danish  
 de      – German  
 dv      – Divehi (Maldivian)  
