@@ -318,7 +318,7 @@
                             "@type": "Place",
                             "name": "Mersin Province, Turkey"
                         },
-                        "member": {
+                        "participant": {
                             "@id": "https://dmitrishin.github.io/#person"
                         }
                     }
@@ -334,7 +334,7 @@
                             "@type": "Place",
                             "name": "Pyhäjoki, Finland"
                         },
-                        "member": {
+                        "participant": {
                             "@id": "https://dmitrishin.github.io/#person"
                         }
                     }
@@ -350,7 +350,7 @@
                             "@type": "Place",
                             "name": "Paks, Hungary"
                         },
-                        "member": {
+                        "participant": {
                             "@id": "https://dmitrishin.github.io/#person"
                         }
                     }
@@ -366,7 +366,7 @@
                             "@type": "Place",
                             "name": "Novovoronezh, Russia"
                         },
-                        "member": {
+                        "participant": {
                             "@id": "https://dmitrishin.github.io/#person"
                         }
                     }
@@ -382,7 +382,7 @@
                             "@type": "Place",
                             "name": "Rostov‑on‑Don, Russia"
                         },
-                        "member": {
+                        "participant": {
                             "@id": "https://dmitrishin.github.io/#person"
                         }
                     }
@@ -398,7 +398,7 @@
                             "@type": "Place",
                             "name": "Kaliningrad, Russia"
                         },
-                        "member": {
+                        "participant": {
                             "@id": "https://dmitrishin.github.io/#person"
                         }
                     }
@@ -414,7 +414,7 @@
                             "@type": "Place",
                             "name": "Sosnovy Bor, Russia"
                         },
-                        "member": {
+                        "participant": {
                             "@id": "https://dmitrishin.github.io/#person"
                         }
                     }
@@ -430,7 +430,7 @@
                             "@type": "Place",
                             "name": "Russia"
                         },
-                        "member": {
+                        "participant": {
                             "@id": "https://dmitrishin.github.io/#person"
                         }
                     }
@@ -504,10 +504,13 @@
             },
 
             "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://dmitrishin.github.io/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
+  "@type": "SearchAction",
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "https://dmitrishin.github.io/search?q={search_term_string}"
+  },
+  "query-input": "required name=search_term_string"
+}
         }
 
     </script>
