@@ -58,7 +58,7 @@ https://dmitrishin.github.io/lang/or/index.html
 https://dmitrishin.github.io/lang/pa/index.html
 https://dmitrishin.github.io/lang/pl/index.html
 https://dmitrishin.github.io/lang/ps/index.html
-https://dmitrishin.github.io/lang/pt-br/index.html
+https://dmitrishin.github.io/lang/pt-BR/index.html
 https://dmitrishin.github.io/lang/pt/index.html
 https://dmitrishin.github.io/lang/qu/index.html
 https://dmitrishin.github.io/lang/rm/index.html
@@ -90,6 +90,6 @@ https://dmitrishin.github.io/lang/uz/index.html
 https://dmitrishin.github.io/lang/vi/index.html
 https://dmitrishin.github.io/lang/xh/index.html
 https://dmitrishin.github.io/lang/yo/index.html
-https://dmitrishin.github.io/lang/zh-tw/index.html
+https://dmitrishin.github.io/lang/zh-TW/index.html
 https://dmitrishin.github.io/lang/zh/index.html
 https://dmitrishin.github.io/lang/zu/index.html
