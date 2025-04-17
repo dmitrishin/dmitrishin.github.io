@@ -3,13 +3,14 @@ am      – Amharic
 ar      – Arabic  
 ay      – Aymara  
 az      – Azerbaijani  
+ba      – Bashkir  
 be      – Belarusian  
 bg      – Bulgarian  
 bn      – Bengali  
 bs      – Bosnian  
 ca      – Catalan  
 co      – Corsican  
-cs      – Czech      
+cs      – Czech  
 da      – Danish  
 de      – German  
 dv      – Divehi (Maldivian)  
@@ -37,10 +38,12 @@ ig      – Igbo
 is      – Icelandic  
 it      – Italian  
 ja      – Japanese  
+jv      – Javanese  
 ka      – Georgian  
 kk      – Kazakh  
 kn      – Kannada  
 ko      – Korean  
+ku      – Kurdish  
 ky      – Kyrgyz  
 lo      – Lao  
 lt      – Lithuanian  
@@ -73,6 +76,7 @@ sn      – Shona
 so      – Somali  
 sq      – Albanian  
 sr      – Serbian  
+su      – Sundanese  
 sv      – Swedish  
 sw      – Swahili  
 ta      – Tamil  
@@ -93,4 +97,4 @@ xh      – Xhosa
 yo      – Yoruba  
 zh-TW   – Chinese (Traditional)  
 zh      – Chinese (Simplified)  
-zu      – Zulu
+zu      – Zulu 
