@@ -58,7 +58,7 @@ or      – Odia (Oriya)
 pa      – Punjabi  
 pl      – Polish  
 ps      – Pashto  
-pt-br   – Portuguese (Brazil)  
+pt-BR   – Portuguese (Brazil)  
 pt      – Portuguese  
 qu      – Quechua  
 rm      – Romansh  
@@ -90,6 +90,6 @@ uz      – Uzbek
 vi      – Vietnamese  
 xh      – Xhosa  
 yo      – Yoruba  
-zh-tw   – Chinese (Traditional)  
+zh-TW   – Chinese (Traditional)  
 zh      – Chinese (Simplified)  
 zu      – Zulu
