@@ -9,6 +9,7 @@ https://dmitrishin.github.io/lang/bn/index.html
 https://dmitrishin.github.io/lang/bs/index.html
 https://dmitrishin.github.io/lang/ca/index.html
 https://dmitrishin.github.io/lang/co/index.html
+https://dmitrishin.github.io/lang/cs/index.html
 https://dmitrishin.github.io/lang/da/index.html
 https://dmitrishin.github.io/lang/de/index.html
 https://dmitrishin.github.io/lang/dv/index.html
