@@ -201,7 +201,7 @@
                 "addressLocality": "Saint Petersburg",
                 "addressCountry": "RU"
             },
-   "hasOccupation": {
+            "hasOccupation": {
   "@type": "Occupation",
   "name": "Chief Risk Officer",
   "alternateName": "CRO",
@@ -215,13 +215,22 @@
     "percentile10": 60000,
     "percentile25": 100000,
     "percentile75": 180000,
-    "percentile90": 250000
+    "percentile90": 250000,
+    "duration": "P1Y"
   },
   "occupationLocation": {
-    "@type": "AdministrativeArea",
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "RU"
+    },
     "name": "Russian Federation"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dmitrishin.github.io"
   }
-}, 
+},
             "knowsAbout": [
                 "EPC contracts",
                 "Civil engineering",
