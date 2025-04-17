@@ -491,7 +491,7 @@
                 "name": "Systems Analysis",
                 "url": "https://systems-analysis.ru",
                 "inLanguage": "ru",
-        
+
                 "author": {
                     "@id": "https://dmitrishin.github.io/#person"
                 },
@@ -525,60 +525,70 @@
     </script>
 
 
-<!-- Website -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type":    "WebSite",
-  "@id":      "https://dmitrishin.github.io/#website",          <!-- канонический идентификатор -->
+    <!-- Website -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://dmitrishin.github.io/#website",
+            <
+            !--канонический идентификатор-- >
 
-  "name":        "Dmitrishin Yury Homepage",
-  "url":         "https://dmitrishin.github.io",
-  "description": "Official homepage of Yury Dmitrishin — executive, risk manager, and EPC project expert in nuclear engineering, construction, and data‑driven strategy.",
+            "name": "Dmitrishin Yury Homepage",
+            "url": "https://dmitrishin.github.io",
+            "description": "Official homepage of Yury Dmitrishin — executive, risk manager, and EPC project expert in nuclear engineering, construction, and data‑driven strategy.",
 
-  "author":            { "@id": "https://dmitrishin.github.io/#person" },
-  "creator":           { "@id": "https://dmitrishin.github.io/#person" },
-  "accountablePerson": { "@id": "https://dmitrishin.github.io/#person" },
+            "author": {
+                "@id": "https://dmitrishin.github.io/#person"
+            },
+            "creator": {
+                "@id": "https://dmitrishin.github.io/#person"
+            },
+            "accountablePerson": {
+                "@id": "https://dmitrishin.github.io/#person"
+            },
 
-  "potentialAction": {
-    "@type":       "SearchAction",
-    "target":      "https://dmitrishin.github.io/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://dmitrishin.github.io/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+
+    </script>
 
 
+    <!-- Organization -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://system-lab.ru/#organization",
 
-<!-- Organization -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type":    "Organization",
-  "@id":      "https://system-lab.ru/#organization",
+            "name": "System Lab",
+            "url": "https://system-lab.ru",
 
-  "name": "System Lab",
-  "url":  "https://system-lab.ru",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://dmitrishin.github.io/images/logo.png"
+            },
 
-  "logo": {
-    "@type": "ImageObject",
-    "url":   "https://dmitrishin.github.io/images/logo.png"
-  },
+            "founder": {
+                "@id": "https://dmitrishin.github.io/#person"
+            },
 
-  "founder": { "@id": "https://dmitrishin.github.io/#person" },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "mailto:info@system-lab.ru"
+            },
 
-  "contactPoint": {
-    "@type":       "ContactPoint",
-    "contactType": "customer support",
-    "email":       "mailto:info@system-lab.ru"
-  },
+            "sameAs": [
+                "https://www.linkedin.com/company/system-lab"
+            ]
+        }
 
-  "sameAs": [
-    "https://www.linkedin.com/company/system-lab"
-  ]
-}
-</script>
-
+    </script>
 
 
     <!-- Yandex.Metrika counter -->
