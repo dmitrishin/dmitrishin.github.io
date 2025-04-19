@@ -11,15 +11,16 @@ html p {
 }
 
 
-a.anchor-link:link {
-    text-decoration: none;
+.anchor-link i {
     visibility: hidden;
+    transition: visibility 0.2s ease-in-out;
 }
 
-h5:hover a.anchor-link:link {
-    text-decoration: none;
-    visibility:visible;
+h2:hover .anchor-link i,
+h5:hover .anchor-link i {
+    visibility: visible;
 }
+
 
 footer {
     font-size: 14px;
