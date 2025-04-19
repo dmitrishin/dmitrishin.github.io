@@ -43,3 +43,19 @@ footer {
   fill: currentColor;
 }
 
+/* === RTL footer alignment fix (desktop only) === */
+@media (min-width: 768px) {
+  [dir="rtl"] footer .text-md-right {
+    text-align: left !important; /* копирайт слева */
+  }
+
+  [dir="rtl"] #social {
+    text-align: right !important; /* иконки соцсетей справа */
+  }
+
+  /* Удаление избыточных отступов для социконок */
+  [dir="rtl"] #social .list-inline-item {
+    margin-left: 0 !important;
+    margin-right: 1.25rem !important; /* стандартная отступка */
+  }
+}
