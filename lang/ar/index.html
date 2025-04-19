@@ -1260,22 +1260,26 @@
             <div class="row">
                 <!-- footer menu-->
                 <div class="col-md-6 mb-3 mt-3">
-                    <ul class="list-inline text-md-left text-center">
+                    <!-- Corrected alignment for RTL: text-md-right makes it align left on desktop in RTL mode -->
+                    <ul class="list-inline text-md-right text-center">
                         <li class="list-inline-item">2019 <span>© يوري ديمتريشين</span></li>
                     </ul>
                 </div>
 
                 <!-- social media (desktop) -->
                 <div class="col-md-6 mb-3 mt-3 d-none d-md-block">
-                    <ul id="social" class="list-inline text-right">
+                    <!-- Corrected alignment for RTL: text-left makes it align right on desktop in RTL mode -->
+                    <ul id="social" class="list-inline text-left">
                         <!-- GitHub -->
-                        <li class="list-inline-item mr-4">
+                         <!-- Adjusted margin for RTL -->
+                        <li class="list-inline-item ml-4 mr-0">
                             <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener" aria-label="ملف يوري ديمتريشين على GitHub">
                                 <i class="bi bi-github"></i>
                             </a>
                         </li>
                         <!-- LinkedIn -->
-                        <li class="list-inline-item mr-2">
+                         <!-- Adjusted margin for RTL -->
+                        <li class="list-inline-item ml-2 mr-0">
                             <a href="https://www.linkedin.com/in/dmitrishin/" class="text-dark" target="_blank" rel="noopener" aria-label="ملف يوري ديمتريشين على LinkedIn">
                                 <i class="bi bi-linkedin"></i>
                             </a>
@@ -1287,6 +1291,7 @@
             <!-- Links For mobile -->
             <div class="row">
                 <div class="col-12 mb-2 d-md-none">
+                    <!-- Mobile icons remain centered -->
                     <ul id="social-mobile" class="list-inline text-center">
                         <!-- GitHub -->
                         <li class="list-inline-item">
