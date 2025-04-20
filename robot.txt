@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dmitrishin.github.io/sitemap.xml
