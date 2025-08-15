@@ -56,198 +56,98 @@
     <link rel="manifest" href="../images/site.webmanifest">
     <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
 
-    <script type="application/ld+json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "@id": "https://dmitrishin.github.io/#profile",
+      "@type": "WebSite",
+      "@id": "https://dmitrishin.github.io/#website",
       "url": "https://dmitrishin.github.io/",
+      "name": "Yuriy Dmitrishin",
       "inLanguage": "en",
+      "publisher": { "@id": "https://dmitrishin.github.io/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://dmitrishin.github.io/#person",
+      "name": "Yuriy Dmitrishin",
+      "alternateName": "Юрий Дмитришин",
+      "url": "https://dmitrishin.github.io/",
+      "image": "https://dmitrishin.github.io/image/dmt_2.jpg",
+      "sameAs": [
+        "https://github.com/dmitrishin",
+        "https://gitlab.com/dmitrishin",
+        "https://huggingface.co/dmitrishin",
+        "https://www.linkedin.com/in/dmitrishin/",
+        "https://x.com/YDmitrishin",
+        "https://www.instagram.com/y.dmitrishin/",
+        "https://www.youtube.com/@YuriyDmitrishin",
+        "https://bsky.app/profile/dmitrishin.bsky.social",
+        "https://mastodon.social/@dmitrishin",
+        "https://medium.com/@dmitrishin",
+        "https://substack.com/@dmitrishin",
+        "https://orcid.org/0009-0001-7957-3770"
+      ],
+      "affiliation": {
+        "@type": "Organization",
+        "name": "System Lab",
+        "url": "https://system-lab.ru"
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://dmitrishin.github.io/publications/#page",
+      "url": "https://dmitrishin.github.io/publications/",
+      "name": "Publications",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://dmitrishin.github.io/#website" },
+      "about": { "@id": "https://dmitrishin.github.io/#person" },
       "mainEntity": {
-        "@type": "Person",
-        "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin",
-        "name": "Yuriy Dmitrishin",
-        "alternateName": "Юрий Дмитришин",
-        "jobTitle": ["EPC Engineer","Nuclear Construction","Researcher"],
-        "image": "https://dmitrishin.github.io/image/dmt.jpg",
-        "url": "https://dmitrishin.github.io/",
-        "sameAs": [
-          "https://github.com/dmitrishin",
-          "https://gitlab.com/dmitrishin",
-          "https://huggingface.co/dmitrishin",
-          "https://www.linkedin.com/in/dmitrishin/",
-          "https://x.com/YDmitrishin",
-          "https://www.instagram.com/y.dmitrishin/",
-          "https://www.youtube.com/@YuriyDmitrishin",
-          "https://bsky.app/profile/dmitrishin.bsky.social",
-          "https://mastodon.social/@dmitrishin",
-          "https://medium.com/@dmitrishin",
-          "https://substack.com/@dmitrishin",
-          "https://orcid.org/0009-0001-7957-3770"
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "ScholarlyArticle",
+              "@id": "https://zenodo.org/records/15373676#article",
+              "headline": "Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods",
+              "author": { "@id": "https://dmitrishin.github.io/#person" },
+              "datePublished": "2025-05-09",
+              "inLanguage": "en",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "DOI",
+                "value": "10.5281/zenodo.15373676"
+              },
+              "url": "https://zenodo.org/records/15373676",
+              "sameAs": "https://doi.org/10.5281/zenodo.15373676",
+              "isAccessibleForFree": true,
+              "publisher": {
+                "@type": "Organization",
+                "name": "Zenodo",
+                "url": "https://zenodo.org/"
+              }
+            }
+          }
         ]
       }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://system-lab.ru/#org",
+      "name": "System Lab",
+      "url": "https://system-lab.ru",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://dmitrishin.github.io/images/logo.png"
+      }
     }
-    </script>
+  ]
+}
+</script>
 
-            <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          "@id": "https://dmitrishin.github.io/publications/#page",
-          "url": "https://dmitrishin.github.io/publications/",
-          "name": "Publications",
-          "inLanguage": "en",
-          "mainEntity": {
-            "@type": "ItemList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                  "@type": "ScholarlyArticle",
-                  "@id": "https://zenodo.org/records/15373676#article",
-                  "headline": "Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods",
-                  "author": { "@type": "Person", "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin" },
-                  "datePublished": "2025-05-09",
-                  "inLanguage": "en",
-                  "identifier": [
-                    { "@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.15373676" }
-                  ],
-                  "url": "https://zenodo.org/records/15373676",
-                  "sameAs": [
-                    "https://doi.org/10.5281/zenodo.15373676"
-                  ],
-                  "publisher": { "@type": "Organization", "name": "Zenodo" },
-                  "isPartOf": {
-                    "@type": "WebSite",
-                    "name": "Zenodo",
-                    "url": "https://zenodo.org/"
-                  },
-                  "mainEntityOfPage": {
-                    "@type": "WebPage",
-                    "@id": "https://zenodo.org/records/15373676"
-                  }
-                }
-              }
-            ]
-          }
-        }
-        </script>
-
-
-
-    <!-- Schema.org Structured Data -->
-    <!-- Person Schema (Consistent Branding) -->
-     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Dmitrishin Yuriy",
-            "url": "https://dmitrishin.github.io",
-            "image": "https://dmitrishin.github.io/image/dmt_2.jpg", // Absolute URL
-            "jobTitle": [
-                "Chief Executive Officer (CEO)",
-                "Chief Operating Officer (COO)",
-                "Chief Risk Officer (CRO)",
-                "Chief Technical Officer (CTO)",
-                "Chief Project Officer",
-                "Civil Engineer",
-                "Data Scientist"
-            ],
-            "description": "Dmitrishin Yuriy is an executive and analyst with expertise in EPC contracts, civil engineering, construction and risk management, nuclear projects, and IT-driven solutions.",
-             "email": "mailto:dmitrishin@system-lab.ru",
-             "address": {
-                 "@type": "PostalAddress",
-                 "addressLocality": "Saint Petersburg",
-                 "addressCountry": "RU"
-             },
-             "knowsAbout": [
-                "EPC contracts", "Civil engineering", "Project management", "Program management", "Project risk management",
-                "Program risk management", "Enterprise risk management", "Claim management", "Nuclear Power Plants",
-                "Construction", "Design", "Strategy", "Methodology", "Systems analysis", "Technical research",
-                "LegalTech", "IT consulting", "Data Science", "Machine Learning", "LLM (Large Language Models)",
-                "COSO ERM", "Oracle Primavera", "Project planning", "Strategic planning", "Network planning (CPM/PERT)",
-                "Data analysis", "Qualitative analysis", "Quantitative analysis", "Modeling and simulation", "STEM", "Systems engineering"
-             ],
-            "sameAs": [
-                "https://www.linkedin.com/in/dmitrishin/",
-                "https://orcid.org/0009-0001-7957-3770",
-                "https://github.com/dmitrishin",
-                "https://x.com/YDmitrishin",
-                "https://www.instagram.com/y.dmitrishin",
-                "https://systems-analysis.ru",
-                "https://en.systems-analysis.ru",
-                "https://wiki.systems-analysis.ru"
-            ],
-             "identifier": {
-                 "@type": "PropertyValue",
-                 "propertyID": "ORCID",
-                 "value": "0009-0001-7957-3770"
-             }
-        }
-    </script>
-    <!-- Schema for this specific Publications Page -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "CollectionPage", // Type for a page listing items
-            "name": "Publications by Dmitrishin Yuriy",
-            "url": "https://dmitrishin.github.io/publications/",
-            "description": "A curated collection of analytical articles, technical reports, and thought leadership publications by Dmitrishin Yuriy, covering topics in EPC contracting, nuclear engineering, construction management, STEM research, risk governance, project controls, large language models (LLMs), and data-driven decision-making.",
-            "isPartOf": { // Link this page to the main website
-                "@type": "WebSite",
-                "url": "https://dmitrishin.github.io",
-                "name": "Dmitrishin Yuriy Homepage"
-            },
-            "about": { // Link to the person whose publications are listed
-                 "@type": "Person",
-                 "name": "Dmitrishin Yuriy",
-                 "url": "https://dmitrishin.github.io"
-            },
-             "mainEntity": { // Indicates the primary content is a list
-                 "@type": "ItemList",
-                 "name": "List of Publications",
-                 "description": "List of articles, reports, and research by Dmitrishin Yuriy."
-                 // Ideally, add itemListElement for each publication if feasible dynamically
-             }
-        }
-    </script>
-    <!-- WebSite Schema (Consistent Branding) -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Dmitrishin Yury Homepage",
-            "url": "https://dmitrishin.github.io",
-            "description": "Official homepage of Yury Dmitrishin — executive, risk manager, and EPC project expert in nuclear engineering, construction, and data-driven strategy.",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://dmitrishin.github.io/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            },
-             "author": {
-                 "@type": "Person",
-                 "name": "Dmitrishin Yury",
-                 "url": "https://dmitrishin.github.io"
-            },
-            "publisher": { // Added Publisher (can be Person or Organization)
-                "@type": "Person",
-                "name": "Dmitrishin Yury"
-            },
-            // List all available languages for the *entire site*
-            "inLanguage": ["en", "af", "am", "ar", "ay", "az", "be", "bg", "bn", "bs", "ca", "co", "da", "de", "dv", "ee", "el", "es", "et", "eu", "fa", "fi", "fj", "fr", "ga", "gd", "gl", "gu", "ha", "he", "hi", "hr", "hu", "hy", "id", "ig", "is", "it", "ja", "ka", "kk", "kn", "ko", "ky", "lo", "lt", "lv", "mk", "ml", "mn", "mr", "ms", "mt", "my", "ne", "nl", "no", "or", "pa", "pl", "ps", "pt-BR", "pt", "qu", "rm", "ro", "ru", "rw", "si", "sk", "sl", "sn", "so", "sq", "sr", "sv", "sw", "ta", "te", "tg", "th", "ti", "tk", "tl", "tr", "ts", "tt", "uk", "ur", "uz", "vi", "xh", "yo", "zh-TW", "zh", "zu"]
-        }
-    </script>
-    <!-- Organization Schema (Consistent Branding) -->
-     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "System Lab", // Assuming this is relevant context
-            "url": "https://system-lab.ru",
-            "logo": "https://dmitrishin.github.io/images/logo.png" // Absolute URL
-        }
-    </script>
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary">
