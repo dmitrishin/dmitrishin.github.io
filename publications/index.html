@@ -56,98 +56,118 @@
     <link rel="manifest" href="../images/site.webmanifest">
     <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
+    <script type="application/ld+json">
     {
-      "@type": "WebSite",
-      "@id": "https://dmitrishin.github.io/#website",
-      "url": "https://dmitrishin.github.io/",
-      "name": "Yuriy Dmitrishin",
-      "inLanguage": "en",
-      "publisher": { "@id": "https://dmitrishin.github.io/#person" }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://dmitrishin.github.io/#person",
-      "name": "Yuriy Dmitrishin",
-      "alternateName": "Юрий Дмитришин",
-      "url": "https://dmitrishin.github.io/",
-      "image": "https://dmitrishin.github.io/image/dmt_2.jpg",
-      "sameAs": [
-        "https://github.com/dmitrishin",
-        "https://gitlab.com/dmitrishin",
-        "https://huggingface.co/dmitrishin",
-        "https://www.linkedin.com/in/dmitrishin/",
-        "https://x.com/YDmitrishin",
-        "https://www.instagram.com/y.dmitrishin/",
-        "https://www.youtube.com/@YuriyDmitrishin",
-        "https://bsky.app/profile/dmitrishin.bsky.social",
-        "https://mastodon.social/@dmitrishin",
-        "https://medium.com/@dmitrishin",
-        "https://substack.com/@dmitrishin",
-        "https://orcid.org/0009-0001-7957-3770"
-      ],
-      "affiliation": {
-        "@type": "Organization",
-        "name": "System Lab",
-        "url": "https://system-lab.ru"
-      }
-    },
-    {
-      "@type": "CollectionPage",
-      "@id": "https://dmitrishin.github.io/publications/#page",
-      "url": "https://dmitrishin.github.io/publications/",
-      "name": "Publications",
-      "inLanguage": "en",
-      "isPartOf": { "@id": "https://dmitrishin.github.io/#website" },
-      "about": { "@id": "https://dmitrishin.github.io/#person" },
-      "mainEntity": {
-        "@type": "ItemList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-              "@type": "ScholarlyArticle",
-              "@id": "https://zenodo.org/records/15373676#article",
-              "headline": "Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods",
-              "author": { "@id": "https://dmitrishin.github.io/#person" },
-              "datePublished": "2025-05-09",
-              "inLanguage": "en",
-              "identifier": {
-                "@type": "PropertyValue",
-                "propertyID": "DOI",
-                "value": "10.5281/zenodo.15373676"
-              },
-              "url": "https://zenodo.org/records/15373676",
-              "sameAs": "https://doi.org/10.5281/zenodo.15373676",
-              "isAccessibleForFree": true,
-              "publisher": {
-                "@type": "Organization",
-                "name": "Zenodo",
-                "url": "https://zenodo.org/"
-              }
-            }
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://dmitrishin.github.io/#website",
+          "url": "https://dmitrishin.github.io/",
+          "name": "Yuriy Dmitrishin",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://dmitrishin.github.io/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://dmitrishin.github.io/#person",
+          "name": "Yuriy Dmitrishin",
+          "alternateName": "Юрий Дмитришин",
+          "url": "https://dmitrishin.github.io/",
+          "image": "https://dmitrishin.github.io/image/dmt_2.jpg",
+          "jobTitle": ["EPC Engineer","Nuclear Construction","Researcher"],
+          "sameAs": [
+            "https://github.com/dmitrishin",
+            "https://gitlab.com/dmitrishin",
+            "https://huggingface.co/dmitrishin",
+            "https://www.linkedin.com/in/dmitrishin/",
+            "https://x.com/YDmitrishin",
+            "https://www.instagram.com/y.dmitrishin/",
+            "https://www.youtube.com/@YuriyDmitrishin",
+            "https://bsky.app/profile/dmitrishin.bsky.social",
+            "https://mastodon.social/@dmitrishin",
+            "https://medium.com/@dmitrishin",
+            "https://substack.com/@dmitrishin",
+            "https://orcid.org/0009-0001-7957-3770"
+          ],
+          "affiliation": {
+            "@type": "Organization",
+            "@id": "https://system-lab.ru/#org",
+            "name": "System Lab",
+            "url": "https://system-lab.ru"
           }
-        ]
-      }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://system-lab.ru/#org",
-      "name": "System Lab",
-      "url": "https://system-lab.ru",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://dmitrishin.github.io/images/logo.png"
-      }
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://dmitrishin.github.io/publications/#page",
+          "url": "https://dmitrishin.github.io/publications/",
+          "name": "Publications",
+          "inLanguage": "en",
+          "isPartOf": { "@id": "https://dmitrishin.github.io/#website" },
+          "about": { "@id": "https://dmitrishin.github.io/#person" },
+          "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": 1,
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "ScholarlyArticle",
+                  "@id": "https://zenodo.org/records/15373676#article",
+                  "headline": "Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods",
+                  "abstract": "Generalized probabilistic project management model combining PERT, GERT, Monte Carlo, mathematical optimization, and machine learning to forecast nuclear power plant construction progress and identify critical and subcritical paths.",
+                  "author": { "@id": "https://dmitrishin.github.io/#person" },
+                  "datePublished": "2025-05-09",
+                  "inLanguage": "en",
+                  "identifier": {
+                    "@type": "PropertyValue",
+                    "propertyID": "DOI",
+                    "value": "10.5281/zenodo.15373676"
+                  },
+                  "url": "https://zenodo.org/records/15373676",
+                  "sameAs": [
+                    "https://doi.org/10.5281/zenodo.15373676"
+                  ],
+                  "isAccessibleForFree": true,
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "Zenodo",
+                    "url": "https://zenodo.org/"
+                  },
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://zenodo.org/records/15373676"
+                  },
+                  "keywords": [
+                    "nuclear construction",
+                    "EPC",
+                    "project management",
+                    "PERT",
+                    "GERT",
+                    "Monte Carlo",
+                    "optimization",
+                    "machine learning"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://system-lab.ru/#org",
+          "name": "System Lab",
+          "url": "https://system-lab.ru",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://dmitrishin.github.io/images/logo.png"
+          }
+        }
+      ]
     }
-  ]
-}
-</script>
-
+    </script>
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary">
