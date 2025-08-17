@@ -1,325 +1,423 @@
 <!doctype html>
 <html lang="en">
-    
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Canonical & hreflang -->
-  <link rel="canonical" href="https://dmitrishin.github.io/publications/">
-  <link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/publications/">
-  <link rel="alternate" hreflang="x-default" href="https://dmitrishin.github.io/publications/">
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://dmitrishin.github.io/publications/">
+    <link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/publications/">
+    <link rel="alternate" hreflang="x-default" href="https://dmitrishin.github.io/publications/">
 
-  <!-- DNS Prefetch -->
-  <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="https://use.fontawesome.com">
-  <link rel="dns-prefetch" href="https://unpkg.com">
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://use.fontawesome.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
 
-  <!-- SEO -->
-  <meta name="description" content="Publications, articles, and research by Yuriy Dmitrishin on EPC contracts, nuclear power plant construction, project risk management, data science, and large language models (LLMs).">
-  <meta name="keywords" content="Yuriy Dmitrishin publications, articles, research, EPC, nuclear power plants, risk management, data science, construction management, project management, LLM, STEM">
-  <meta name="author" content="Yuriy Dmitrishin">
+    <!-- SEO -->
+    <meta name="description"
+          content="Publications, articles, and research by Yuriy Dmitrishin on EPC contracts, nuclear power plant construction, project risk management, data science, and large language models (LLMs).">
+    <meta name="keywords"
+          content="Yuriy Dmitrishin publications, articles, research, EPC, nuclear power plants, risk management, data science, construction management, project management, LLM, STEM">
+    <meta name="author" content="Yuriy Dmitrishin">
 
-  <!-- Mobile & PWA -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Yuriy Dmitrishin — Publications">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="color-scheme" content="light dark">
-  <meta name="msapplication-TileColor" content="#00a300">
+    <!-- Mobile & PWA -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Yuriy Dmitrishin — Publications">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="color-scheme" content="light dark">
+    <meta name="msapplication-TileColor" content="#00a300">
 
-  <!-- Styles & Icons -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../css/style-user.css">
+    <!-- Styles & Icons -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/style-user.css">
 
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
-  <link rel="manifest" href="../images/site.webmanifest">
-  <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Yuriy Dmitrishin">
-  <meta property="og:title" content="Publications — Yuriy Dmitrishin">
-  <meta property="og:description" content="Publications, articles, and research by Yuriy Dmitrishin on EPC, nuclear construction, risk management, data science, and LLMs.">
-  <meta property="og:url" content="https://dmitrishin.github.io/publications/">
-  <meta property="og:image" content="https://dmitrishin.github.io/image/dmt_2.jpg">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Yuriy Dmitrishin">
+    <meta property="og:title" content="Publications — Yuriy Dmitrishin">
+    <meta property="og:description"
+          content="Publications, articles, and research by Yuriy Dmitrishin on EPC, nuclear construction, risk management, data science, and LLMs.">
+    <meta property="og:url" content="https://dmitrishin.github.io/publications/">
+    <meta property="og:image" content="https://dmitrishin.github.io/image/dmt_2.jpg">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@YDmitrishin">
-  <meta name="twitter:title" content="Publications — Yuriy Dmitrishin">
-  <meta name="twitter:description" content="Publications, articles, and research by Yuriy Dmitrishin on EPC, nuclear construction, risk management, data science, and LLMs.">
-  <meta name="twitter:image" content="https://dmitrishin.github.io/image/dmt_2.jpg">
-  <meta name="twitter:image:alt" content="Portrait of Yuriy Dmitrishin">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YDmitrishin">
+    <meta name="twitter:title" content="Publications — Yuriy Dmitrishin">
+    <meta name="twitter:description"
+          content="Publications, articles, and research by Yuriy Dmitrishin on EPC, nuclear construction, risk management, data science, and LLMs.">
+    <meta name="twitter:image" content="https://dmitrishin.github.io/image/dmt_2.jpg">
+    <meta name="twitter:image:alt" content="Portrait of Yuriy Dmitrishin">
 
-  <!-- Google Scholar / Zotero (Highwire) -->
-  <meta name="citation_title" content="Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods">
-  <meta name="citation_author" content="Dmitrishin, Yuriy">
-  <meta name="citation_publication_date" content="2025/05/09">
-  <meta name="citation_doi" content="10.5281/zenodo.15373676">
-  <meta name="citation_language" content="en">
-  <!-- <meta name="citation_pdf_url" content="DIRECT_PDF_URL"> -->
+    <!-- Google Scholar / Zotero (Highwire) -->
+    <meta name="citation_title"
+          content="Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods">
+    <meta name="citation_author" content="Dmitrishin, Yuriy">
+    <meta name="citation_publication_date" content="2025/05/09">
+    <meta name="citation_doi" content="10.5281/zenodo.15373676">
+    <meta name="citation_language" content="en">
+    <!-- <meta name="citation_pdf_url" content="DIRECT_PDF_URL"> -->
 
-  <!-- JSON-LD: WebSite / Person / CollectionPage / ItemList / ScholarlyArticle -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://dmitrishin.github.io/#website",
-        "url": "https://dmitrishin.github.io/",
-        "name": "Yuriy Dmitrishin",
-        "inLanguage": "en",
-        "publisher": { "@id": "https://dmitrishin.github.io/#person" }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://dmitrishin.github.io/#person",
-        "name": "Yuriy Dmitrishin",
-        "alternateName": "Юрий Дмитришин",
-        "url": "https://dmitrishin.github.io/",
-        "image": "https://dmitrishin.github.io/image/dmt_2.jpg",
-        "jobTitle": ["EPC Engineer","Nuclear Construction","Researcher"],
-        "sameAs": [
-          "https://github.com/dmitrishin",
-          "https://gitlab.com/dmitrishin",
-          "https://huggingface.co/dmitrishin",
-          "https://www.linkedin.com/in/dmitrishin/",
-          "https://x.com/YDmitrishin",
-          "https://www.instagram.com/y.dmitrishin/",
-          "https://www.youtube.com/@YuriyDmitrishin",
-          "https://bsky.app/profile/dmitrishin.bsky.social",
-          "https://mastodon.social/@dmitrishin",
-          "https://medium.com/@dmitrishin",
-          "https://substack.com/@dmitrishin",
-          "https://orcid.org/0009-0001-7957-3770"
-        ],
-        "affiliation": { "@id": "https://system-lab.ru/#org" }
-      },
-      {
-        "@type": "CollectionPage",
-        "@id": "https://dmitrishin.github.io/publications/#page",
-        "url": "https://dmitrishin.github.io/publications/",
-        "name": "Publications",
-        "inLanguage": "en",
-        "isPartOf": { "@id": "https://dmitrishin.github.io/#website" },
-        "about": { "@id": "https://dmitrishin.github.io/#person" },
-        "mainEntity": {
-          "@type": "ItemList",
-          "numberOfItems": 1,
-          "itemListOrder": "https://schema.org/ItemListOrderAscending",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "item": {
-                "@type": "ScholarlyArticle",
-                "@id": "https://zenodo.org/records/15373676#article",
-                "headline": "Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods",
-                "abstract": "Generalized probabilistic project management model combining PERT, GERT, Monte Carlo, mathematical optimization, and machine learning to forecast nuclear power plant construction progress and identify critical and subcritical paths.",
-                "author": { "@id": "https://dmitrishin.github.io/#person" },
-                "datePublished": "2025-05-09",
-                "inLanguage": "en",
-                "identifier": { "@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.15373676" },
-                "url": "https://zenodo.org/records/15373676",
-                "sameAs": [ "https://doi.org/10.5281/zenodo.15373676" ],
-                "isAccessibleForFree": true,
-                "publisher": { "@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/" },
-                "mainEntityOfPage": { "@type": "WebPage", "@id": "https://zenodo.org/records/15373676" },
-                "keywords": ["nuclear construction","EPC","project management","PERT","GERT","Monte Carlo","optimization","machine learning"]
-              }
-            }
-          ]
+    <!-- JSON-LD: WebSite / Person / CollectionPage / ItemList / ScholarlyArticle -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": "https://dmitrishin.github.io/#website",
+                    "url": "https://dmitrishin.github.io/",
+                    "name": "Yuriy Dmitrishin",
+                    "inLanguage": "en",
+                    "publisher": {
+                        "@id": "https://dmitrishin.github.io/#person"
+                    }
+                },
+                {
+                    "@type": "Person",
+                    "@id": "https://dmitrishin.github.io/#person",
+                    "name": "Yuriy Dmitrishin",
+                    "alternateName": "Юрий Дмитришин",
+                    "url": "https://dmitrishin.github.io/",
+                    "image": "https://dmitrishin.github.io/image/dmt_2.jpg",
+                    "jobTitle": [
+                        "EPC Engineer",
+                        "Nuclear Construction",
+                        "Researcher"
+                    ],
+                    "sameAs": [
+                        "https://github.com/dmitrishin",
+                        "https://gitlab.com/dmitrishin",
+                        "https://huggingface.co/dmitrishin",
+                        "https://www.linkedin.com/in/dmitrishin/",
+                        "https://x.com/YDmitrishin",
+                        "https://www.instagram.com/y.dmitrishin/",
+                        "https://www.youtube.com/@YuriyDmitrishin",
+                        "https://bsky.app/profile/dmitrishin.bsky.social",
+                        "https://mastodon.social/@dmitrishin",
+                        "https://medium.com/@dmitrishin",
+                        "https://substack.com/@dmitrishin",
+                        "https://orcid.org/0009-0001-7957-3770"
+                    ],
+                    "affiliation": {
+                        "@id": "https://system-lab.ru/#org"
+                    }
+                },
+                {
+                    "@type": "CollectionPage",
+                    "@id": "https://dmitrishin.github.io/publications/#page",
+                    "url": "https://dmitrishin.github.io/publications/",
+                    "name": "Publications",
+                    "inLanguage": "en",
+                    "isPartOf": {
+                        "@id": "https://dmitrishin.github.io/#website"
+                    },
+                    "about": {
+                        "@id": "https://dmitrishin.github.io/#person"
+                    },
+                    "mainEntity": {
+                        "@type": "ItemList",
+                        "numberOfItems": 1,
+                        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "item": {
+                                    "@type": "ScholarlyArticle",
+                                    "@id": "https://zenodo.org/records/15373676#article",
+                                    "headline": "Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods",
+                                    "abstract": "Generalized probabilistic project management model combining PERT, GERT, Monte Carlo, mathematical optimization, and machine learning to forecast nuclear power plant construction progress and identify critical and subcritical paths.",
+                                    "author": {
+                                        "@id": "https://dmitrishin.github.io/#person"
+                                    },
+                                    "datePublished": "2025-05-09",
+                                    "inLanguage": "en",
+                                    "identifier": {
+                                        "@type": "PropertyValue",
+                                        "propertyID": "DOI",
+                                        "value": "10.5281/zenodo.15373676"
+                                    },
+                                    "url": "https://zenodo.org/records/15373676",
+                                    "sameAs": [
+                                        "https://doi.org/10.5281/zenodo.15373676"
+                                    ],
+                                    "isAccessibleForFree": true,
+                                    "publisher": {
+                                        "@type": "Organization",
+                                        "name": "Zenodo",
+                                        "url": "https://zenodo.org/"
+                                    },
+                                    "mainEntityOfPage": {
+                                        "@type": "WebPage",
+                                        "@id": "https://zenodo.org/records/15373676"
+                                    },
+                                    "keywords": [
+                                        "nuclear construction",
+                                        "EPC",
+                                        "project management",
+                                        "PERT",
+                                        "GERT",
+                                        "Monte Carlo",
+                                        "optimization",
+                                        "machine learning"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "@type": "Organization",
+                    "@id": "https://system-lab.ru/#org",
+                    "name": "System Lab",
+                    "url": "https://system-lab.ru",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://dmitrishin.github.io/images/sl_logo.jpg"
+                    }
+                }
+            ]
         }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://system-lab.ru/#org",
-        "name": "System Lab",
-        "url": "https://system-lab.ru",
-        "logo": { "@type": "ImageObject", "url": "https://dmitrishin.github.io/images/sl_logo.jpg" }
-      }
-    ]
-  }
-  </script>
+    </script>
 
-  <!-- JSON-LD: Breadcrumbs -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://dmitrishin.github.io/"},
-      {"@type":"ListItem","position":2,"name":"Publications","item":"https://dmitrishin.github.io/publications/"}
-    ]
-  }
-  </script>
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://dmitrishin.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Publications",
+                    "item": "https://dmitrishin.github.io/publications/"
+                }
+            ]
+        }
+    </script>
 
-  <!-- Analytics -->
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
-    for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-    ym(55867912,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/55867912" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+    <!-- Analytics -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(55867912, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true});
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/55867912" style="position:absolute; left:-9999px;" alt=""></div>
+    </noscript>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WFW092MJ6"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-3WFW092MJ6");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WFW092MJ6"></script>
+    <script>window.dataLayer = window.dataLayer || [];
 
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","qwji2bphqu");
-  </script>
+    function gtag() {
+        dataLayer.push(arguments);
+    }
 
-  <title>Publications — Yuriy Dmitrishin | Articles, Research, Reports</title>
+    gtag("js", new Date());
+    gtag("config", "G-3WFW092MJ6");</script>
+
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "qwji2bphqu");
+    </script>
+
+    <title>Publications — Yuriy Dmitrishin | Articles, Research, Reports</title>
 </head>
 
 <body>
-    <!--Navbar Desktop-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white d-none d-md-block">
-        <div class="container mt-2">
-            <a class="navbar-brand" href="/" title="Home">
-                <h4></h4>
-            </a>
-            <ul class="nav justify-content-end menubar">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="https://linkedin.com/in/dmitrishin">linkedin</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- hr top -->
-    <div class="container d-none d-lg-block">
-        <hr>
-    </div>
-    <!-- Navigation Mobil -->
-    <div class="container mt-2 d-md-none">
+<!--Navbar Desktop-->
+<nav class="navbar navbar-expand-lg navbar-light bg-white d-none d-md-block">
+    <div class="container mt-2">
         <a class="navbar-brand" href="/" title="Home">
             <h4></h4>
         </a>
         <ul class="nav justify-content-end menubar">
-            <li class="nav-item"></li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="https://linkedin.com/in/dmitrishin">linkedin</a>
+            </li>
         </ul>
     </div>
-    <!-- Контент -->
-    <main class="container py-5">
-        <h1 class="mb-4 h3">Publications</h1>
-        <p class="lead">Peer-reviewed articles, technical reports, and research by Yuriy Dmitrishin.</p>
-        
-        <!-- Публикация Zenodo -->
-        <section>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title h6 mb-2 text-dark">
-                        <a href="https://zenodo.org/records/15373676" target="_blank" rel="noopener">
-                            Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods
+</nav>
+<!-- hr top -->
+<div class="container d-none d-lg-block">
+    <hr>
+</div>
+<!-- Navigation Mobil -->
+<div class="container mt-2 d-md-none">
+    <a class="navbar-brand" href="/" title="Home">
+        <h4></h4>
+    </a>
+    <ul class="nav justify-content-end menubar">
+        <li class="nav-item"></li>
+    </ul>
+</div>
+<!-- Контент -->
+<main class="container py-5">
+    <h1 class="mb-4 h3">Publications</h1>
+    <p class="lead">Peer-reviewed articles, technical reports, and research by Yuriy Dmitrishin.</p>
+
+    <!-- Публикация Zenodo -->
+    <section>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title h6 mb-2 text-dark">
+                    <a href="https://zenodo.org/records/15373676" target="_blank" rel="noopener">
+                        Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using
+                        Probabilistic Models and Machine Learning Methods
+                    </a>
+                </h2>
+                <h6 class="card-subtitle text-muted mb-2">Dmitrishin Yuriy · May 9, 2025</h6>
+                <p class="card-text">
+                    This publication presents a generalized probabilistic project management model that combines PERT,
+                    GERT, Monte Carlo methods, mathematical optimization, and modern machine learning and data analysis
+                    techniques. The approach aims to build predictive network models considering uncertainty, identify
+                    critical and subcritical paths, perform local and global optimization, and ensure model adaptation
+                    based on empirical data.
+                </p>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="https://zenodo.org/records/15373676" class="btn btn-primary btn-sm" target="_blank">
+                            <i class="bi bi-file-earmark-pdf"></i> View on Zenodo
                         </a>
-                    </h2>
-                    <h6 class="card-subtitle text-muted mb-2">Dmitrishin Yuriy · May 9, 2025</h6>
-                    <p class="card-text">
-                        This publication presents a generalized probabilistic project management model that combines PERT, GERT, Monte Carlo methods, mathematical optimization, and modern machine learning and data analysis techniques. The approach aims to build predictive network models considering uncertainty, identify critical and subcritical paths, perform local and global optimization, and ensure model adaptation based on empirical data.
-                    </p>
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <a href="https://zenodo.org/records/15373676" class="btn btn-primary btn-sm" target="_blank">
-                                <i class="bi bi-file-earmark-pdf"></i> View on Zenodo
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="https://doi.org/10.5281/zenodo.15373676" class="btn btn-outline-secondary btn-sm" target="_blank">
-                                DOI: 10.5281/zenodo.15373676
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://doi.org/10.5281/zenodo.15373676" class="btn btn-outline-secondary btn-sm"
+                           target="_blank">
+                            DOI: 10.5281/zenodo.15373676
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
 
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-2 mb-2">
+            <br class="mt-4 mb-4">
+            <br class="mt-4 mb-4">
+            <br class="mt-4 mb-4">
+        </div>
+    </div>
+</div>
+
+<!--hr footer-->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <hr class="mb-2">
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer>
     <div class="container">
         <div class="row">
-            <div class="col-12 mt-2 mb-2">
-                <br class="mt-4 mb-4">
-                <br class="mt-4 mb-4">
-                <br class="mt-4 mb-4">
+            <!-- footer menu-->
+            <div class="col-md-6 mb-3 mt-3">
+                <ul class="list-inline text-md-left text-center">
+                    <li class="list-inline-item">2019 <span>© Dmitrishin Yuriy</span></li>
+                </ul>
+            </div>
+
+            <!-- social media (desktop) -->
+            <div class="col-md-6 mb-3 mt-3 d-none d-md-block">
+                <ul id="social" class="list-inline text-right">
+                    <!-- GitHub -->
+                    <li class="list-inline-item mr-4">
+                        <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener"
+                           aria-label="GitHub profile of Yuriy Dmitrishin">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </li>
+                    <!-- LinkedIn -->
+                    <li class="list-inline-item mr-2">
+                        <a href="https://www.linkedin.com/in/dmitrishin/" class="text-dark" target="_blank"
+                           rel="noopener" aria-label="LinkedIn profile of Yuriy Dmitrishin">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Links For mobile -->
+        <div class="row">
+            <div class="col-12 mb-2 d-md-none">
+                <ul id="social-mobile" class="list-inline text-center">
+                    <!-- GitHub -->
+                    <li class="list-inline-item">
+                        <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener"
+                           aria-label="GitHub profile of Yuriy Dmitrishin">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </li>
+
+                    <!-- LinkedIn -->
+                    <li class="list-inline-item mr-3 ml-3">
+                        <a href="https://www.linkedin.com/in/dmitrishin" class="text-dark" target="_blank"
+                           rel="noopener" aria-label="LinkedIn profile of Yuriy Dmitrishin">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    
-    <!--hr footer-->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <hr class="mb-2">
-            </div>
-        </div>
-    </div>
-    
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <!-- footer menu-->
-                <div class="col-md-6 mb-3 mt-3">
-                    <ul class="list-inline text-md-left text-center">
-                        <li class="list-inline-item">2019 <span>© Dmitrishin Yuriy</span></li>
-                    </ul>
-                </div>
-                
-                <!-- social media (desktop) -->
-                <div class="col-md-6 mb-3 mt-3 d-none d-md-block">
-                    <ul id="social" class="list-inline text-right">
-                        <!-- GitHub -->
-                        <li class="list-inline-item mr-4">
-                            <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener" aria-label="GitHub profile of Yuriy Dmitrishin">
-                                <i class="bi bi-github"></i>
-                            </a>
-                        </li>
-                        <!-- LinkedIn -->
-                        <li class="list-inline-item mr-2">
-                            <a href="https://www.linkedin.com/in/dmitrishin/" class="text-dark" target="_blank" rel="noopener" aria-label="LinkedIn profile of Yuriy Dmitrishin">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+</footer>
 
-            <!-- Links For mobile -->
-            <div class="row">
-                <div class="col-12 mb-2 d-md-none">
-                    <ul id="social-mobile" class="list-inline text-center">
-                        <!-- GitHub -->
-                        <li class="list-inline-item">
-                            <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener" aria-label="GitHub profile of Yuriy Dmitrishin">
-                                <i class="bi bi-github"></i>
-                            </a>
-                        </li>
-
-                        <!-- LinkedIn -->
-                        <li class="list-inline-item mr-3 ml-3">
-                            <a href="https://www.linkedin.com/in/dmitrishin" class="text-dark" target="_blank" rel="noopener" aria-label="LinkedIn profile of Yuriy Dmitrishin">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
