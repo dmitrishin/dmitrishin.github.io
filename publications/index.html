@@ -74,6 +74,7 @@
     <!-- <meta name="citation_pdf_url" content="DIRECT_PDF_URL"> -->
 
     <!-- JSON-LD: WebSite / Person / CollectionPage / ItemList / ScholarlyArticle -->
+
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -81,142 +82,118 @@
                 {
                     "@type": "WebSite",
                     "@id": "https://dmitrishin.github.io/#website",
-                    "url": "https://dmitrishin.github.io/",
+                    "url": "https://dmitrishin.github.io",
                     "name": "Yuriy Dmitrishin",
-                    "inLanguage": "en",
+                    "description": "Official site of Yuriy Dmitrishin — executive, risk manager, and EPC project expert in nuclear engineering, construction, and data-driven strategy.",
+                    "inLanguage": [
+                        "en",
+                        "ru"
+                    ],
                     "publisher": {
-                        "@id": "https://dmitrishin.github.io/#person"
+                        "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin"
                     }
                 },
                 {
                     "@type": "Person",
-                    "@id": "https://dmitrishin.github.io/#person",
+                    "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin",
                     "name": "Yuriy Dmitrishin",
-                    "alternateName": "Юрий Дмитришин",
-                    "url": "https://dmitrishin.github.io/",
-                    "image": "https://dmitrishin.github.io/image/dmt_2.jpg",
-                    "jobTitle": [
-                        "EPC Engineer",
-                        "Nuclear Construction",
-                        "Researcher"
-                    ],
-                    "sameAs": [
-                        "https://github.com/dmitrishin",
-                        "https://gitlab.com/dmitrishin",
-                        "https://huggingface.co/dmitrishin",
-                        "https://www.linkedin.com/in/dmitrishin/",
-                        "https://x.com/YDmitrishin",
-                        "https://www.instagram.com/y.dmitrishin/",
-                        "https://www.youtube.com/@YuriyDmitrishin",
-                        "https://bsky.app/profile/dmitrishin.bsky.social",
-                        "https://mastodon.social/@dmitrishin",
-                        "https://medium.com/@dmitrishin",
-                        "https://substack.com/@dmitrishin",
-                        "https://orcid.org/0009-0001-7957-3770"
-                    ],
-                    "affiliation": {
-                        "@id": "https://system-lab.ru/#org"
-                    }
+                    "url": "https://dmitrishin.github.io/"
                 },
                 {
                     "@type": "CollectionPage",
-                    "@id": "https://dmitrishin.github.io/publications/#page",
+                    "@id": "https://dmitrishin.github.io/publications/#collection",
                     "url": "https://dmitrishin.github.io/publications/",
-                    "name": "Publications",
+                    "name": "Yuriy Dmitrishin — Publications",
+                    "description": "Peer‑reviewed articles, technical reports, and research by Yuriy Dmitrishin.",
                     "inLanguage": "en",
                     "isPartOf": {
                         "@id": "https://dmitrishin.github.io/#website"
                     },
                     "about": {
-                        "@id": "https://dmitrishin.github.io/#person"
+                        "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin"
+                    },
+                    "breadcrumb": {
+                        "@id": "https://dmitrishin.github.io/publications/#breadcrumb"
                     },
                     "mainEntity": {
-                        "@type": "ItemList",
-                        "numberOfItems": 1,
-                        "itemListOrder": "https://schema.org/ItemListOrderAscending",
-                        "itemListElement": [
-                            {
-                                "@type": "ListItem",
-                                "position": 1,
-                                "item": {
-                                    "@type": "ScholarlyArticle",
-                                    "@id": "https://zenodo.org/records/15373676#article",
-                                    "headline": "Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods",
-                                    "abstract": "Generalized probabilistic project management model combining PERT, GERT, Monte Carlo, mathematical optimization, and machine learning to forecast nuclear power plant construction progress and identify critical and subcritical paths.",
-                                    "author": {
-                                        "@id": "https://dmitrishin.github.io/#person"
-                                    },
-                                    "datePublished": "2025-05-09",
-                                    "inLanguage": "en",
-                                    "identifier": {
-                                        "@type": "PropertyValue",
-                                        "propertyID": "DOI",
-                                        "value": "10.5281/zenodo.15373676"
-                                    },
-                                    "url": "https://zenodo.org/records/15373676",
-                                    "sameAs": [
-                                        "https://doi.org/10.5281/zenodo.15373676"
-                                    ],
-                                    "isAccessibleForFree": true,
-                                    "publisher": {
-                                        "@type": "Organization",
-                                        "name": "Zenodo",
-                                        "url": "https://zenodo.org/"
-                                    },
-                                    "mainEntityOfPage": {
-                                        "@type": "WebPage",
-                                        "@id": "https://zenodo.org/records/15373676"
-                                    },
-                                    "keywords": [
-                                        "nuclear construction",
-                                        "EPC",
-                                        "project management",
-                                        "PERT",
-                                        "GERT",
-                                        "Monte Carlo",
-                                        "optimization",
-                                        "machine learning"
-                                    ]
-                                }
-                            }
-                        ]
+                        "@id": "https://dmitrishin.github.io/publications/#list"
                     }
                 },
                 {
-                    "@type": "Organization",
-                    "@id": "https://system-lab.ru/#org",
-                    "name": "System Lab",
-                    "url": "https://system-lab.ru",
-                    "logo": {
-                        "@type": "ImageObject",
-                        "url": "https://dmitrishin.github.io/images/sl_logo.jpg"
-                    }
+                    "@type": "ItemList",
+                    "@id": "https://dmitrishin.github.io/publications/#list",
+                    "name": "Publications list",
+                    "numberOfItems": 1,
+                    "itemListOrder": "https://schema.org/ItemListOrderAscending",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "item": {
+                                "@type": "ScholarlyArticle",
+                                "@id": "https://zenodo.org/records/15373676#article",
+                                "name": "Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods",
+                                "abstract": "Generalized probabilistic project management model combining PERT, GERT, Monte Carlo, mathematical optimization, and machine learning to forecast nuclear power plant construction progress and identify critical and subcritical paths.",
+                                "author": {
+                                    "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin"
+                                },
+                                "datePublished": "2025-05-09",
+                                "inLanguage": "en",
+                                "identifier": {
+                                    "@type": "PropertyValue",
+                                    "propertyID": "DOI",
+                                    "value": "10.5281/zenodo.15373676"
+                                },
+                                "url": "https://zenodo.org/records/15373676",
+                                "sameAs": [
+                                    "https://doi.org/10.5281/zenodo.15373676"
+                                ],
+                                "publisher": {
+                                    "@type": "Organization",
+                                    "name": "Zenodo",
+                                    "url": "https://zenodo.org/"
+                                },
+                                "mainEntityOfPage": {
+                                    "@type": "WebPage",
+                                    "@id": "https://zenodo.org/records/15373676"
+                                },
+                                "isAccessibleForFree": true,
+                                "keywords": [
+                                    "nuclear construction",
+                                    "EPC",
+                                    "project management",
+                                    "PERT",
+                                    "GERT",
+                                    "Monte Carlo",
+                                    "optimization",
+                                    "machine learning"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "@id": "https://dmitrishin.github.io/publications/#breadcrumb",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://dmitrishin.github.io/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Publications",
+                            "item": "https://dmitrishin.github.io/publications/"
+                        }
+                    ]
                 }
             ]
         }
     </script>
 
-    <!-- JSON-LD: Breadcrumbs -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://dmitrishin.github.io/"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Publications",
-                    "item": "https://dmitrishin.github.io/publications/"
-                }
-            ]
-        }
-    </script>
 
     <!-- Analytics -->
     <script type="text/javascript">
