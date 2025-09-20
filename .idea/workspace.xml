@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6c2fa44-5d5c-4a7f-b284-d32abcef1f7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/lang/af/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/af/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/am/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/am/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/ar/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ar/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/ay/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ay/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/az/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/az/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/ba/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ba/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/be/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/be/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/bg/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/bg/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/da/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/da/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/de/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/de/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/el/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/el/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/fa/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/fa/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/hu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/hu/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/it/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/it/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/ja/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ja/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/ko/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ko/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/nl/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/nl/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/no/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/no/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/pl/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/pl/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/pt-BR/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/pt-BR/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/pt/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/lang/pt/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +63,7 @@
       <updated>1757783229106</updated>
       <workItem from="1757783231131" duration="8720000" />
       <workItem from="1758316912010" duration="2618000" />
-      <workItem from="1758319866548" duration="19232000" />
+      <workItem from="1758319866548" duration="19369000" />
     </task>
     <servers />
   </component>
