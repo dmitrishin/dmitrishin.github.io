@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPP Life-Cycle Model — Formal Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f6f1;
+    --bg-alt: #f0ece4;
+    --bg-card: #fffef9;
+    --text: #2c2a25;
+    --text-secondary: #5a574f;
+    --text-muted: #8a8780;
+    --accent: #6b4c3b;
+    --accent-light: #a07d6a;
+    --accent-faint: rgba(107,76,59,0.07);
+    --border: #d8d3c8;
+    --border-light: #e8e4db;
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', 'Consolas', monospace;
+    --shadow-sm: 0 1px 3px rgba(44,42,37,0.06);
+    --shadow-md: 0 4px 16px rgba(44,42,37,0.08);
+    --radius: 3px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.72;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* —— Navigation —— */
+  nav {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-brand:hover { color: var(--text); }
+  .nav-links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: var(--radius);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--accent);
+    background: var(--accent-faint);
+  }
+
+  /* —— Header —— */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 40px 56px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.22;
+    color: var(--text);
+    max-width: 820px;
+    letter-spacing: -0.01em;
+  }
+  .hero-meta {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* —— Main content —— */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* —— Abstract —— */
+  .abstract {
+    margin: 56px 0 0;
+    padding: 40px 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  .abstract-label {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .abstract p {
+    font-family: var(--serif);
+    font-size: 18.5px;
+    line-height: 1.78;
+    color: var(--text);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  /* —— Section —— */
+  section {
+    margin-top: 64px;
+    padding-bottom: 16px;
+  }
+  section h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  section h2 .sec-num {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+  .section-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 28px;
+    border: none;
+  }
+  section h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text);
+    margin-top: 36px;
+    margin-bottom: 14px;
+  }
+  section h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--text);
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+  section p {
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  /* —— Component cards —— */
+  .components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 28px 0;
+  }
+  .comp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s, border-color 0.25s;
+  }
+  .comp-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-light);
+  }
+  .comp-symbol {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-faint);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+  }
+  .comp-card h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    margin-bottom: 8px;
+    margin-top: 0;
+    color: var(--text);
+  }
+  .comp-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* —— Formal block —— */
+  .formal-block {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    margin: 24px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto;
+  }
+  .formal-block .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .formal-block code, .formal-block .math {
+    font-family: var(--mono);
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.8;
+    display: block;
+  }
+  .formal-block .math-line {
+    margin-bottom: 6px;
+  }
+
+  /* —— Definition block —— */
+  .def-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-light);
+    padding: 24px 28px;
+    margin: 24px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .def-block .def-header {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .def-block p {
+    margin-bottom: 10px;
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+  .def-block code {
+    font-family: var(--mono);
+    font-size: 14px;
+    background: var(--accent-faint);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  /* —— Remark block —— */
+  .remark-block {
+    background: var(--accent-faint);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .remark-block strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .remark-block code {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    background: rgba(107,76,59,0.08);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  /* —— Diagram / flow —— */
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 32px 0;
+    padding: 32px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .flow-node {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    padding: 14px 22px;
+    border-radius: var(--radius);
+    text-align: center;
+    min-width: 100px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .flow-node:hover {
+    border-color: var(--accent);
+    background: var(--accent-faint);
+  }
+  .flow-node .fl-sym {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .flow-node .fl-label {
+    display: block;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .flow-arrow {
+    font-size: 20px;
+    color: var(--border);
+    padding: 0 10px;
+    user-select: none;
+  }
+
+  /* —— Hierarchy visual —— */
+  .hierarchy-tree {
+    margin: 28px 0;
+    padding: 36px 32px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+  }
+  .ht-level {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .ht-level-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    min-width: 64px;
+    flex-shrink: 0;
+  }
+  .ht-nodes {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex: 1;
+  }
+  .ht-nodes-left {
+    justify-content: flex-start;
+    padding-left: 24px;
+  }
+  .ht-node {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-align: center;
+    white-space: nowrap;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .ht-node:hover {
+    border-color: var(--accent-light);
+    background: var(--accent-faint);
+  }
+  .ht-root {
+    background: var(--accent-faint);
+    border-color: var(--accent-light);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .ht-leaf { border-style: dashed; }
+  .ht-connectors {
+    height: 32px;
+    padding-left: 84px;
+  }
+  .ht-svg {
+    width: 100%;
+    height: 32px;
+    display: block;
+  }
+  .ht-legend {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .ht-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .ht-legend-line {
+    display: inline-block;
+    width: 28px;
+    height: 0;
+    border-top: 2px solid var(--border);
+    flex-shrink: 0;
+  }
+  .ht-legend-vert { border-top-color: var(--accent-light); border-top-style: solid; }
+  .ht-legend-hor { border-top-color: var(--text-muted); border-top-style: dashed; }
+
+  /* —— Invariant list —— */
+  .inv-list {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+  }
+  .inv-list li {
+    padding: 14px 20px 14px 56px;
+    position: relative;
+    margin-bottom: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .inv-list li::before {
+    content: attr(data-inv);
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .inv-list li code {
+    font-family: var(--mono);
+    font-size: 14px;
+    background: var(--accent-faint);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  /* —— Table —— */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .styled-table th {
+    background: var(--bg-alt);
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .styled-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text);
+    vertical-align: top;
+  }
+  .styled-table tr:last-child td { border-bottom: none; }
+  .styled-table code {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    color: var(--accent);
+  }
+
+  /* —— Aggregation cards —— */
+  .agg-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .agg-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .agg-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: var(--text);
+  }
+  .agg-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-faint);
+    border-radius: var(--radius);
+    font-size: 16px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .agg-card p {
+    font-size: 14.5px;
+    line-height: 1.62;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .agg-card code {
+    font-family: var(--mono);
+    font-size: 13px;
+    background: var(--accent-faint);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  /* —— Note block —— */
+  .note-block {
+    margin: 24px 0;
+    padding: 20px 24px;
+    background: var(--accent-faint);
+    border-radius: var(--radius);
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .note-block strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* —— Inline code —— */
+  p code, li code, td code {
+    font-family: var(--mono);
+    font-size: 14px;
+    background: var(--accent-faint);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  /* —— Matrix block —— */
+  .matrix-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin: 24px 0;
+    overflow-x: auto;
+    text-align: center;
+  }
+  .matrix-block .matrix-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .matrix-block pre {
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    display: inline-block;
+    text-align: left;
+  }
+
+  /* —— Footer —— */
+  footer {
+    margin-top: 80px;
+    padding: 36px 40px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  footer p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* —— Responsive —— */
+  @media (max-width: 768px) {
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 30px; }
+    .container { padding: 0 20px; }
+    .abstract { padding: 28px 24px; }
+    .abstract p { font-size: 16.5px; }
+    .nav-inner { padding: 12px 20px; gap: 16px; }
+    .components-grid { grid-template-columns: 1fr; }
+    .flow-diagram { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); padding: 6px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ Navigation ═══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://dmitrishin.github.io/" class="nav-brand" target="_blank" rel="noopener">Yuriy Dmitrishin</a>
+    <ul class="nav-links">
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#structure">Structure</a></li>
+      <li><a href="#levels">Levels</a></li>
+      <li><a href="#acyclicity">Acyclicity</a></li>
+      <li><a href="#classifications">Classes</a></li>
+      <li><a href="#morphism">Morphism</a></li>
+      <li><a href="#attributes">Attributes</a></li>
+      <li><a href="#aggregates">Aggregates</a></li>
+      <li><a href="#iterative">Iteration</a></li>
+      <li><a href="#transforms">Transforms</a></li>
+      <li><a href="#lifecycle">Life Cycle</a></li>
+      <li><a href="#system">System</a></li>
+      <li><a href="#filtration">Filtration</a></li>
+      <li><a href="#pert">PERT/GERT</a></li>
+      <li><a href="#matrices">Matrices</a></li>
+      <li><a href="#semantics">Semantics</a></li>
+      <li><a href="#corpus">Corpus</a></li>
+      <li><a href="#metrics">Metrics</a></li>
+      <li><a href="#meta">Meta-Level</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ Hero ═══ -->
+<header class="hero">
+  <h1>Formalization of a Nuclear Power Plant Life-Cycle Model for AI and Machine Learning Applications</h1>
+  <div class="hero-meta">
+    <span>Yuriy Dmitrishin</span>
+    <span>·</span>
+    <span>2025</span>
+    <span>·</span>
+    <span>Formal Model &amp; Research Framework</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ═══ Abstract ═══ -->
+  <div class="abstract" id="abstract">
+    <div class="abstract-label">Abstract</div>
+    <p>This paper presents a formal, research-oriented model designed to support a broad range of artificial intelligence and machine learning (AI/ML) tasks related to managing the life cycle of nuclear power plants (NPPs). The model consists of a hierarchical graph structure, a semantic layer, and a classification system. It also includes links to a corpus and associated metrics. It is intended primarily to advance research on AI/ML methods that support NPP life cycle management, including engineering, construction, commissioning and startup, and decommissioning. At the same time, with appropriate adaptation and optimization of selected components and algorithms, the model can be adapted for deployment in real NPP projects. The model does not have to be implemented in full and can be adapted, simplified or extended to meet the specific objectives of AI/ML applications for implementation in NPP projects. Certain findings and recommendations presented herein may necessitate additional investigation, depending on the specific research objectives or on how the model is implemented for particular applications. While this work concentrates on the life cycle of nuclear power plants, the proposed principles and methods are transferable to other complex systems.</p>
+  </div>
+
+  <!-- ═══ Overview ═══ -->
+  <section id="overview">
+    <h2><span class="sec-num">I.</span> Model Overview</h2>
+    <hr class="section-rule">
+    <p>The model is organized around five interoperable components that together provide a consistent basis for representing structure and classifications, aligning semantics, binding external evidence, quantifying attributes, and coordinating operations across layers. The components are designed with clear roles, minimal coupling between layers, and invariants that support validation and reuse across projects.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-node"><span class="fl-sym">M</span><span class="fl-label">Structure</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">S</span><span class="fl-label">Semantics</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">D</span><span class="fl-label">Corpus</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">Q</span><span class="fl-label">Metrics</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">U</span><span class="fl-label">Meta-Level</span></div>
+    </div>
+
+    <div class="components-grid">
+      <div class="comp-card">
+        <div class="comp-symbol">M</div>
+        <h4>Structure</h4>
+        <p>A multi-level representation of the project that includes hierarchical class systems for objects and connections. Separates structural decomposition from dependencies and keeps classifications consistent across levels.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-symbol">S</div>
+        <h4>Semantics</h4>
+        <p>Ontological and linguistic domain model. Organizes domain concepts, relation types, term categories, and lexical mappings. Supports reasoning, consistency checks, and terminology management. Aligns with M via bidirectional links.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-symbol">D</div>
+        <h4>Corpus</h4>
+        <p>Typed references from model elements to source documents and datasets, enabling traceability and evidence-based validation of every structural and semantic element.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-symbol">Q</div>
+        <h4>Quantitative Layer</h4>
+        <p>Typed attributes and metrics with aggregation rules to compute readiness, risk, cost, and other values for analysis and as features for AI/ML pipelines.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-symbol">U</div>
+        <h4>Meta-Level</h4>
+        <p>An orchestration layer that coordinates M, S, D, Q and, in its ML extension, governs dataset generation, training, and evaluation while preserving model consistency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §1: Basic Structure ═══ -->
+  <section id="structure">
+    <h2><span class="sec-num">§1.</span> Basic Structure of the Graph M₀</h2>
+    <hr class="section-rule">
+    <p>The foundational layer of the model is a directed hierarchical hypergraph. It organizes all project elements into strictly ordered levels and captures two fundamentally different kinds of relationships: horizontal connections within a level and vertical connections between adjacent levels.</p>
+
+    <div class="formal-block">
+      <div class="label">Formal Definition</div>
+      <div class="math">
+        <div class="math-line">M₀ = (L, V, E<sub>hor</sub>, E<sub>vert</sub>, θ)</div>
+      </div>
+    </div>
+
+    <p>where:</p>
+    <ul class="inv-list">
+      <li data-inv="L">L = {1, 2, …, k} is an ordered set of hierarchy levels</li>
+      <li data-inv="V">V is a set of vertices</li>
+      <li data-inv="θ">θ : V → L is a mapping that assigns each vertex v ∈ V to exactly one level l ∈ L</li>
+      <li data-inv="Eₕ">E<sub>hor</sub> ⊆ {(v, W) | v ∈ V, W ⊆ V \ {v}, W ≠ ∅} — the set of horizontal hyperedges; v is the source, W is the target (non-empty subset at the same level as v)</li>
+      <li data-inv="Eᵥ">E<sub>vert</sub> ⊆ V × V — the set of vertical edges connecting vertices of adjacent levels</li>
+    </ul>
+
+    <div class="remark-block">
+      <strong>Assumption.</strong> The sets of levels and vertices are non-empty: L ≠ ∅, V ≠ ∅. The notation ℘<sup>+</sup>(X) denotes the set of all non-empty subsets of a set X. A pair (v, W) ∈ E<sub>hor</sub> is read as "a hyperedge from vertex v to the set of vertices W."
+    </div>
+
+    <h3>Core Invariants</h3>
+    <ul class="inv-list">
+      <li data-inv="I1"><strong>Vertex Level Uniqueness</strong> — every vertex belongs to exactly one level: <code>∀v ∈ V ∃!l ∈ L : θ(v) = l</code></li>
+      <li data-inv="I2"><strong>Horizontal Hyperedges</strong> — source and all targets lie on the same level, and the source is never among its own targets: <code>∀(v, W) ∈ E<sub>hor</sub> : v ∉ W ∧ ∀w ∈ W : θ(w) = θ(v)</code></li>
+      <li data-inv="I3"><strong>Vertical Edges</strong> — connect strictly adjacent levels (parent to child): <code>∀(v, w) ∈ E<sub>vert</sub> : θ(w) = θ(v) + 1</code></li>
+      <li data-inv="I4"><strong>Edge Level Extension</strong> — the level function θ extends to edges: <code>θ((v, W)) := θ(v)</code> and <code>θ((v, w)) := θ(v)</code></li>
+      <li data-inv="I5"><strong>No outgoing vertical edges at the last level</strong> — if θ(v) = k = max L, then there exists no w ∈ V such that (v, w) ∈ E<sub>vert</sub></li>
+    </ul>
+
+    <div class="remark-block">
+      <strong>Flat case.</strong> If L = {1}, then E<sub>vert</sub> = ∅ and the model reduces to a single horizontal hypergraph G<sup>(1)</sup> = (V, E<sub>hor</sub>) subject to acyclicity (and, if required, weak connectivity); the aggregation μ<sub>V</sub> and the decomposition δ are unused.
+    </div>
+  </section>
+
+  <!-- ═══ §2: Level Structure, Aggregation, Connectivity ═══ -->
+  <section id="levels">
+    <h2><span class="sec-num">§2.</span> Level Structure, Aggregation, and Connectivity</h2>
+    <hr class="section-rule">
+
+    <h3>2.1 Level Organization</h3>
+    <p>The set of levels is denoted L = {1, 2, …, k}, where 1 is the top level and k is the bottom level. Each structural element y ∈ Y := V ∪ E<sub>hor</sub> ∪ E<sub>vert</sub> is assigned to exactly one level:</p>
+    <div class="formal-block">
+      <div class="label">Level Assignment</div>
+      <div class="math">
+        <div class="math-line">∀y ∈ Y ∃! l ∈ L : θ(y) = l</div>
+      </div>
+    </div>
+    <p>The initial mapping θ : V → L is extended to edges by: for a horizontal hyperedge e = (v, W) ∈ E<sub>hor</sub>, θ(e) := θ(v); for a vertical edge e = (v, w) ∈ E<sub>vert</sub>, θ(e) := θ(v).</p>
+
+    <h3>2.2 Horizontal Hyperedges</h3>
+    <p>A horizontal hyperedge is a pair (v, W) ∈ E<sub>hor</sub>, where v ∈ V is the source vertex, W ⊆ V \ {v} with W ≠ ∅ is a non-empty set of target vertices not containing v, and θ(w) = θ(v) for all w ∈ W. The condition v ∉ W prevents self-loops. The horizontal hyperedges at level l form a subgraph:</p>
+    <div class="formal-block">
+      <div class="label">Level Subgraph</div>
+      <div class="math">
+        <div class="math-line">G<sup>(l)</sup> := (V<sup>(l)</sup>, E<sup>(l)</sup>)</div>
+        <div class="math-line">V<sup>(l)</sup> := { v ∈ V | θ(v) = l }</div>
+        <div class="math-line">E<sup>(l)</sup> := { (v, W) ∈ E<sub>hor</sub> | θ(v) = l }</div>
+      </div>
+    </div>
+
+    <h3>2.3 Edge Types</h3>
+    <p>The model distinguishes two logically and functionally independent types of edges. <strong>Horizontal hyperedges</strong> define connections within a single level. <strong>Vertical edges</strong> define hierarchical connections between levels via the aggregation mapping:</p>
+    <div class="formal-block">
+      <div class="label">Aggregation Mapping</div>
+      <div class="math">
+        <div class="math-line">μ<sub>V</sub> : V → ℘(V),&ensp; μ<sub>V</sub>(v) := {w ∈ V | (v, w) ∈ E<sub>vert</sub>}</div>
+        <div class="math-line">(v, w) ∈ E<sub>vert</sub> ⟺ w ∈ μ<sub>V</sub>(v)</div>
+      </div>
+    </div>
+    <p>Horizontal hyperedges and vertical edges are disjoint and describe different aspects of the structure: the former describe connectivity within a level, while the latter describe the hierarchy between levels. This separation prevents conflicts in the interpretation of connections.</p>
+
+    <h3>2.4 Aggregation and Decomposition</h3>
+    <p>Each vertex v ∈ V at level l can be detailed by a decomposition subgraph at the next level l+1:</p>
+    <div class="formal-block">
+      <div class="label">Decomposition Mapping</div>
+      <div class="math">
+        <div class="math-line">δ : V → {(V<sub>sub</sub>, E<sub>sub</sub>)},&ensp; v ↦ δ(v) = (V<sub>sub</sub>, E<sub>sub</sub>)</div>
+      </div>
+    </div>
+    <p>where:</p>
+    <ul class="inv-list">
+      <li data-inv="Vₛ">V<sub>sub</sub> ⊆ V<sup>(l+1)</sup> is the set of vertices at level l+1 that constitute the decomposition subgraph, with <code>μ<sub>V</sub>(v) ⊆ V<sub>sub</sub></code></li>
+      <li data-inv="Eₛ">E<sub>sub</sub> ⊆ {(x, Y) ∈ E<sub>hor</sub> | x ∈ V<sub>sub</sub>, Y ⊆ V<sub>sub</sub> \ {x}} — horizontal hyperedges lying entirely within V<sub>sub</sub></li>
+    </ul>
+
+    <div class="agg-cards">
+      <div class="agg-card">
+        <div class="agg-card-header">
+          <span class="agg-icon">↕</span>
+          <strong>Closure Property</strong>
+        </div>
+        <p>For any hyperedge (x, Y) ∈ E<sub>sub</sub>, the conditions x ∈ V<sub>sub</sub> and Y ⊆ V<sub>sub</sub> \ {x} hold. This ensures the logical locality of the subgraph.</p>
+      </div>
+      <div class="agg-card">
+        <div class="agg-card-header">
+          <span class="agg-icon">◇</span>
+          <strong>Auxiliary Vertices</strong>
+        </div>
+        <p>Vertices in V<sub>sub</sub> \ μ<sub>V</sub>(v) are auxiliary: they retain all properties of level l+1, can serve in decompositions of different parent vertices, and model shared components.</p>
+      </div>
+      <div class="agg-card">
+        <div class="agg-card-header">
+          <span class="agg-icon">⊕</span>
+          <strong>Shared Components</strong>
+        </div>
+        <p>The same auxiliary vertex w can appear in decompositions of different vertices v₁, v₂, …. Incoming edges (u, w) ∈ E<sub>vert</sub> from other vertices u ≠ v are permitted.</p>
+      </div>
+    </div>
+
+    <h3>2.5 Paths and Reachability on a Horizontal Level</h3>
+    <div class="def-block">
+      <div class="def-header">Definition 2.1 (Directed Hyperpath)</div>
+      <p>A sequence P = (v₀, (v₀, W₀), v₁, (v₁, W₁), …, (v<sub>m−1</sub>, W<sub>m−1</sub>), v<sub>m</sub>), m ≥ 0, is called a <em>directed hyperpath</em> in G<sup>(l)</sup> if, for each i ∈ {0, …, m−1}:</p>
+      <p><code>(v<sub>i</sub>, W<sub>i</sub>) ∈ E<sup>(l)</sup></code> and <code>v<sub>i+1</sub> ∈ W<sub>i</sub></code></p>
+      <p>The vertex v₀ is the source, v<sub>m</sub> is the sink, and m is the length of P.</p>
+    </div>
+
+    <div class="def-block">
+      <div class="def-header">Definition 2.2 (Reachability)</div>
+      <p>For a vertex v ∈ V<sup>(l)</sup>, the set of reachable vertices is:</p>
+      <p><code>Reach<sup>+</sup><sub>l</sub>(v) := {u ∈ V<sup>(l)</sup> | ∃ a hyperpath P : v ⇝ u of length m ≥ 1}</code></p>
+      <p>The reflexive-transitive closure is <code>Reach<sup>*</sup><sub>l</sub>(v) := {v} ∪ Reach<sup>+</sup><sub>l</sub>(v)</code>.</p>
+    </div>
+
+    <div class="formal-block">
+      <div class="label">Invariant (Inv-HorAcyc)</div>
+      <div class="math">
+        <div class="math-line">(v, W) ∈ E<sub>hor</sub> ⟹ Reach<sup>+</sup><sub>θ(v)</sub>(v) ∩ W = ∅</div>
+      </div>
+    </div>
+
+    <div class="hierarchy-tree">
+      <svg viewBox="0 0 1000 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:'Source Sans 3','Segoe UI',sans-serif;">
+        <!-- Level Labels -->
+        <text x="20" y="62" font-family="'JetBrains Mono','Consolas',monospace" font-size="12" font-weight="500" letter-spacing="0.08em" fill="#6b4c3b" text-transform="uppercase">LEVEL 1</text>
+        <text x="20" y="192" font-family="'JetBrains Mono','Consolas',monospace" font-size="12" font-weight="500" letter-spacing="0.08em" fill="#6b4c3b">LEVEL 2</text>
+        <text x="20" y="322" font-family="'JetBrains Mono','Consolas',monospace" font-size="12" font-weight="500" letter-spacing="0.08em" fill="#6b4c3b">LEVEL 3</text>
+
+        <!-- Vertical edges E_vert: Level 1 → Level 2 (solid brown) -->
+        <line x1="540" y1="78" x2="280" y2="170" stroke="#a07d6a" stroke-width="1.5"/>
+        <line x1="540" y1="78" x2="540" y2="170" stroke="#a07d6a" stroke-width="1.5"/>
+        <line x1="540" y1="78" x2="800" y2="170" stroke="#a07d6a" stroke-width="1.5"/>
+
+        <!-- Vertical edges E_vert: Level 2 → Level 3 (solid brown) -->
+        <line x1="280" y1="210" x2="230" y2="300" stroke="#a07d6a" stroke-width="1.5"/>
+        <line x1="280" y1="210" x2="450" y2="300" stroke="#a07d6a" stroke-width="1.5"/>
+
+        <!-- Level 1: NPP Project (root node — accent background, accent border) -->
+        <rect x="465" y="40" width="150" height="38" rx="3" fill="rgba(107,76,59,0.07)" stroke="#a07d6a" stroke-width="1.5"/>
+        <text x="540" y="64" text-anchor="middle" font-size="14" font-weight="600" fill="#6b4c3b">NPP Project</text>
+
+        <!-- Level 2: System A, B, C (solid border) -->
+        <rect x="210" y="170" width="140" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5"/>
+        <text x="280" y="195" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">System A</text>
+
+        <rect x="470" y="170" width="140" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5"/>
+        <text x="540" y="195" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">System B</text>
+
+        <rect x="730" y="170" width="140" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5"/>
+        <text x="800" y="195" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">System C</text>
+
+        <!-- Level 3: Subsystem A.1, A.2 (dashed border = leaf) -->
+        <rect x="140" y="300" width="180" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="230" y="325" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">Subsystem A.1</text>
+
+        <rect x="360" y="300" width="180" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="450" y="325" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">Subsystem A.2</text>
+      </svg>
+
+      <div class="ht-legend">
+        <div class="ht-legend-item"><span class="ht-legend-line ht-legend-vert"></span><span>Vertical edges — hierarchy (E<sub>vert</sub>)</span></div>
+        <div class="ht-legend-item"><span class="ht-legend-line ht-legend-hor"></span><span>Horizontal hyperedges — intra-level (E<sub>hor</sub>)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §3: Acyclicity and Connectivity ═══ -->
+  <section id="acyclicity">
+    <h2><span class="sec-num">§3.</span> Structural Level Acyclicity and Connectivity</h2>
+    <hr class="section-rule">
+
+    <p>For each level l ∈ L, the horizontal hypergraph G<sup>(l)</sup> = (V<sup>(l)</sup>, E<sup>(l)</sup>) is considered with respect to two key structural properties:</p>
+
+    <div class="def-block">
+      <div class="def-header">Level Acyclicity</div>
+      <p>The level hypergraph G<sup>(l)</sup> is called <em>acyclic</em> if:</p>
+      <p><code>∀v ∈ V<sup>(l)</sup> : v ∉ Reach<sup>+</sup><sub>l</sub>(v)</code></p>
+      <p>There must be no directed hyperpath of non-zero length that starts and ends at the same vertex.</p>
+    </div>
+
+    <div class="def-block">
+      <div class="def-header">Weak Connectivity</div>
+      <p>Consider the underlying undirected graph UG<sup>(l)</sup> = (V<sup>(l)</sup>, E<sub>u</sub>), where {x, y} ∈ E<sub>u</sub> iff there exists a hyperedge (x, W) ∈ E<sup>(l)</sup> with y ∈ W or (y, W) ∈ E<sup>(l)</sup> with x ∈ W. We say G<sup>(l)</sup> is <em>weakly connected</em> if UG<sup>(l)</sup> is connected.</p>
+    </div>
+
+    <div class="remark-block">
+      <strong>Note on Application Flexibility.</strong> The requirement for weak connectivity is recommended as a baseline, especially when G<sup>(l)</sup> is interpreted as a functionally cohesive block. However, in certain scenarios, it may be relaxed — for instance, allowing multiple disconnected components within a level, provided that this does not compromise aggregation, morphisms, or iteration consistency.
+    </div>
+  </section>
+
+  <!-- ═══ §4: Classification ═══ -->
+  <section id="classifications">
+    <h2><span class="sec-num">§4.</span> Classification of Vertices and Edges</h2>
+    <hr class="section-rule">
+
+    <p>Every vertex and edge can be classified using hierarchically organized class systems. The classification mappings assign each element a set of classes from rooted tree hierarchies:</p>
+    <div class="formal-block">
+      <div class="label">Classification Mappings</div>
+      <div class="math">
+        <div class="math-line">κ<sub>V</sub> : V → ℘(C<sub>V</sub>)</div>
+        <div class="math-line">κ<sub>E</sub> : E<sub>hor</sub> ∪ E<sub>vert</sub> → ℘(C<sub>E</sub>)</div>
+      </div>
+    </div>
+    <p>where C<sub>V</sub> is the set of vertex classes, C<sub>E</sub> is the set of edge classes, κ<sub>V</sub>(v) ⊆ C<sub>V</sub> is the set of classification features for vertex v, and κ<sub>E</sub>(e) ⊆ C<sub>E</sub> is the set of features for an edge e.</p>
+
+    <h3>4.1 Multi-level Classifications</h3>
+    <p>The classifications are organized as hierarchical trees:</p>
+    <div class="formal-block">
+      <div class="label">Class Hierarchies</div>
+      <div class="math">
+        <div class="math-line">H<sub>V</sub> = (C<sub>V</sub>, ⪯<sub>V</sub>),&ensp; H<sub>E</sub> = (C<sub>E</sub>, ⪯<sub>E</sub>)</div>
+      </div>
+    </div>
+    <p>where ⪯<sub>V</sub> and ⪯<sub>E</sub> are partial order relations that define the class hierarchy, satisfying two additional properties:</p>
+    <ul class="inv-list">
+      <li data-inv="T1"><strong>Single Root:</strong> In each class set, there exists exactly one element with no strict predecessors.</li>
+      <li data-inv="T2"><strong>Unique Parent:</strong> Each non-root class has exactly one immediate predecessor.</li>
+    </ul>
+    <p>These invariants ensure that each hierarchy forms a rooted tree. Classification by both leaf and intermediate classes is permitted, reflecting the polymorphic nature of an element or accommodating alternative semantic interpretations. An empty set is permissible and indicates the absence of an explicit classification at the current stage.</p>
+
+    <div class="remark-block">
+      <strong>Note on structured classes.</strong> Each class c may be described by an extended record: <code>c = (key, {⟨value<sub>j</sub>, tag<sub>j</sub>⟩}<sub>j=1..m</sub>)</code>, where <em>key</em> is a unique string identifier referenced by all invariants and mappings, and each pair (value<sub>j</sub>, tag<sub>j</sub>) provides annotations such as description, short_name, or color.
+    </div>
+
+    <div class="remark-block">
+      <strong>Note on forests and a virtual root.</strong> In practice, a class hierarchy often represents a forest of independent trees T₁, …, T<sub>k</sub>. To preserve the single-root invariant (T1), a virtual root ⊤<sub>H</sub> is added: <code>⊤<sub>H</sub> ⪯<sub>V</sub> r<sub>i</sub></code> for each root r<sub>i</sub>. This does not alter the forest's structure and preserves all invariants.
+    </div>
+  </section>
+
+  <!-- ═══ §5: Semantic Morphism ═══ -->
+  <section id="morphism">
+    <h2><span class="sec-num">§5.</span> Semantic Morphism</h2>
+    <hr class="section-rule">
+
+    <h3>5.1–5.2 Morphism Definition</h3>
+    <p>A semantic morphism φ represents a mapping from graph elements to corresponding classes in the hierarchies. It facilitates the transition from multi-label classification to a single semantic interpretation:</p>
+    <div class="formal-block">
+      <div class="label">Morphism</div>
+      <div class="math">
+        <div class="math-line">φ = (φ<sub>V</sub>, φ<sub>E</sub>)</div>
+        <div class="math-line">φ<sub>V</sub> : V → C<sub>V</sub>,&ensp; φ<sub>E</sub> : E<sub>hor</sub> ∪ E<sub>vert</sub> → C<sub>E</sub></div>
+      </div>
+    </div>
+
+    <h3>5.3 Consistency Conditions</h3>
+    <p>A morphism φ is considered <em>admissible</em> if it satisfies the following four conditions:</p>
+    <ul class="inv-list">
+      <li data-inv="C1"><code>φ<sub>V</sub>(v) ∈ κ<sub>V</sub>(v)</code> for all v ∈ V — the selected class must be in the admissible set</li>
+      <li data-inv="C2"><code>φ<sub>E</sub>(e) ∈ κ<sub>E</sub>(e)</code> for all e ∈ E<sub>hor</sub> ∪ E<sub>vert</sub></li>
+      <li data-inv="C3">For any (v, w) ∈ E<sub>vert</sub>: <code>φ<sub>V</sub>(w) ⪯<sub>V</sub> φ<sub>V</sub>(v)</code> — the child's class is a subclass of (or equal to) the parent's class</li>
+      <li data-inv="C4">For any vertical edge (v, w) ∈ E<sub>vert</sub>: <code>φ<sub>E</sub>((v, w)) ⪯<sub>E</sub> c<sub>vert</sub></code> — vertical edges are classified under the special class c<sub>vert</sub> ∈ C<sub>E</sub> or its subclasses</li>
+    </ul>
+
+    <h3>5.5 The Set of Admissible Morphisms</h3>
+    <p>The model focuses on the set of <em>all</em> admissible morphisms Φ, comprising all mappings satisfying the consistency conditions:</p>
+    <div class="formal-block">
+      <div class="label">Set of Admissible Morphisms</div>
+      <div class="math">
+        <div class="math-line">Φ = { φ = (φ<sub>V</sub>, φ<sub>E</sub>) |</div>
+        <div class="math-line">&ensp;&ensp;φ<sub>V</sub> : V → C<sub>V</sub>,  φ<sub>E</sub> : E<sub>hor</sub> ∪ E<sub>vert</sub> → C<sub>E</sub>;</div>
+        <div class="math-line">&ensp;&ensp;∀v ∈ V : φ<sub>V</sub>(v) ∈ κ<sub>V</sub>(v);</div>
+        <div class="math-line">&ensp;&ensp;∀e ∈ E<sub>hor</sub> ∪ E<sub>vert</sub> : φ<sub>E</sub>(e) ∈ κ<sub>E</sub>(e);</div>
+        <div class="math-line">&ensp;&ensp;∀(v, w) ∈ E<sub>vert</sub> : φ<sub>V</sub>(w) ⪯<sub>V</sub> φ<sub>V</sub>(v);</div>
+        <div class="math-line">&ensp;&ensp;∀(v, w) ∈ E<sub>vert</sub> : φ<sub>E</sub>((v, w)) ⪯<sub>E</sub> c<sub>vert</sub> }</div>
+      </div>
+    </div>
+
+    <ul class="inv-list">
+      <li data-inv="Inv-Φ"><strong>Non-emptiness invariant:</strong> <code>Φ ≠ ∅</code> — if Φ = ∅, the semantic configuration is contradictory</li>
+    </ul>
+
+    <h3>Evaluation Function and Optimal Morphism Selection</h3>
+    <p>To select an optimal morphism from Φ, an evaluation function f<sub>eval</sub> : Φ → ℝ<sub>≥0</sub> assigns a numerical value reflecting quality or relevance:</p>
+    <div class="formal-block">
+      <div class="label">Optimal Selection</div>
+      <div class="math">
+        <div class="math-line">φ* = arg min<sub>φ∈Φ</sub> f<sub>eval</sub>(φ)&ensp; or &ensp;φ* = arg max<sub>φ∈Φ</sub> f<sub>eval</sub>(φ)</div>
+      </div>
+    </div>
+
+    <p><strong>Example of an evaluation function:</strong> the average depth of the classes assigned to vertices:</p>
+    <div class="formal-block">
+      <div class="label">Example: Average Depth</div>
+      <div class="math">
+        <div class="math-line">f<sub>eval</sub>(φ) = (1/|V|) · Σ<sub>v∈V</sub> depth<sub>V</sub>(φ<sub>V</sub>(v))</div>
+      </div>
+    </div>
+    <p>where depth<sub>V</sub>(c) denotes the depth of class c in the hierarchical tree H<sub>V</sub>. Minimizing this function favors morphisms with more general (less specialized) vertex classes.</p>
+  </section>
+
+  <!-- ═══ §6: Attributes ═══ -->
+  <section id="attributes">
+    <h2><span class="sec-num">§6.</span> Typed Attributes and Values</h2>
+    <hr class="section-rule">
+
+    <h3>6.1 Attribute Types and Values</h3>
+    <p>Each attribute is formally defined by an ordered pair (τ, val), where τ ∈ AType is the application-specific type and val ∈ Dom<sub>τ</sub> is the value consistent with that type.</p>
+
+    <h4>Base Value Types</h4>
+    <div class="formal-block">
+      <div class="label">Base Types</div>
+      <div class="math">
+        <div class="math-line">VType = {ℝ, ℤ, Bool, Cat(C), Enum(E), Distr(P), Struct(S), ℝ<sup>n</sup>, …}</div>
+      </div>
+    </div>
+    <p>For each base type v ∈ VType, a non-empty universe of values Val<sub>v</sub> is fixed (e.g., Val<sub>ℝ</sub> = ℝ, Val<sub>Bool</sub> = {true, false}, Val<sub>Cat(C)</sub> = C).</p>
+
+    <h4>Application-Specific Types</h4>
+    <p>A mapping β : AType → VType associates each application-specific type τ with its base type β(τ). For each τ, the domain of permissible values is:</p>
+    <div class="formal-block">
+      <div class="label">Domain Constraint</div>
+      <div class="math">
+        <div class="math-line">Dom<sub>τ</sub> ⊆ Val<sub>β(τ)</sub></div>
+      </div>
+    </div>
+
+    <h4>The Universal Attribute Set</h4>
+    <div class="formal-block">
+      <div class="label">Set of All Attributes</div>
+      <div class="math">
+        <div class="math-line">A := ⋃<sub>τ∈AType</sub> { (τ, val) | val ∈ Dom<sub>τ</sub> }</div>
+      </div>
+    </div>
+
+    <h3>6.2 Attribute Mappings</h3>
+    <div class="formal-block">
+      <div class="label">Mappings</div>
+      <div class="math">
+        <div class="math-line">attr<sub>V</sub> : V → ℘(A),&ensp; attr<sub>E</sub> : E<sub>hor</sub> ∪ E<sub>vert</sub> → ℘(A)</div>
+      </div>
+    </div>
+
+    <h3>Type-Correctness Invariant</h3>
+    <div class="formal-block">
+      <div class="label">Invariant</div>
+      <div class="math">
+        <div class="math-line">∀(τ, val) ∈ A :  val ∈ Dom<sub>τ</sub> ⊆ Val<sub>β(τ)</sub></div>
+      </div>
+    </div>
+    <p>This three-tiered separation — "base type → universe of values → application-specific type domain" — is used for type correctness verification and performing aggregate computations.</p>
+  </section>
+
+  <!-- ═══ §7: Aggregates ═══ -->
+  <section id="aggregates">
+    <h2><span class="sec-num">§7.</span> Attribute Aggregates and Semantic Generalizations</h2>
+    <hr class="section-rule">
+
+    <h3>7.2 Aggregate Functions</h3>
+    <p>Let Λ be the set of aggregate functions. Each function α ∈ Λ has the signature:</p>
+    <div class="formal-block">
+      <div class="label">Signature</div>
+      <div class="math">
+        <div class="math-line">α : ℘(A) → Val<sub>ResType(α)</sub></div>
+        <div class="math-line">InBase(α) ∈ VType,&ensp; ResType(α) ∈ VType</div>
+        <div class="math-line">AcceptedTypes(α) ⊆ AType &ensp;(optional)</div>
+      </div>
+    </div>
+
+    <p>For an input set I ⊆ A, the filtered set is:</p>
+    <div class="formal-block">
+      <div class="label">Input Filtering</div>
+      <div class="math">
+        <div class="math-line">Input<sub>α</sub> = { (τ, val) ∈ I | (AcceptedTypes(α) = ∅ ∨ τ ∈ AcceptedTypes(α)) ∧ β(τ) = InBase(α) }</div>
+      </div>
+    </div>
+
+    <table class="styled-table">
+      <thead><tr><th>Function</th><th>InBase</th><th>ResType</th><th>Use Case</th></tr></thead>
+      <tbody>
+        <tr><td><code>Sum</code></td><td>ℝ</td><td>ℝ</td><td>Sum of costs</td></tr>
+        <tr><td><code>Avg</code></td><td>ℝ</td><td>ℝ</td><td>Average time</td></tr>
+        <tr><td><code>And</code></td><td>Bool</td><td>Bool</td><td>Readiness of all nodes</td></tr>
+        <tr><td><code>Count</code></td><td>Any†</td><td>ℤ</td><td>Number of components</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--text-muted);">† 'Any' indicates that Count accepts attributes of any base type, as it only counts their number.</p>
+
+    <h3>7.3 Aggregation Rules</h3>
+    <p>Each rule r ∈ Σ<sub>agg</sub> is specified by the tuple:</p>
+    <div class="formal-block">
+      <div class="label">Aggregation Rule</div>
+      <div class="math">
+        <div class="math-line">r = (τ<sup>(r)</sup><sub>target</sub>, ContextSelector<sub>r</sub>, AttributeSelector<sub>r</sub>, α<sub>r</sub>, default_val<sub>r</sub>)</div>
+      </div>
+    </div>
+    <p>where τ<sup>(r)</sup><sub>target</sub> ∈ AType is the result type, ContextSelector<sub>r</sub> determines the source elements, AttributeSelector<sub>r</sub> filters the attributes, α<sub>r</sub> ∈ Λ is the aggregate function, and default_val<sub>r</sub> is used when the input set is empty.</p>
+
+    <h4>Computation of the Aggregated Value</h4>
+    <div class="formal-block">
+      <div class="label">Two-Step Computation</div>
+      <div class="math">
+        <div class="math-line">1.&ensp;Input<sub>α<sub>r</sub></sub>(elem) = AttributeSelector<sub>r</sub>(A(ContextSelector<sub>r</sub>(elem)), α<sub>r</sub>)</div>
+        <div class="math-line">2.&ensp;val<sup>(r)</sup><sub>target</sub> = α<sub>r</sub>(Input<sub>α<sub>r</sub></sub>(elem))&ensp; if Input ≠ ∅,&ensp; else default_val<sub>r</sub></div>
+      </div>
+    </div>
+
+    <div class="remark-block">
+      <strong>DAG Constraint.</strong> The dependency graph of the rules in Σ<sub>agg</sub> must form a directed acyclic graph (DAG).
+    </div>
+
+    <h3>7.4–7.5 Extended Attribute Set</h3>
+    <div class="formal-block">
+      <div class="label">Extended Attributes</div>
+      <div class="math">
+        <div class="math-line">attr*(v) := attr(v) ∪ { (τ<sup>(r)</sup><sub>target</sub>, val<sup>(r)</sup><sub>target</sub>) | r ∈ Σ<sub>agg</sub>, r applicable to v, τ<sup>(r)</sup><sub>target</sub> ∉ Types(attr(v)) }</div>
+      </div>
+    </div>
+
+    <p>Invariants of the extended set:</p>
+    <ul class="inv-list">
+      <li data-inv="A1"><strong>Type Correctness:</strong> For all (τ, val) ∈ attr*(v), <code>val ∈ Dom<sub>τ</sub></code></li>
+      <li data-inv="A2"><strong>Priority of Local Attributes:</strong> Local attributes are not overwritten by aggregated ones</li>
+      <li data-inv="A3"><strong>Monotonicity:</strong> <code>attr(v) ⊆ attr*(v)</code></li>
+    </ul>
+
+    <table class="styled-table">
+      <thead><tr><th>Mode</th><th>Semantics</th></tr></thead>
+      <tbody>
+        <tr><td><code>PRIORITY</code></td><td>Local value takes precedence over the aggregated one</td></tr>
+        <tr><td><code>MERGE</code></td><td>Merge by key, preserving both</td></tr>
+        <tr><td><code>OVERRIDE</code></td><td>Aggregated value replaces the local one</td></tr>
+      </tbody>
+    </table>
+
+    <h3>7.6 Semantic Generalizations Based on Aggregates</h3>
+    <div class="formal-block">
+      <div class="label">Derived Classification</div>
+      <div class="math">
+        <div class="math-line">κ' : V → ℘(C')</div>
+        <div class="math-line">κ'(v) := { c ∈ C' | Pr(c, v, attr*(v)) = true }</div>
+      </div>
+    </div>
+    <p>With the parameterized inheritance mode (SemInheritanceMode ∈ {STRICT, LOOSE}):</p>
+    <ul class="inv-list">
+      <li data-inv="S"><strong>STRICT:</strong> <code>∀s ∈ μ<sub>V</sub>(v) : κ'(s) ⊆ κ'(v)</code></li>
+      <li data-inv="L"><strong>LOOSE:</strong> <code>∀c<sub>s</sub> ∈ κ'(s) ∃c<sub>v</sub> ∈ κ'(v) : c<sub>s</sub> ⪯<sub>C'</sub> c<sub>v</sub></code> (requires partial order ⪯<sub>C'</sub>)</li>
+    </ul>
+
+    <h3>7.7 Integration with Evaluation Functions</h3>
+    <div class="formal-block">
+      <div class="label">Evaluation Target Metric</div>
+      <div class="math">
+        <div class="math-line">f<sub>eval</sub>(φ) = h(φ, ⋃<sub>v∈V</sub> attr*(v), ⋃<sub>e∈E</sub> attr*(e))</div>
+      </div>
+    </div>
+    <p>where h is an application-specific function implementing the chosen quality criterion (consistency, completeness, preferences, etc.).</p>
+  </section>
+
+  <!-- ═══ §8: Iterative Processes ═══ -->
+  <section id="iterative">
+    <h2><span class="sec-num">§8.</span> Iterative Processes within G<sup>(l)</sup> (Optional)</h2>
+    <hr class="section-rule">
+
+    <p>The Γ<sub>iter</sub> component describes controlled iterative processes within the acyclic structure G<sup>(l)</sup> as an optional extension. Iteration is realized by branching between a statically unrolled hyper-path and a direct bypass:</p>
+    <div class="formal-block">
+      <div class="label">Iterative Component</div>
+      <div class="math">
+        <div class="math-line">Γ<sub>iter</sub> = { γ = (v<sub>entry</sub>, v<sub>exit</sub>, P<sub>loop</sub>, P<sub>bypass</sub>, N<sub>max</sub>, Cond) }</div>
+      </div>
+    </div>
+    <p>where v<sub>entry</sub>, v<sub>exit</sub> ∈ V<sup>(l)</sup> are the entry and exit vertices; P<sub>loop</sub> is a simple directed hyper-path (the static unrolling of a loop of at most N<sub>max</sub> steps); P<sub>bypass</sub> = (v<sub>entry</sub>, {v<sub>exit</sub>}) ∈ E<sub>hor</sub> is the bypass edge; and Cond : attr*(v<sub>entry</sub>) → {0, 1} selects which structure is traversed.</p>
+
+    <h3>Invariants</h3>
+    <ul class="inv-list">
+      <li data-inv="Γ1"><strong>Acyclicity:</strong> P<sub>loop</sub> is simple; P<sub>bypass</sub> is a single edge; neither creates a cycle in G<sup>(l)</sup></li>
+      <li data-inv="Γ2"><strong>Encapsulation:</strong> All intermediate vertices of P<sub>loop</sub> are encapsulated: entry only through v<sub>entry</sub>, exit only through v<sub>exit</sub></li>
+      <li data-inv="Γ3"><strong>Bounded unfolding:</strong> |P<sub>loop</sub>| = m ≤ N<sub>max</sub></li>
+      <li data-inv="Γ4"><strong>Exclusive activation:</strong> P<sub>loop</sub> if Cond(attr*(v<sub>entry</sub>)) = 1, else P<sub>bypass</sub></li>
+      <li data-inv="Γ5"><strong>Single level:</strong> <code>∀v, w ∈ Vertices(γ) : θ(v) = θ(w) = l</code></li>
+    </ul>
+  </section>
+
+  <!-- ═══ §9: Admissible Transformations ═══ -->
+  <section id="transforms">
+    <h2><span class="sec-num">§9.</span> Admissible Transformations and Decision Nodes</h2>
+    <hr class="section-rule">
+
+    <h3>State Signature</h3>
+    <div class="formal-block">
+      <div class="label">Model State</div>
+      <div class="math">
+        <div class="math-line">M = (L, V, E<sub>hor</sub>, E<sub>vert</sub>, θ, κ<sub>V</sub>, κ<sub>E</sub>, attr<sub>V</sub>, attr<sub>E</sub>, Σ<sub>agg</sub>, …)</div>
+      </div>
+    </div>
+
+    <p>Let Inv(M) denote the predicate requiring all structural, semantic, and type constraints to be satisfied.</p>
+
+    <div class="formal-block">
+      <div class="label">State Space and Transformations</div>
+      <div class="math">
+        <div class="math-line">M<sub>M₀</sub> = { M | Inv(M) }</div>
+        <div class="math-line">F<sub>M₀</sub> = { f | f : M<sub>M₀</sub> → M<sub>M₀</sub> }</div>
+      </div>
+    </div>
+
+    <h3>Basic Properties</h3>
+    <ul class="inv-list">
+      <li data-inv="P1"><strong>Closure:</strong> M ∈ M<sub>M₀</sub> ⟹ f(M) ∈ M<sub>M₀</sub></li>
+      <li data-inv="P2"><strong>Composition:</strong> f₂ ∘ f₁ ∈ F<sub>M₀</sub> for f₁, f₂ ∈ F<sub>M₀</sub></li>
+      <li data-inv="P3"><strong>Identity:</strong> id ∈ F<sub>M₀</sub></li>
+    </ul>
+    <p>Thus, (M<sub>M₀</sub>, F<sub>M₀</sub>) forms a <em>monoid action</em>: composition is associative, and function application induces transitions M →<sup>f</sup> M'.</p>
+
+    <h3>§10. Decision Nodes</h3>
+    <p>Let V<sub>dec</sub> ⊆ V be the set of decision nodes. Each node v ∈ V<sub>dec</sub> is associated with a transformation f<sub>v</sub> ∈ F<sub>M₀</sub>, so that M' = f<sub>v</sub>(M). The implementation of f<sub>v</sub> may depend on the aggregated attributes attr*(v). Optionally, a decision node can be marked with a special class c<sub>dec</sub> ∈ C<sub>V</sub>.</p>
+  </section>
+
+  <!-- ═══ §11–12: Life Cycle ═══ -->
+  <section id="lifecycle">
+    <h2><span class="sec-num">§11–12.</span> Life Cycle and Phase Decomposition</h2>
+    <hr class="section-rule">
+
+    <h3>Hierarchy of Nested Submodels</h3>
+    <div class="formal-block">
+      <div class="label">Strict Nesting</div>
+      <div class="math">
+        <div class="math-line">M<sub>PK</sub> ⊂ M<sub>Sys</sub> ⊂ M<sub>LC</sub> ⊂ M₀</div>
+      </div>
+    </div>
+    <p>M<sub>LC</sub> captures the sequential life-cycle phases. M<sub>Sys</sub> represents the physical and functional configuration. M<sub>PK</sub> is the union of all startup complexes.</p>
+
+    <h3>Phase Decomposition</h3>
+    <div class="formal-block">
+      <div class="label">Phases</div>
+      <div class="math">
+        <div class="math-line">LC = {ρ₁ &lt; ρ₂ &lt; ⋯ &lt; ρ<sub>n</sub>},&ensp; n ≥ 2</div>
+        <div class="math-line">G<sub>ρ<sub>i</sub></sub> = (V<sub>ρ<sub>i</sub></sub>, E<sub>ρ<sub>i</sub></sub>) ⊆ M<sub>LC</sub></div>
+      </div>
+    </div>
+
+    <h3>Partition Invariants</h3>
+    <ul class="inv-list">
+      <li data-inv="C1"><strong>Complete Coverage:</strong> <code>⋃<sup>n</sup><sub>i=1</sub> G<sub>ρ<sub>i</sub></sub> = M<sub>LC</sub></code> — every element belongs to at least one phase</li>
+      <li data-inv="C2"><strong>Local Overlap:</strong> <code>G<sub>ρ<sub>i</sub></sub> ∩ G<sub>ρ<sub>j</sub></sub> ≠ ∅ ⟹ |i − j| ≤ 1</code> — an element can belong to at most two adjacent phases</li>
+    </ul>
+
+    <h3>Phase Transitions</h3>
+    <p>For each pair of adjacent phases ρ<sub>i</sub> → ρ<sub>i+1</sub>, a minimal (w.r.t. inclusion) non-empty transition set is defined:</p>
+    <div class="formal-block">
+      <div class="label">Transition Set</div>
+      <div class="math">
+        <div class="math-line">Y*<sub>i</sub> ⊆ G<sub>ρ<sub>i</sub></sub> ∩ G<sub>ρ<sub>i+1</sub></sub>,&ensp; Y*<sub>i</sub> ≠ ∅</div>
+      </div>
+    </div>
+
+    <h3>The Life Cycle Model M<sub>LC</sub></h3>
+    <div class="formal-block">
+      <div class="label">Union of Phases</div>
+      <div class="math">
+        <div class="math-line">V<sub>LC</sub> = ⋃<sup>n</sup><sub>i=1</sub> V<sub>ρ<sub>i</sub></sub>,&ensp; E<sub>LC</sub> = ⋃<sup>n</sup><sub>i=1</sub> E<sub>ρ<sub>i</sub></sub></div>
+        <div class="math-line">M<sub>LC</sub> = (V<sub>LC</sub>, E<sub>LC</sub>) ⊆ M₀</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §13: System MSys ═══ -->
+  <section id="system">
+    <h2><span class="sec-num">§13.</span> Representation of the System M<sub>Sys</sub></h2>
+    <hr class="section-rule">
+
+    <h3>Physical and Functional Realization</h3>
+    <p>Two special classes c<sub>phys</sub>, c<sub>func</sub> ∈ C<sub>V</sub> distinguish physical existence from functional capability:</p>
+    <div class="formal-block">
+      <div class="label">System Vertices and Edges</div>
+      <div class="math">
+        <div class="math-line">V<sub>Sys</sub> = { v ∈ V | c<sub>phys</sub> ∈ κ<sub>V</sub>(v) }</div>
+        <div class="math-line">E<sub>Sys</sub> = { e ∈ E<sub>hor</sub> ∪ E<sub>vert</sub> | Ends(e) ⊆ V<sub>Sys</sub> }</div>
+        <div class="math-line">M<sub>Sys</sub> = (V<sub>Sys</sub>, E<sub>Sys</sub>)</div>
+      </div>
+    </div>
+
+    <ul class="inv-list">
+      <li data-inv="PF"><strong>Precedence:</strong> <code>c<sub>func</sub> ∈ κ<sub>V</sub>(v) ⟹ c<sub>phys</sub> ∈ κ<sub>V</sub>(v)</code> — an element can be physically realized without being functionally active, but not vice versa</li>
+    </ul>
+
+    <h3>Startup Complexes</h3>
+    <div class="formal-block">
+      <div class="label">Startup Complexes</div>
+      <div class="math">
+        <div class="math-line">G<sup>(j)</sup><sub>PK</sub> = (V<sup>(j)</sup><sub>PK</sub>, E<sup>(j)</sup><sub>PK</sub>),&ensp; j = 1, …, m</div>
+        <div class="math-line">M<sub>PK</sub> = ⋃<sub>j</sub> (V<sup>(j)</sup><sub>PK</sub>, E<sup>(j)</sup><sub>PK</sub>) ⊆ M<sub>Sys</sub></div>
+        <div class="math-line">V<sub>shared</sub> = ⋂<sub>j≠k</sub> (V<sup>(j)</sup><sub>PK</sub> ∩ V<sup>(k)</sup><sub>PK</sub>)</div>
+      </div>
+    </div>
+
+    <h3>Readiness Attribute Model</h3>
+    <div class="formal-block">
+      <div class="label">Readiness</div>
+      <div class="math">
+        <div class="math-line">τ<sub>func</sub> ∈ [0, 1]</div>
+        <div class="math-line">α<sub>min</sub> : {τ<sub>func</sub>(w) | w ∈ μ<sub>V</sub>(v)} → min(·),&ensp; τ<sub>target</sub> = τ<sub>func</sub></div>
+        <div class="math-line">If (τ<sub>func</sub>, 1) ∈ attr*(v), then c<sub>func</sub> is added to κ<sub>V</sub>(v)</div>
+      </div>
+    </div>
+
+    <h3>Vertical Consistency</h3>
+    <div class="formal-block">
+      <div class="label">Invariants</div>
+      <div class="math">
+        <div class="math-line">c<sub>phys</sub> ∈ κ<sub>V</sub>(v) ⟹ c<sub>phys</sub> ∈ κ<sub>V</sub>(w),&ensp; (v, w) ∈ E<sub>vert</sub></div>
+        <div class="math-line">c<sub>func</sub> ∈ κ<sub>V</sub>(v) ⟺ [∀w ∈ μ<sub>V</sub>(v) : c<sub>func</sub> ∈ κ<sub>V</sub>(w)] ∧ [κ'(w) ⊆ κ'(v)]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §14: Stage Filtration ═══ -->
+  <section id="filtration">
+    <h2><span class="sec-num">§14.</span> Stage Filtration of the Startup Complex</h2>
+    <hr class="section-rule">
+
+    <div class="formal-block">
+      <div class="label">Stage Sequence</div>
+      <div class="math">
+        <div class="math-line">Stage<sup>(j)</sup><sub>0</sub> ⊂ Stage<sup>(j)</sup><sub>1</sub> ⊂ ⋯ ⊂ Stage<sup>(j)</sup><sub>m<sub>j</sub></sub> = G<sup>(j)</sup><sub>PK</sub></div>
+        <div class="math-line">Ready<sup>(j)</sup><sub>k</sub> = min<sub>x ∈ V<sup>(j)</sup><sub>k</sub> ∪ E<sup>(j)</sup><sub>k</sub></sub> τ<sub>func</sub>(x)</div>
+      </div>
+    </div>
+
+    <h3>Filtration Invariants</h3>
+    <ul class="inv-list">
+      <li data-inv="F-1"><strong>Root Reachability:</strong> v<sup>(j)</sup><sub>root</sub> ∈ V<sup>(j)</sup><sub>k</sub>, with a directed path from root to any v ∈ V<sup>(j)</sup><sub>k</sub> along E<sup>(j)</sup><sub>k</sub> ∩ E<sub>vert</sub></li>
+      <li data-inv="F-2"><strong>Physical Completeness:</strong> <code>∀v ∈ V<sup>(j)</sup><sub>k</sub> : c<sub>phys</sub> ∈ κ<sub>V</sub>(v)</code></li>
+      <li data-inv="F-3"><strong>Strictly Increasing Readiness:</strong> <code>0 = Ready<sup>(j)</sup><sub>0</sub> &lt; ⋯ &lt; Ready<sup>(j)</sup><sub>m<sub>j</sub></sub> = 1</code></li>
+      <li data-inv="F-4"><strong>Vertical Closure:</strong> <code>(u, w) ∈ E<sub>vert</sub>, w ∈ V<sup>(j)</sup><sub>k</sub> ⟹ u ∈ V<sup>(j)</sup><sub>k</sub></code></li>
+      <li data-inv="F-5"><strong>Minimality of the Step:</strong> <code>∄ W ⊊ (V<sup>(j)</sup><sub>k+1</sub> \ V<sup>(j)</sup><sub>k</sub>) : min<sub>x</sub> τ<sub>func</sub>(x) ≥ Ready<sup>(j)</sup><sub>k+1</sub></code></li>
+    </ul>
+
+    <h3>Stage Function and Transition</h3>
+    <div class="formal-block">
+      <div class="label">Stage Function and Commissioning</div>
+      <div class="math">
+        <div class="math-line">stg<sup>(j)</sup>(v) = min{k | v ∈ V<sup>(j)</sup><sub>k</sub>}</div>
+        <div class="math-line">(u, w) ∈ E<sub>vert</sub> ⟹ stg<sup>(j)</sup>(u) ≤ stg<sup>(j)</sup>(w)</div>
+        <div class="math-line">Trans<sup>(j)</sup><sub>k</sub> = [τ<sub>func</sub>(v<sup>(j)</sup><sub>root</sub>) ≥ Ready<sup>(j)</sup><sub>k+1</sub>] ∧ [∀v ∈ V<sup>(j)</sup><sub>k+1</sub> \ V<sup>(j)</sup><sub>k</sub> : c<sub>phys</sub> ∈ κ<sub>V</sub>(v)]</div>
+        <div class="math-line">System commissioned when: min<sub>j∈J</sub> stg<sup>(j)</sup><sub>curr</sub> = m<sub>j</sub></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §15: PERT, GERT, PDM ═══ -->
+  <section id="pert">
+    <h2><span class="sec-num">§15.</span> PERT, GERT, and PDM Subgraphs</h2>
+    <hr class="section-rule">
+
+    <h3>15.1 PERT Subgraphs</h3>
+    <div class="def-block">
+      <div class="def-header">Definition 15.1 (PERT Subgraph)</div>
+      <p>A subgraph G<sub>PERT</sub> = (V<sub>p</sub>, E<sub>p</sub>) ⊆ (V, E) is a PERT subgraph if:</p>
+      <p>1. G<sub>PERT</sub> is a directed acyclic graph (DAG);</p>
+      <p>2. Each edge e ∈ E<sub>p</sub> has a three-point estimate: <code>est(e) = (time<sub>min</sub>(e), time<sub>mid</sub>(e), time<sub>max</sub>(e))</code> with <code>time<sub>min</sub> &lt; time<sub>mid</sub> &lt; time<sub>max</sub></code>;</p>
+    </div>
+
+    <div class="formal-block">
+      <div class="label">PERT Distribution Parameters</div>
+      <div class="math">
+        <div class="math-line">(𝔼[time<sub>e</sub>], Var(time<sub>e</sub>)) = f<sub>P</sub>(est(e)),&ensp; f<sub>P</sub> : ℝ³ → ℝ²<sub>&gt;0</sub></div>
+        <div class="math-line">time<sub>e</sub> ~ F<sub>PERT</sub>(𝔼[time<sub>e</sub>], Var(time<sub>e</sub>))</div>
+        <div class="math-line">Critical path: Slack(v) = t<sub>L</sub>(v) − t<sub>E</sub>(v) = 0</div>
+      </div>
+    </div>
+
+    <h3>15.2 GERT Subgraphs</h3>
+    <p>A subgraph Γ<sup>GERT</sup> = (V'', E'') models stochastic processes where each edge e = (v<sub>i</sub>, v<sub>j</sub>) has a transition probability p<sub>ij</sub> ∈ [0, 1], with the normalization condition Σ<sub>j</sub> p<sub>ij</sub> = 1 for each branching node.</p>
+
+    <div class="formal-block">
+      <div class="label">Set of Scenarios</div>
+      <div class="math">
+        <div class="math-line">Γ = { Γ<sub>i</sub> = (V<sub>i</sub>, E<sub>i</sub>) | Γ<sub>i</sub> ⊆ G<sub>PERT</sub> ∪ Γ<sup>GERT</sup>, Γ<sub>i</sub> ⊆ M }</div>
+      </div>
+    </div>
+
+    <h3>15.3 PDM Subgraph</h3>
+    <div class="formal-block">
+      <div class="label">Precedence Diagramming Method</div>
+      <div class="math">
+        <div class="math-line">Γ<sub>PDM</sub> = (V<sub>pdm</sub>, E<sub>pdm</sub>) ⊆ (V, E<sub>hor</sub>)</div>
+        <div class="math-line">C<sup>PDM</sup><sub>E</sub> = {FS, SS, FF, SF} ⊆ C<sub>E</sub></div>
+        <div class="math-line">∀e ∈ E<sub>pdm</sub> : κ<sub>E</sub>(e) ∈ C<sup>PDM</sup><sub>E</sub>,&ensp; |κ<sub>E</sub>(e)| = 1</div>
+      </div>
+    </div>
+    <p>An optional lag attribute (τ<sub>lag</sub>, ℓ) ∈ attr<sub>E</sub>(e) with ℓ ∈ ℤ is permitted for each PDM edge.</p>
+  </section>
+
+  <!-- ═══ §16–17: Matrices ═══ -->
+  <section id="matrices">
+    <h2><span class="sec-num">§16–17.</span> Matrix Representation for ML/AI Applications</h2>
+    <hr class="section-rule">
+
+    <h3>16. Level Matrices</h3>
+    <p>For each level L, horizontal hyperedges are reduced to a directed graph G'(L) = (V<sub>L</sub>, E'<sub>L</sub>) by replacing each (v, W) with edges {(v, w) | w ∈ W}. Let n<sub>L</sub> = |V<sub>L</sub>| and m<sub>L</sub> = |E'<sub>L</sub>|.</p>
+
+    <div class="formal-block">
+      <div class="label">Set of Level Matrices</div>
+      <div class="math">
+        <div class="math-line">M(L) = {A<sub>L</sub>, B<sub>L</sub>, D<sub>L</sub>, L<sub>L</sub>, L̃<sub>L</sub>, P<sub>L</sub>, A<sup>k</sup><sub>L</sub>, T<sub>L</sub>, R<sub>L</sub>}</div>
+      </div>
+    </div>
+
+    <table class="styled-table">
+      <thead><tr><th>Matrix</th><th>Name</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>A<sub>L</sub></code></td><td>Adjacency</td><td>A<sub>L</sub>[i,j] = sum of weights of edges from v<sub>i</sub> to v<sub>j</sub> ∈ ℕ<sub>0</sub><sup>n<sub>L</sub>×n<sub>L</sub></sup></td></tr>
+        <tr><td><code>B<sub>L</sub></code></td><td>Incidence</td><td>B<sub>L</sub>[i,e] ∈ {−1, 0, 1}<sup>n<sub>L</sub>×m<sub>L</sub></sup></td></tr>
+        <tr><td><code>D<sub>L</sub></code></td><td>Degree</td><td>D<sub>L</sub> = diag(deg⁺(v₁), …, deg⁺(v<sub>n<sub>L</sub></sub>))</td></tr>
+        <tr><td><code>L<sub>L</sub></code></td><td>Unnorm. Laplacian</td><td>L<sub>L</sub> = D<sub>L</sub> − A<sub>L</sub> (Kirchhoff matrix)</td></tr>
+        <tr><td><code>L̃<sub>L</sub></code></td><td>Norm. Laplacian</td><td>L̃<sub>L</sub> = D<sub>L</sub><sup>−½</sup> L<sub>L</sub> D<sub>L</sub><sup>−½</sup></td></tr>
+        <tr><td><code>P<sub>L</sub></code></td><td>Stochastic Trans.</td><td>P<sub>L</sub> = D<sub>L</sub><sup>−1</sup> A<sub>L</sub></td></tr>
+        <tr><td><code>A<sup>k</sup><sub>L</sub></code></td><td>k-step Paths</td><td>[i,j] = number of paths of length k from v<sub>i</sub> to v<sub>j</sub></td></tr>
+        <tr><td><code>T<sub>L</sub></code></td><td>Reachability</td><td>T<sub>L</sub>[i,j] = 1 if a path exists, 0 otherwise</td></tr>
+        <tr><td><code>R<sub>L</sub></code></td><td>Distance</td><td>R<sub>L</sub>[i,j] = shortest path length; ∞ if unreachable</td></tr>
+      </tbody>
+    </table>
+
+    <h3>17. Global Block Matrix</h3>
+    <div class="matrix-block">
+      <div class="matrix-label">Block Adjacency Matrix A<sub>glob</sub></div>
+      <pre>
+        ┌                                        ┐
+        │  A⁽¹⁾    A⁽¹'²⁾    0        …         │
+        │  0        A⁽²⁾      A⁽²'³⁾   …         │
+        │  ⋮        ⋮         ⋱        ⋱         │
+        │  0        0         …        A⁽ᴴ⁾      │
+        └                                        ┘</pre>
+    </div>
+    <p>where A<sup>(h)</sup> denotes intra-level connections and A<sup>(h,h+1)</sup> denotes inter-level connections. Storage formats include dense arrays, classical sparse, block-sparse, and multi-channel representations.</p>
+  </section>
+
+  <!-- ═══ §18–19: Semantic Layer ═══ -->
+  <section id="semantics">
+    <h2><span class="sec-num">§18–19.</span> Semantic Layer S and Graph Enrichment</h2>
+    <hr class="section-rule">
+
+    <h3>18. Semantic Layer Definition</h3>
+    <div class="formal-block">
+      <div class="label">Formal Definition</div>
+      <div class="math">
+        <div class="math-line">S = (T, Rel, R; W, ℓ; C, γ; α<sub>T</sub>, α<sub>R</sub>; sym, tr, acyc)</div>
+      </div>
+    </div>
+
+    <p>where T is a finite set of terms; Rel is a finite set of relation types; R ⊆ T × Rel × T is a set of directed triplets; W is a set of word forms and lexemes; ℓ : T → 2<sup>W</sup> maps terms to lexical forms; C is a finite set of term categories; γ : T → C is the categorization function; α<sub>T</sub> and α<sub>R</sub> associate attributes with terms and relations; and sym, tr, acyc : Rel → {0, 1} are meta-tags for relation properties.</p>
+
+    <h3>Integrity Invariants</h3>
+    <ul class="inv-list">
+      <li data-inv="S1"><strong>Local acyclicity:</strong> If <code>acyc(λ) = 1</code>, then the subgraph R<sub>λ</sub> = {(t₁, λ, t₂) ∈ R} contains no cycles</li>
+      <li data-inv="S2"><strong>Attribute type correctness:</strong> For any record ⟨key, type, value, source⟩, it holds that <code>value ∈ Dom<sub>type</sub></code></li>
+    </ul>
+
+    <h3>Minimal Relation Types</h3>
+    <table class="styled-table">
+      <thead><tr><th>Type</th><th>Description</th><th>sym</th><th>tr</th><th>acyc</th></tr></thead>
+      <tbody>
+        <tr><td><code>phaseOf</code></td><td>Membership in a life-cycle phase</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>partOf</code></td><td>Part–whole (component composition)</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>covers</code></td><td>Covering generalization (non-transitive)</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>precedes</code></td><td>Logical/temporal precedence</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>relatedTo</code></td><td>Symmetric association</td><td>1</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Recommended Add-on Relation Types</h3>
+    <table class="styled-table">
+      <thead><tr><th>Type</th><th>Description</th><th>sym</th><th>tr</th><th>acyc</th></tr></thead>
+      <tbody>
+        <tr><td><code>subclassOf</code></td><td>Taxonomy: genus–species</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>instanceOf</code></td><td>Typing: individual → class</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>locatedIn</code></td><td>Spatial inclusion / containment</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>adjacentTo</code></td><td>Spatial adjacency</td><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td><code>before</code></td><td>Temporal precedence (strict)</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>causes</code></td><td>Causal relation</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>derivedFrom</code></td><td>Provenance / derivation chain</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>sameAs</code></td><td>Identity / equivalence</td><td>1</td><td>1</td><td>0</td></tr>
+        <tr><td><code>differentFrom</code></td><td>Explicit non-identity</td><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td><code>hasProperty</code></td><td>Has an attribute/characteristic</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>hasRole</code></td><td>Plays a thematic role</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>participatesIn</code></td><td>Entity participates in event/process</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>memberOf</code></td><td>Membership in a collection/group</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td><code>preconditionOf</code></td><td>Precondition for action/event</td><td>0</td><td>0</td><td>1</td></tr>
+      </tbody>
+    </table>
+
+    <h3>19. Bidirectional Link ψ / ω</h3>
+    <p>The integration of M and S is defined by mutually inverse mappings:</p>
+    <div class="formal-block">
+      <div class="label">Bidirectional Mappings</div>
+      <div class="math">
+        <div class="math-line">ψ : V ∪ E → ℘(T),&ensp; ω : T → ℘(V ∪ E)</div>
+        <div class="math-line">t ∈ ψ(x) ⟺ x ∈ ω(t)</div>
+      </div>
+    </div>
+
+    <h4>Formal Invariants</h4>
+    <ul class="inv-list">
+      <li data-inv="B1"><strong>Mutual consistency:</strong> <code>t ∈ ψ(x) ⟺ x ∈ ω(t)</code></li>
+      <li data-inv="B2"><strong>Totality and bounded multiplicity:</strong> <code>∀x ∈ V ∪ E : 1 ≤ |ψ(x)| ≤ k<sub>max</sub></code> (recommended 1 ≤ k<sub>max</sub> ≤ 5)</li>
+      <li data-inv="B3"><strong>Categorical compatibility:</strong> <code>v ∈ V ∧ t ∈ ψ(v) ⟹ γ(t) ∈ C<sub>V</sub></code> and <code>e ∈ E ∧ t ∈ ψ(e) ⟹ γ(t) ∈ C<sub>E</sub></code></li>
+      <li data-inv="B4"><strong>Consistency with S relations:</strong> For e = (v₁, v₂) with λ = κ<sub>E</sub>(e): <code>∀t₁ ∈ ψ(v₁), t₂ ∈ ψ(v₂) : (t₁, λ, t₂) ∈ R</code></li>
+      <li data-inv="B5"><strong>Attribute inheritance:</strong> <code>α(x) = fold<sub>t∈ψ(x)</sub> merge(α₀(x), α<sub>T</sub>(t))</code></li>
+    </ul>
+  </section>
+
+  <!-- ═══ §20–22: Corpus ═══ -->
+  <section id="corpus">
+    <h2><span class="sec-num">§20–22.</span> Corpus D, Semantic Pointers, and Mappings</h2>
+    <hr class="section-rule">
+
+    <h3>20. Corpus Definition</h3>
+    <div class="formal-block">
+      <div class="label">Corpus and Pointers</div>
+      <div class="math">
+        <div class="math-line">D = { d<sub>i</sub> | i ∈ ℕ },&ensp; each d has id(d), type(d), ts(d)</div>
+        <div class="math-line">P = { p = (d, loc, meta) | d ∈ D, loc ∈ Loc(d), meta ∈ Meta(d) }</div>
+      </div>
+    </div>
+
+    <h3>21. Mappings between M, S, and D</h3>
+    <div class="formal-block">
+      <div class="label">Three Mappings</div>
+      <div class="math">
+        <div class="math-line">φ : V ∪ E → 2<sup>T</sup>,&ensp; ω : T → 2<sup>V∪E</sup>,&ensp; ψ : T → 2<sup>P</sup></div>
+        <div class="math-line">Axiom (A1): x ∈ ω(t) ⟺ t ∈ φ(x)</div>
+        <div class="math-line">Connectivity: im(φ) ⊆ dom(ψ)</div>
+        <div class="math-line">Evidence(x) = ⋃<sub>t∈φ(x)</sub> ψ(t)</div>
+      </div>
+    </div>
+
+    <h4>Integrity Invariants</h4>
+    <ul class="inv-list">
+      <li data-inv="I1"><strong>Source existence:</strong> <code>∀p ∈ P : p.d ∈ D</code></li>
+      <li data-inv="I2"><strong>Localization validity:</strong> <code>∀p ∈ P : p.loc ∈ Loc(p.d)</code></li>
+      <li data-inv="I3"><strong>Content immutability:</strong> any change yields a new element d' ≠ d with id(d') ≠ id(d)</li>
+    </ul>
+
+    <div class="formal-block">
+      <div class="label">Coverage Requirement</div>
+      <div class="math">
+        <div class="math-line">κ₀(x) = [Evidence(x) ≠ ∅],&ensp; x ∈ V ∪ E</div>
+        <div class="math-line">Model is documented iff κ₀(x) holds for every x ∈ V ∪ E</div>
+      </div>
+    </div>
+
+    <h3>22. Corpus Classifications</h3>
+    <p>The corpus is organized by independent classifications. For every i ∈ I, a hierarchy H<sub>i</sub> = (C<sub>i</sub>, ⪯<sub>i</sub>) is given, with a total annotation function κ<sub>i</sub> : D → C<sub>i</sub> assigning each document exactly one class per hierarchy. Classifications are independent, hierarchical, and compositional (projections preserve tree structure).</p>
+  </section>
+
+  <!-- ═══ §24: Metrics ═══ -->
+  <section id="metrics">
+    <h2><span class="sec-num">§24.</span> Set of Metrics Q</h2>
+    <hr class="section-rule">
+
+    <p>Let X = {M, S, D} and T be a time domain.</p>
+    <div class="formal-block">
+      <div class="label">Metric Definition</div>
+      <div class="math">
+        <div class="math-line">q : (∏<sub>X<sub>k</sub>∈X'</sub> X<sub>k</sub>) × T → ℝ ∪ ℝ<sup>k</sup> ∪ [0, 1]</div>
+        <div class="math-line">Q = {q<sub>i</sub>}<sub>i∈I<sub>Q</sub></sub></div>
+      </div>
+    </div>
+
+    <h3>Classification by Domain</h3>
+    <div class="formal-block">
+      <div class="label">Domain Partition</div>
+      <div class="math">
+        <div class="math-line">Q = Q<sup>(M)</sup> ∪ Q<sup>(S)</sup> ∪ Q<sup>(D)</sup> ∪ Q<sup>(M,S)</sup> ∪ Q<sup>(S,D)</sup> ∪ Q<sup>(M,S,D)</sup></div>
+      </div>
+    </div>
+
+    <h3>Algebraic Structure</h3>
+    <div class="formal-block">
+      <div class="label">Operations</div>
+      <div class="math">
+        <div class="math-line">(Q, ⊛, ⊎, ς)</div>
+        <div class="math-line">⊛ : Q × Q → Q — composition (weighted aggregation)</div>
+        <div class="math-line">⊎ : Q × Q → Q — parallel union (vectorization)</div>
+        <div class="math-line">ς : Q → Q — unary transformation (normalization, scaling)</div>
+        <div class="math-line">q₁, q₂ ∈ [0, 1] ⟹ q₁ ⊛ q₂ ∈ [0, 1]</div>
+        <div class="math-line">(Q, ⊛, ⊎) is a commutative monoid with neutral element q<sub>⊥</sub></div>
+      </div>
+    </div>
+
+    <h3>Partial Order and Optimality</h3>
+    <div class="formal-block">
+      <div class="label">Dominance</div>
+      <div class="math">
+        <div class="math-line">q₁ ⪯ q₂ :⟺ ∀(m,s,d) ∈ M×S×D ∀t ∈ T : q₁(m,s,d,t) ≤ q₂(m,s,d,t)</div>
+      </div>
+    </div>
+    <p>Used in dominance analysis and Pareto optimization.</p>
+
+    <h3>Projection and Locality</h3>
+    <ul class="inv-list">
+      <li data-inv="π"><strong>Projection:</strong> π<sub>X</sub> : Q<sup>(M,S,D)</sup> → Q<sup>(X)</sup> extracts the local component</li>
+      <li data-inv="Loc"><strong>Locality Principle:</strong> If φ : M₁ → M₂ is a structural isomorphism, then <code>q(M₁, S, D, t) = q(φ(M₁), S, D, t)</code> for every q ∈ Q<sup>(M)</sup></li>
+    </ul>
+  </section>
+
+  <!-- ═══ §25: Meta-Level ═══ -->
+  <section id="meta">
+    <h2><span class="sec-num">§25.</span> Meta-Level U</h2>
+    <hr class="section-rule">
+
+    <h3>25.1 Basic Configuration U₀</h3>
+    <div class="formal-block">
+      <div class="label">Meta-Level Definition</div>
+      <div class="math">
+        <div class="math-line">U₀ = (𝒳, F, Ω),&ensp; 𝒳 = {M, S, D, Q}</div>
+        <div class="math-line">F = { f<sub>ik</sub> : X<sub>i</sub> → X<sub>k</sub> }&ensp;— inter-layer mappings</div>
+        <div class="math-line">Ω = { ω : 𝒳 → 𝒳 }&ensp;— meta-operations</div>
+      </div>
+    </div>
+
+    <div class="formal-block">
+      <div class="label">Consistency Invariant</div>
+      <div class="math">
+        <div class="math-line">∀ω ∈ Ω, ∀X ∈ 𝒳<sub>valid</sub> : ω(X) ∈ 𝒳<sub>valid</sub></div>
+      </div>
+    </div>
+
+    <h3>25.2 ML Extension</h3>
+    <div class="formal-block">
+      <div class="label">ML Extension</div>
+      <div class="math">
+        <div class="math-line">U<sub>ML</sub> = (𝒳, F, Ω, ML)</div>
+        <div class="math-line">ML = (D<sub>train</sub>, A, Π, Z)</div>
+      </div>
+    </div>
+    <p>where D<sub>train</sub> ⊆ ℘(M ∪ S ∪ D ∪ Q) — training datasets; A — algorithms and models; Π = {π<sub>k</sub> : D<sub>k</sub> → D<sub>k+1</sub>} — iterative data-refinement strategy; Z ⊆ ℘(M ∪ S ∪ D ∪ Q) × Y × Q — test/validation benchmarks.</p>
+
+    <h3>25.3 Classification of Meta-Operations</h3>
+    <div class="formal-block">
+      <div class="label">Disjoint Decomposition</div>
+      <div class="math">
+        <div class="math-line">Ω = Ω<sub>stat</sub> ⊔ Ω<sub>gen</sub> ⊔ Ω<sub>train</sub> ⊔ Ω<sub>eval</sub></div>
+      </div>
+    </div>
+    <p>A typical cycle Ω<sub>gen</sub> → Ω<sub>train</sub> → Ω<sub>eval</sub> →<sup>filter by Q</sup> Ω<sub>gen</sub> guarantees monotonic improvement of a preferred metric μ ∈ Q.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-node"><span class="fl-sym">Ω<sub>gen</sub></span><span class="fl-label">Generate</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">Ω<sub>train</sub></span><span class="fl-label">Train</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">Ω<sub>eval</sub></span><span class="fl-label">Evaluate</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">Ω<sub>gen</sub></span><span class="fl-label">Adapt</span></div>
+    </div>
+
+    <h3>25.4 Adaptive Element Generation</h3>
+    <div class="formal-block">
+      <div class="label">Generation Function</div>
+      <div class="math">
+        <div class="math-line">Υ : (𝒳(t), Q(t)) → ℘(M) × ℘(S) × ℘(D) × ℘(Q)</div>
+      </div>
+    </div>
+    <p>For any generated element x, VALIDATE(x) checks: (1) syntactic correctness; (2) semantic annotation by an AI morphism f<sup>AI</sup> ∈ F<sub>AI</sub>; (3) error thresholds ε(x) ≤ ε<sub>max</sub>; (4) consistent integration into M, S, D, or Q.</p>
+
+    <h3>25.5 Categorical Interpretation</h3>
+    <p>The mappings F form a small category Cat<sub>F</sub> = ({M, S, D, Q}, F). An AI morphism f<sup>AI</sup> is accompanied by a fine-tuning operator ∂f<sup>AI</sup> ∈ Ω<sub>train</sub>, with the functoriality assumption ∂(g ∘ f) = ∂g ∘ ∂f (to be verified for each ML pipeline).</p>
+  </section>
+
+  <!-- ═══ Conclusion ═══ -->
+  <section id="conclusion" style="margin-bottom: 20px;">
+    <h2><span class="sec-num">IX.</span> Applicability and Transferability</h2>
+    <hr class="section-rule">
+    <p>The model need not be implemented in full. Individual components and mechanisms can be adapted, simplified, or extended to meet the specific objectives of AI/ML applications. The formalization supports both lightweight research prototypes and, through targeted engineering, practical deployment in NPP projects.</p>
+    <p>While the paper concentrates on the nuclear power plant domain, the proposed principles — hierarchical hypergraph structure, semantic morphisms, typed attributes with aggregation, corpus traceability, and the orchestrating meta-level — are transferable to other complex systems where rigorous life-cycle management, multi-level decomposition, and AI/ML integration are required.</p>
+  </section>
+
+</div>
+
+<footer>
+  <p>Based on "Formalization of a Nuclear Power Plant Life-Cycle Model for AI and Machine Learning Applications" by Yuriy Dmitrishin, 2025</p>
+</footer>
+
+</body>
+</html>
