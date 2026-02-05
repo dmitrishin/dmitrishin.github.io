@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модель жизненного цикла АЭС — Формальный обзор</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f6f1;
+    --bg-alt: #f0ece4;
+    --bg-card: #fffef9;
+    --text: #2c2a25;
+    --text-secondary: #5a574f;
+    --text-muted: #8a8780;
+    --accent: #6b4c3b;
+    --accent-light: #a07d6a;
+    --accent-faint: rgba(107,76,59,0.07);
+    --border: #d8d3c8;
+    --border-light: #e8e4db;
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', 'Consolas', monospace;
+    --shadow-sm: 0 1px 3px rgba(44,42,37,0.06);
+    --shadow-md: 0 4px 16px rgba(44,42,37,0.08);
+    --radius: 3px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.72;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* —— Navigation —— */
+  nav {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-brand:hover { color: var(--text); }
+  .nav-links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: var(--radius);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--accent);
+    background: var(--accent-faint);
+  }
+
+  /* —— Header —— */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 40px 56px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.22;
+    color: var(--text);
+    max-width: 820px;
+    letter-spacing: -0.01em;
+  }
+  .hero-meta {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* —— Main content —— */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* —— Abstract —— */
+  .abstract {
+    margin: 56px 0 0;
+    padding: 40px 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  .abstract-label {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .abstract p {
+    font-family: var(--serif);
+    font-size: 18.5px;
+    line-height: 1.78;
+    color: var(--text);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  /* —— Section —— */
+  section {
+    margin-top: 64px;
+    padding-bottom: 16px;
+  }
+  section h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  section h2 .sec-num {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+  .section-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 28px;
+    border: none;
+  }
+  section h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text);
+    margin-top: 36px;
+    margin-bottom: 14px;
+  }
+  section h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--text);
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+  section p {
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  /* —— Component cards —— */
+  .components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 28px 0;
+  }
+  .comp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s, border-color 0.25s;
+  }
+  .comp-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-light);
+  }
+  .comp-symbol {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-faint);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+  }
+  .comp-card h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    margin-bottom: 8px;
+    margin-top: 0;
+    color: var(--text);
+  }
+  .comp-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* —— Formal block —— */
+  .formal-block {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    margin: 24px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto;
+  }
+  .formal-block .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .formal-block code, .formal-block .math {
+    font-family: var(--mono);
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.8;
+    display: block;
+  }
+  .formal-block .math-line {
+    margin-bottom: 6px;
+  }
+
+  /* —— Definition block —— */
+  .def-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-light);
+    padding: 24px 28px;
+    margin: 24px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .def-block .def-header {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .def-block p {
+    margin-bottom: 10px;
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+  .def-block code {
+    font-family: var(--mono);
+    font-size: 14px;
+    background: var(--accent-faint);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  /* —— Remark block —— */
+  .remark-block {
+    background: var(--accent-faint);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .remark-block strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .remark-block code {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    background: rgba(107,76,59,0.08);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  /* —— Diagram / flow —— */
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 32px 0;
+    padding: 32px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .flow-node {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    padding: 14px 22px;
+    border-radius: var(--radius);
+    text-align: center;
+    min-width: 100px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .flow-node:hover {
+    border-color: var(--accent);
+    background: var(--accent-faint);
+  }
+  .flow-node .fl-sym {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .flow-node .fl-label {
+    display: block;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .flow-arrow {
+    font-size: 20px;
+    color: var(--border);
+    padding: 0 10px;
+    user-select: none;
+  }
+
+  /* —— Hierarchy visual —— */
+  .hierarchy-tree {
+    margin: 28px 0;
+    padding: 36px 32px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+  }
+  .ht-level {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .ht-level-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    min-width: 64px;
+    flex-shrink: 0;
+  }
+  .ht-nodes {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex: 1;
+  }
+  .ht-nodes-left {
+    justify-content: flex-start;
+    padding-left: 24px;
+  }
+  .ht-node {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    padding: 10px 22px;
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    text-align: center;
+    white-space: nowrap;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .ht-node:hover {
+    border-color: var(--accent-light);
+    background: var(--accent-faint);
+  }
+  .ht-root {
+    background: var(--accent-faint);
+    border-color: var(--accent-light);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .ht-leaf { border-style: dashed; }
+  .ht-connectors {
+    height: 32px;
+    padding-left: 84px;
+  }
+  .ht-svg {
+    width: 100%;
+    height: 32px;
+    display: block;
+  }
+  .ht-legend {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .ht-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .ht-legend-line {
+    display: inline-block;
+    width: 28px;
+    height: 0;
+    border-top: 2px solid var(--border);
+    flex-shrink: 0;
+  }
+  .ht-legend-vert { border-top-color: var(--accent-light); border-top-style: solid; }
+  .ht-legend-hor { border-top-color: var(--text-muted); border-top-style: dashed; }
+
+  /* —— Invariant list —— */
+  .inv-list {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+  }
+  .inv-list li {
+    padding: 14px 20px 14px 56px;
+    position: relative;
+    margin-bottom: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .inv-list li::before {
+    content: attr(data-inv);
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .inv-list li code {
+    font-family: var(--mono);
+    font-size: 14px;
+    background: var(--accent-faint);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  /* —— Table —— */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .styled-table th {
+    background: var(--bg-alt);
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .styled-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text);
+    vertical-align: top;
+  }
+  .styled-table tr:last-child td { border-bottom: none; }
+  .styled-table code {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    color: var(--accent);
+  }
+
+  /* —— Aggregation cards —— */
+  .agg-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .agg-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .agg-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: var(--text);
+  }
+  .agg-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-faint);
+    border-radius: var(--radius);
+    font-size: 16px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .agg-card p {
+    font-size: 14.5px;
+    line-height: 1.62;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .agg-card code {
+    font-family: var(--mono);
+    font-size: 13px;
+    background: var(--accent-faint);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  /* —— Note block —— */
+  .note-block {
+    margin: 24px 0;
+    padding: 20px 24px;
+    background: var(--accent-faint);
+    border-radius: var(--radius);
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .note-block strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* —— Inline code —— */
+  p code, li code, td code {
+    font-family: var(--mono);
+    font-size: 14px;
+    background: var(--accent-faint);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  /* —— Matrix block —— */
+  .matrix-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin: 24px 0;
+    overflow-x: auto;
+    text-align: center;
+  }
+  .matrix-block .matrix-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .matrix-block pre {
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    display: inline-block;
+    text-align: left;
+  }
+
+  /* —— Footer —— */
+  footer {
+    margin-top: 80px;
+    padding: 36px 40px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  footer p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* —— Responsive —— */
+  @media (max-width: 768px) {
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 30px; }
+    .container { padding: 0 20px; }
+    .abstract { padding: 28px 24px; }
+    .abstract p { font-size: 16.5px; }
+    .nav-inner { padding: 12px 20px; gap: 16px; }
+    .components-grid { grid-template-columns: 1fr; }
+    .flow-diagram { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); padding: 6px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ Navigation ═══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://dmitrishin.github.io/" class="nav-brand" target="_blank" rel="noopener">Yuriy Dmitrishin</a>
+    <ul class="nav-links">
+      <li><a href="#abstract">Аннотация</a></li>
+      <li><a href="#overview">Обзор</a></li>
+      <li><a href="#structure">Структура</a></li>
+      <li><a href="#levels">Уровни</a></li>
+      <li><a href="#acyclicity">Ацикличность</a></li>
+      <li><a href="#classifications">Классы</a></li>
+      <li><a href="#morphism">Морфизм</a></li>
+      <li><a href="#attributes">Атрибуты</a></li>
+      <li><a href="#aggregates">Агрегаты</a></li>
+      <li><a href="#iterative">Итерации</a></li>
+      <li><a href="#transforms">Преобразования</a></li>
+      <li><a href="#lifecycle">Жизн. цикл</a></li>
+      <li><a href="#system">Система</a></li>
+      <li><a href="#filtration">Фильтрация</a></li>
+      <li><a href="#pert">PERT/GERT</a></li>
+      <li><a href="#matrices">Матрицы</a></li>
+      <li><a href="#semantics">Семантика</a></li>
+      <li><a href="#corpus">Корпус</a></li>
+      <li><a href="#metrics">Метрики</a></li>
+      <li><a href="#meta">Мета-уровень</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ Hero ═══ -->
+<header class="hero">
+  <h1>Формализация модели жизненного цикла атомной электростанции для приложений искусственного интеллекта и машинного обучения</h1>
+  <div class="hero-meta">
+    <span>Юрий Дмитришин</span>
+    <span>·</span>
+    <span>2025</span>
+    <span>·</span>
+    <span>Формальная модель и исследовательская платформа</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ═══ Abstract ═══ -->
+  <div class="abstract" id="abstract">
+    <div class="abstract-label">Аннотация</div>
+    <p>В данной работе представлена формальная, исследовательски ориентированная модель, предназначенная для поддержки широкого спектра задач искусственного интеллекта и машинного обучения (ИИ/МО), связанных с управлением жизненным циклом атомных электростанций (АЭС). Модель состоит из иерархической графовой структуры, семантического слоя и системы классификации. Она также включает связи с корпусом документов и соответствующие метрики. Модель предназначена прежде всего для продвижения исследований методов ИИ/МО, поддерживающих управление жизненным циклом АЭС, включая проектирование, строительство, ввод в эксплуатацию и пуск, а также вывод из эксплуатации. В то же время, при соответствующей адаптации и оптимизации отдельных компонентов и алгоритмов, модель может быть адаптирована для применения в реальных проектах АЭС. Модель не обязательно должна быть реализована полностью и может быть адаптирована, упрощена или расширена в соответствии с конкретными целями приложений ИИ/МО для реализации в проектах АЭС. Отдельные выводы и рекомендации, представленные в данной работе, могут потребовать дополнительного исследования в зависимости от конкретных исследовательских целей или от того, как модель реализуется для конкретных приложений. Хотя данная работа сосредоточена на жизненном цикле атомных электростанций, предложенные принципы и методы переносимы на другие сложные системы.</p>
+  </div>
+
+  <!-- ═══ Overview ═══ -->
+  <section id="overview">
+    <h2><span class="sec-num">I.</span> Обзор модели</h2>
+    <hr class="section-rule">
+    <p>Модель организована вокруг пяти взаимодействующих компонентов, которые вместе обеспечивают согласованную основу для представления структуры и классификаций, согласования семантики, привязки внешних свидетельств, количественной оценки атрибутов и координации операций между слоями. Компоненты спроектированы с чётким распределением ролей, минимальной связанностью между слоями и инвариантами, поддерживающими валидацию и повторное использование в разных проектах.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-node"><span class="fl-sym">M</span><span class="fl-label">Структура</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">S</span><span class="fl-label">Семантика</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">D</span><span class="fl-label">Корпус</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">Q</span><span class="fl-label">Метрики</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">U</span><span class="fl-label">Мета-уровень</span></div>
+    </div>
+
+    <div class="components-grid">
+      <div class="comp-card">
+        <div class="comp-symbol">M</div>
+        <h4>Структура</h4>
+        <p>Многоуровневое представление проекта, включающее иерархические системы классов для объектов и связей. Разделяет структурную декомпозицию и зависимости, обеспечивая согласованность классификаций между уровнями.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-symbol">S</div>
+        <h4>Семантика</h4>
+        <p>Онтологическая и лингвистическая модель предметной области. Организует понятия предметной области, типы отношений, категории терминов и лексические отображения. Поддерживает рассуждения, проверки согласованности и управление терминологией. Связана с M посредством двунаправленных ссылок.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-symbol">D</div>
+        <h4>Корпус</h4>
+        <p>Типизированные ссылки от элементов модели к исходным документам и наборам данных, обеспечивающие прослеживаемость и доказательную валидацию каждого структурного и семантического элемента.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-symbol">Q</div>
+        <h4>Количественный слой</h4>
+        <p>Типизированные атрибуты и метрики с правилами агрегирования для вычисления готовности, рисков, стоимости и других показателей для анализа и в качестве признаков для конвейеров ИИ/МО.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-symbol">U</div>
+        <h4>Мета-уровень</h4>
+        <p>Оркестрирующий слой, координирующий M, S, D, Q и, в своём расширении для МО, управляющий генерацией наборов данных, обучением и оценкой при сохранении согласованности модели.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §1: Basic Structure ═══ -->
+  <section id="structure">
+    <h2><span class="sec-num">§1.</span> Базовая структура графа M₀</h2>
+    <hr class="section-rule">
+    <p>Фундаментальный слой модели представляет собой направленный иерархический гиперграф. Он организует все элементы проекта в строго упорядоченные уровни и фиксирует два принципиально различных типа связей: горизонтальные связи внутри уровня и вертикальные связи между смежными уровнями.</p>
+
+    <div class="formal-block">
+      <div class="label">Формальное определение</div>
+      <div class="math">
+        <div class="math-line">M₀ = (L, V, E<sub>hor</sub>, E<sub>vert</sub>, θ)</div>
+      </div>
+    </div>
+
+    <p>где:</p>
+    <ul class="inv-list">
+      <li data-inv="L">L = {1, 2, …, k} — упорядоченное множество уровней иерархии</li>
+      <li data-inv="V">V — множество вершин</li>
+      <li data-inv="θ">θ : V → L — отображение, присваивающее каждой вершине v ∈ V ровно один уровень l ∈ L</li>
+      <li data-inv="Eₕ">E<sub>hor</sub> ⊆ {(v, W) | v ∈ V, W ⊆ V \ {v}, W ≠ ∅} — множество горизонтальных гиперрёбер; v — источник, W — цель (непустое подмножество на том же уровне, что и v)</li>
+      <li data-inv="Eᵥ">E<sub>vert</sub> ⊆ V × V — множество вертикальных рёбер, соединяющих вершины смежных уровней</li>
+    </ul>
+
+    <div class="remark-block">
+      <strong>Предположение.</strong> Множества уровней и вершин непусты: L ≠ ∅, V ≠ ∅. Обозначение ℘<sup>+</sup>(X) означает множество всех непустых подмножеств множества X. Пара (v, W) ∈ E<sub>hor</sub> читается как «гиперребро из вершины v в множество вершин W».
+    </div>
+
+    <h3>Основные инварианты</h3>
+    <ul class="inv-list">
+      <li data-inv="I1"><strong>Единственность уровня вершины</strong> — каждая вершина принадлежит ровно одному уровню: <code>∀v ∈ V ∃!l ∈ L : θ(v) = l</code></li>
+      <li data-inv="I2"><strong>Горизонтальные гиперрёбра</strong> — источник и все цели лежат на одном уровне, и источник не входит в число своих целей: <code>∀(v, W) ∈ E<sub>hor</sub> : v ∉ W ∧ ∀w ∈ W : θ(w) = θ(v)</code></li>
+      <li data-inv="I3"><strong>Вертикальные рёбра</strong> — соединяют строго смежные уровни (родитель к потомку): <code>∀(v, w) ∈ E<sub>vert</sub> : θ(w) = θ(v) + 1</code></li>
+      <li data-inv="I4"><strong>Расширение функции уровней на рёбра</strong> — функция уровня θ расширяется на рёбра: <code>θ((v, W)) := θ(v)</code> и <code>θ((v, w)) := θ(v)</code></li>
+      <li data-inv="I5"><strong>Отсутствие исходящих вертикальных рёбер на последнем уровне</strong> — если θ(v) = k = max L, то не существует w ∈ V, такого что (v, w) ∈ E<sub>vert</sub></li>
+    </ul>
+
+    <div class="remark-block">
+      <strong>Плоский случай.</strong> Если L = {1}, то E<sub>vert</sub> = ∅, и модель сводится к единственному горизонтальному гиперграфу G<sup>(1)</sup> = (V, E<sub>hor</sub>) с условием ацикличности (и, при необходимости, слабой связности); агрегирование μ<sub>V</sub> и декомпозиция δ не используются.
+    </div>
+  </section>
+
+  <!-- ═══ §2: Level Structure, Aggregation, Connectivity ═══ -->
+  <section id="levels">
+    <h2><span class="sec-num">§2.</span> Уровневая структура, агрегирование и связность</h2>
+    <hr class="section-rule">
+
+    <h3>2.1 Организация уровней</h3>
+    <p>Множество уровней обозначается L = {1, 2, …, k}, где 1 — верхний уровень, а k — нижний. Каждый структурный элемент y ∈ Y := V ∪ E<sub>hor</sub> ∪ E<sub>vert</sub> приписывается ровно одному уровню:</p>
+    <div class="formal-block">
+      <div class="label">Присвоение уровня</div>
+      <div class="math">
+        <div class="math-line">∀y ∈ Y ∃! l ∈ L : θ(y) = l</div>
+      </div>
+    </div>
+    <p>Исходное отображение θ : V → L расширяется на рёбра следующим образом: для горизонтального гиперребра e = (v, W) ∈ E<sub>hor</sub>, θ(e) := θ(v); для вертикального ребра e = (v, w) ∈ E<sub>vert</sub>, θ(e) := θ(v).</p>
+
+    <h3>2.2 Горизонтальные гиперрёбра</h3>
+    <p>Горизонтальное гиперребро — это пара (v, W) ∈ E<sub>hor</sub>, где v ∈ V — вершина-источник, W ⊆ V \ {v} с W ≠ ∅ — непустое множество целевых вершин, не содержащее v, и θ(w) = θ(v) для всех w ∈ W. Условие v ∉ W предотвращает петли. Горизонтальные гиперрёбра на уровне l образуют подграф:</p>
+    <div class="formal-block">
+      <div class="label">Подграф уровня</div>
+      <div class="math">
+        <div class="math-line">G<sup>(l)</sup> := (V<sup>(l)</sup>, E<sup>(l)</sup>)</div>
+        <div class="math-line">V<sup>(l)</sup> := { v ∈ V | θ(v) = l }</div>
+        <div class="math-line">E<sup>(l)</sup> := { (v, W) ∈ E<sub>hor</sub> | θ(v) = l }</div>
+      </div>
+    </div>
+
+    <h3>2.3 Типы рёбер</h3>
+    <p>Модель различает два логически и функционально независимых типа рёбер. <strong>Горизонтальные гиперрёбра</strong> определяют связи внутри одного уровня. <strong>Вертикальные рёбра</strong> определяют иерархические связи между уровнями через отображение агрегирования:</p>
+    <div class="formal-block">
+      <div class="label">Отображение агрегирования</div>
+      <div class="math">
+        <div class="math-line">μ<sub>V</sub> : V → ℘(V),&ensp; μ<sub>V</sub>(v) := {w ∈ V | (v, w) ∈ E<sub>vert</sub>}</div>
+        <div class="math-line">(v, w) ∈ E<sub>vert</sub> ⟺ w ∈ μ<sub>V</sub>(v)</div>
+      </div>
+    </div>
+    <p>Горизонтальные гиперрёбра и вертикальные рёбра непересекающиеся и описывают различные аспекты структуры: первые описывают связность внутри уровня, вторые — иерархию между уровнями. Такое разделение предотвращает конфликты в интерпретации связей.</p>
+
+    <h3>2.4 Агрегирование и декомпозиция</h3>
+    <p>Каждая вершина v ∈ V на уровне l может быть детализирована подграфом декомпозиции на следующем уровне l+1:</p>
+    <div class="formal-block">
+      <div class="label">Отображение декомпозиции</div>
+      <div class="math">
+        <div class="math-line">δ : V → {(V<sub>sub</sub>, E<sub>sub</sub>)},&ensp; v ↦ δ(v) = (V<sub>sub</sub>, E<sub>sub</sub>)</div>
+      </div>
+    </div>
+    <p>где:</p>
+    <ul class="inv-list">
+      <li data-inv="Vₛ">V<sub>sub</sub> ⊆ V<sup>(l+1)</sup> — множество вершин на уровне l+1, составляющих подграф декомпозиции, с <code>μ<sub>V</sub>(v) ⊆ V<sub>sub</sub></code></li>
+      <li data-inv="Eₛ">E<sub>sub</sub> ⊆ {(x, Y) ∈ E<sub>hor</sub> | x ∈ V<sub>sub</sub>, Y ⊆ V<sub>sub</sub> \ {x}} — горизонтальные гиперрёбра, целиком лежащие внутри V<sub>sub</sub></li>
+    </ul>
+
+    <div class="agg-cards">
+      <div class="agg-card">
+        <div class="agg-card-header">
+          <span class="agg-icon">↕</span>
+          <strong>Свойство замкнутости</strong>
+        </div>
+        <p>Для любого гиперребра (x, Y) ∈ E<sub>sub</sub> выполняются условия x ∈ V<sub>sub</sub> и Y ⊆ V<sub>sub</sub> \ {x}. Это обеспечивает логическую локальность подграфа.</p>
+      </div>
+      <div class="agg-card">
+        <div class="agg-card-header">
+          <span class="agg-icon">◇</span>
+          <strong>Вспомогательные вершины</strong>
+        </div>
+        <p>Вершины в V<sub>sub</sub> \ μ<sub>V</sub>(v) являются вспомогательными: они сохраняют все свойства уровня l+1, могут участвовать в декомпозициях различных родительских вершин и моделируют общие компоненты.</p>
+      </div>
+      <div class="agg-card">
+        <div class="agg-card-header">
+          <span class="agg-icon">⊕</span>
+          <strong>Общие компоненты</strong>
+        </div>
+        <p>Одна и та же вспомогательная вершина w может входить в декомпозиции различных вершин v₁, v₂, …. Входящие рёбра (u, w) ∈ E<sub>vert</sub> от других вершин u ≠ v допускаются.</p>
+      </div>
+    </div>
+
+    <h3>2.5 Пути и достижимость на горизонтальном уровне</h3>
+    <div class="def-block">
+      <div class="def-header">Определение 2.1 (Направленный гиперпуть)</div>
+      <p>Последовательность P = (v₀, (v₀, W₀), v₁, (v₁, W₁), …, (v<sub>m−1</sub>, W<sub>m−1</sub>), v<sub>m</sub>), m ≥ 0, называется <em>направленным гиперпутём</em> в G<sup>(l)</sup>, если для каждого i ∈ {0, …, m−1}:</p>
+      <p><code>(v<sub>i</sub>, W<sub>i</sub>) ∈ E<sup>(l)</sup></code> и <code>v<sub>i+1</sub> ∈ W<sub>i</sub></code></p>
+      <p>Вершина v₀ является источником, v<sub>m</sub> — стоком, а m — длиной P.</p>
+    </div>
+
+    <div class="def-block">
+      <div class="def-header">Определение 2.2 (Достижимость)</div>
+      <p>Для вершины v ∈ V<sup>(l)</sup> множество достижимых вершин определяется как:</p>
+      <p><code>Reach<sup>+</sup><sub>l</sub>(v) := {u ∈ V<sup>(l)</sup> | ∃ гиперпуть P : v ⇝ u длины m ≥ 1}</code></p>
+      <p>Рефлексивно-транзитивное замыкание: <code>Reach<sup>*</sup><sub>l</sub>(v) := {v} ∪ Reach<sup>+</sup><sub>l</sub>(v)</code>.</p>
+    </div>
+
+    <div class="formal-block">
+      <div class="label">Инвариант (Inv-HorAcyc)</div>
+      <div class="math">
+        <div class="math-line">(v, W) ∈ E<sub>hor</sub> ⟹ Reach<sup>+</sup><sub>θ(v)</sub>(v) ∩ W = ∅</div>
+      </div>
+    </div>
+
+    <div class="hierarchy-tree">
+      <svg viewBox="0 0 1000 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:'Source Sans 3','Segoe UI',sans-serif;">
+        <!-- Level Labels -->
+        <text x="20" y="62" font-family="'JetBrains Mono','Consolas',monospace" font-size="12" font-weight="500" letter-spacing="0.08em" fill="#6b4c3b" text-transform="uppercase">УРОВЕНЬ 1</text>
+        <text x="20" y="192" font-family="'JetBrains Mono','Consolas',monospace" font-size="12" font-weight="500" letter-spacing="0.08em" fill="#6b4c3b">УРОВЕНЬ 2</text>
+        <text x="20" y="322" font-family="'JetBrains Mono','Consolas',monospace" font-size="12" font-weight="500" letter-spacing="0.08em" fill="#6b4c3b">УРОВЕНЬ 3</text>
+
+        <!-- Vertical edges E_vert: Level 1 → Level 2 (solid brown) -->
+        <line x1="540" y1="78" x2="280" y2="170" stroke="#a07d6a" stroke-width="1.5"/>
+        <line x1="540" y1="78" x2="540" y2="170" stroke="#a07d6a" stroke-width="1.5"/>
+        <line x1="540" y1="78" x2="800" y2="170" stroke="#a07d6a" stroke-width="1.5"/>
+
+        <!-- Vertical edges E_vert: Level 2 → Level 3 (solid brown) -->
+        <line x1="280" y1="210" x2="230" y2="300" stroke="#a07d6a" stroke-width="1.5"/>
+        <line x1="280" y1="210" x2="450" y2="300" stroke="#a07d6a" stroke-width="1.5"/>
+
+        <!-- Level 1: NPP Project (root node — accent background, accent border) -->
+        <rect x="465" y="40" width="150" height="38" rx="3" fill="rgba(107,76,59,0.07)" stroke="#a07d6a" stroke-width="1.5"/>
+        <text x="540" y="64" text-anchor="middle" font-size="14" font-weight="600" fill="#6b4c3b">Проект АЭС</text>
+
+        <!-- Level 2: System A, B, C (solid border) -->
+        <rect x="210" y="170" width="140" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5"/>
+        <text x="280" y="195" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">Система A</text>
+
+        <rect x="470" y="170" width="140" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5"/>
+        <text x="540" y="195" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">Система B</text>
+
+        <rect x="730" y="170" width="140" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5"/>
+        <text x="800" y="195" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">Система C</text>
+
+        <!-- Level 3: Subsystem A.1, A.2 (dashed border = leaf) -->
+        <rect x="140" y="300" width="180" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="230" y="325" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">Подсистема A.1</text>
+
+        <rect x="360" y="300" width="180" height="40" rx="3" fill="#f8f6f1" stroke="#d8d3c8" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="450" y="325" text-anchor="middle" font-size="14" font-weight="500" fill="#2c2a25">Подсистема A.2</text>
+      </svg>
+
+      <div class="ht-legend">
+        <div class="ht-legend-item"><span class="ht-legend-line ht-legend-vert"></span><span>Вертикальные рёбра — иерархия (E<sub>vert</sub>)</span></div>
+        <div class="ht-legend-item"><span class="ht-legend-line ht-legend-hor"></span><span>Горизонтальные гиперрёбра — внутриуровневые (E<sub>hor</sub>)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §3: Acyclicity and Connectivity ═══ -->
+  <section id="acyclicity">
+    <h2><span class="sec-num">§3.</span> Структурная ацикличность и связность уровней</h2>
+    <hr class="section-rule">
+
+    <p>Для каждого уровня l ∈ L горизонтальный гиперграф G<sup>(l)</sup> = (V<sup>(l)</sup>, E<sup>(l)</sup>) рассматривается в отношении двух ключевых структурных свойств:</p>
+
+    <div class="def-block">
+      <div class="def-header">Ацикличность уровня</div>
+      <p>Гиперграф уровня G<sup>(l)</sup> называется <em>ацикличным</em>, если:</p>
+      <p><code>∀v ∈ V<sup>(l)</sup> : v ∉ Reach<sup>+</sup><sub>l</sub>(v)</code></p>
+      <p>Не должно существовать направленного гиперпути ненулевой длины, начинающегося и заканчивающегося в одной и той же вершине.</p>
+    </div>
+
+    <div class="def-block">
+      <div class="def-header">Слабая связность</div>
+      <p>Рассмотрим базовый неориентированный граф UG<sup>(l)</sup> = (V<sup>(l)</sup>, E<sub>u</sub>), где {x, y} ∈ E<sub>u</sub> тогда и только тогда, когда существует гиперребро (x, W) ∈ E<sup>(l)</sup> с y ∈ W или (y, W) ∈ E<sup>(l)</sup> с x ∈ W. Говорят, что G<sup>(l)</sup> <em>слабо связен</em>, если UG<sup>(l)</sup> связен.</p>
+    </div>
+
+    <div class="remark-block">
+      <strong>Примечание о гибкости применения.</strong> Требование слабой связности рекомендуется как базовое, особенно когда G<sup>(l)</sup> интерпретируется как функционально связный блок. Однако в определённых сценариях оно может быть ослаблено — например, допуская несколько несвязных компонент внутри уровня, при условии, что это не нарушает агрегирование, морфизмы или согласованность итераций.
+    </div>
+  </section>
+
+  <!-- ═══ §4: Classification ═══ -->
+  <section id="classifications">
+    <h2><span class="sec-num">§4.</span> Классификация вершин и рёбер</h2>
+    <hr class="section-rule">
+
+    <p>Каждая вершина и ребро могут быть классифицированы с помощью иерархически организованных систем классов. Отображения классификации присваивают каждому элементу набор классов из иерархий с корневыми деревьями:</p>
+    <div class="formal-block">
+      <div class="label">Отображения классификации</div>
+      <div class="math">
+        <div class="math-line">κ<sub>V</sub> : V → ℘(C<sub>V</sub>)</div>
+        <div class="math-line">κ<sub>E</sub> : E<sub>hor</sub> ∪ E<sub>vert</sub> → ℘(C<sub>E</sub>)</div>
+      </div>
+    </div>
+    <p>где C<sub>V</sub> — множество классов вершин, C<sub>E</sub> — множество классов рёбер, κ<sub>V</sub>(v) ⊆ C<sub>V</sub> — множество классификационных признаков вершины v, и κ<sub>E</sub>(e) ⊆ C<sub>E</sub> — множество признаков ребра e.</p>
+
+    <h3>4.1 Многоуровневые классификации</h3>
+    <p>Классификации организованы в виде иерархических деревьев:</p>
+    <div class="formal-block">
+      <div class="label">Иерархии классов</div>
+      <div class="math">
+        <div class="math-line">H<sub>V</sub> = (C<sub>V</sub>, ⪯<sub>V</sub>),&ensp; H<sub>E</sub> = (C<sub>E</sub>, ⪯<sub>E</sub>)</div>
+      </div>
+    </div>
+    <p>где ⪯<sub>V</sub> и ⪯<sub>E</sub> — отношения частичного порядка, определяющие иерархию классов, удовлетворяющие двум дополнительным свойствам:</p>
+    <ul class="inv-list">
+      <li data-inv="T1"><strong>Единственный корень:</strong> В каждом множестве классов существует ровно один элемент без строгих предшественников.</li>
+      <li data-inv="T2"><strong>Единственный родитель:</strong> Каждый некорневой класс имеет ровно одного непосредственного предшественника.</li>
+    </ul>
+    <p>Эти инварианты гарантируют, что каждая иерархия образует корневое дерево. Классификация по листовым и промежуточным классам допускается, отражая полиморфную природу элемента или допуская альтернативные семантические интерпретации. Пустое множество допустимо и означает отсутствие явной классификации на текущем этапе.</p>
+
+    <div class="remark-block">
+      <strong>Примечание о структурированных классах.</strong> Каждый класс c может быть описан расширенной записью: <code>c = (key, {⟨value<sub>j</sub>, tag<sub>j</sub>⟩}<sub>j=1..m</sub>)</code>, где <em>key</em> — уникальный строковый идентификатор, на который ссылаются все инварианты и отображения, а каждая пара (value<sub>j</sub>, tag<sub>j</sub>) предоставляет аннотации, такие как description, short_name или color.
+    </div>
+
+    <div class="remark-block">
+      <strong>Примечание о лесах и виртуальном корне.</strong> На практике иерархия классов часто представляет собой лес независимых деревьев T₁, …, T<sub>k</sub>. Для сохранения инварианта единственного корня (T1) добавляется виртуальный корень ⊤<sub>H</sub>: <code>⊤<sub>H</sub> ⪯<sub>V</sub> r<sub>i</sub></code> для каждого корня r<sub>i</sub>. Это не изменяет структуру леса и сохраняет все инварианты.
+    </div>
+  </section>
+
+  <!-- ═══ §5: Semantic Morphism ═══ -->
+  <section id="morphism">
+    <h2><span class="sec-num">§5.</span> Семантический морфизм</h2>
+    <hr class="section-rule">
+
+    <h3>5.1–5.2 Определение морфизма</h3>
+    <p>Семантический морфизм φ представляет отображение элементов графа в соответствующие классы иерархий. Он обеспечивает переход от многоклассовой классификации к единой семантической интерпретации:</p>
+    <div class="formal-block">
+      <div class="label">Морфизм</div>
+      <div class="math">
+        <div class="math-line">φ = (φ<sub>V</sub>, φ<sub>E</sub>)</div>
+        <div class="math-line">φ<sub>V</sub> : V → C<sub>V</sub>,&ensp; φ<sub>E</sub> : E<sub>hor</sub> ∪ E<sub>vert</sub> → C<sub>E</sub></div>
+      </div>
+    </div>
+
+    <h3>5.3 Условия согласованности</h3>
+    <p>Морфизм φ считается <em>допустимым</em>, если он удовлетворяет следующим четырём условиям:</p>
+    <ul class="inv-list">
+      <li data-inv="C1"><code>φ<sub>V</sub>(v) ∈ κ<sub>V</sub>(v)</code> для всех v ∈ V — выбранный класс должен принадлежать допустимому множеству</li>
+      <li data-inv="C2"><code>φ<sub>E</sub>(e) ∈ κ<sub>E</sub>(e)</code> for all e ∈ E<sub>hor</sub> ∪ E<sub>vert</sub></li>
+      <li data-inv="C3">For any (v, w) ∈ E<sub>vert</sub>: <code>φ<sub>V</sub>(w) ⪯<sub>V</sub> φ<sub>V</sub>(v)</code> — класс потомка является подклассом (или равен) классу родителя</li>
+      <li data-inv="C4">For any vertical edge (v, w) ∈ E<sub>vert</sub>: <code>φ<sub>E</sub>((v, w)) ⪯<sub>E</sub> c<sub>vert</sub></code> — вертикальные рёбра классифицируются под специальным классом c<sub>vert</sub> ∈ C<sub>E</sub> или его подклассами</li>
+    </ul>
+
+    <h3>5.5 Множество допустимых морфизмов</h3>
+    <p>Модель сосредоточена на множестве <em>всех</em> допустимых морфизмов Φ, включающем все отображения, удовлетворяющие условиям согласованности:</p>
+    <div class="formal-block">
+      <div class="label">Множество допустимых морфизмов</div>
+      <div class="math">
+        <div class="math-line">Φ = { φ = (φ<sub>V</sub>, φ<sub>E</sub>) |</div>
+        <div class="math-line">&ensp;&ensp;φ<sub>V</sub> : V → C<sub>V</sub>,  φ<sub>E</sub> : E<sub>hor</sub> ∪ E<sub>vert</sub> → C<sub>E</sub>;</div>
+        <div class="math-line">&ensp;&ensp;∀v ∈ V : φ<sub>V</sub>(v) ∈ κ<sub>V</sub>(v);</div>
+        <div class="math-line">&ensp;&ensp;∀e ∈ E<sub>hor</sub> ∪ E<sub>vert</sub> : φ<sub>E</sub>(e) ∈ κ<sub>E</sub>(e);</div>
+        <div class="math-line">&ensp;&ensp;∀(v, w) ∈ E<sub>vert</sub> : φ<sub>V</sub>(w) ⪯<sub>V</sub> φ<sub>V</sub>(v);</div>
+        <div class="math-line">&ensp;&ensp;∀(v, w) ∈ E<sub>vert</sub> : φ<sub>E</sub>((v, w)) ⪯<sub>E</sub> c<sub>vert</sub> }</div>
+      </div>
+    </div>
+
+    <ul class="inv-list">
+      <li data-inv="Inv-Φ"><strong>Инвариант непустоты:</strong> <code>Φ ≠ ∅</code> — если Φ = ∅, семантическая конфигурация противоречива</li>
+    </ul>
+
+    <h3>Функция оценки и выбор оптимального морфизма</h3>
+    <p>Для выбора оптимального морфизма из Φ функция оценки f<sub>eval</sub> : Φ → ℝ<sub>≥0</sub> присваивает числовое значение, отражающее качество или релевантность:</p>
+    <div class="formal-block">
+      <div class="label">Оптимальный выбор</div>
+      <div class="math">
+        <div class="math-line">φ* = arg min<sub>φ∈Φ</sub> f<sub>eval</sub>(φ)&ensp; or &ensp;φ* = arg max<sub>φ∈Φ</sub> f<sub>eval</sub>(φ)</div>
+      </div>
+    </div>
+
+    <p><strong>Пример функции оценки:</strong> средняя глубина классов, назначенных вершинам:</p>
+    <div class="formal-block">
+      <div class="label">Пример: средняя глубина</div>
+      <div class="math">
+        <div class="math-line">f<sub>eval</sub>(φ) = (1/|V|) · Σ<sub>v∈V</sub> depth<sub>V</sub>(φ<sub>V</sub>(v))</div>
+      </div>
+    </div>
+    <p>где depth<sub>V</sub>(c) обозначает глубину класса c в иерархическом дереве H<sub>V</sub>. Минимизация этой функции отдаёт предпочтение морфизмам с более общими (менее специализированными) классами вершин.</p>
+  </section>
+
+  <!-- ═══ §6: Attributes ═══ -->
+  <section id="attributes">
+    <h2><span class="sec-num">§6.</span> Типизированные атрибуты и значения</h2>
+    <hr class="section-rule">
+
+    <h3>6.1 Типы и значения атрибутов</h3>
+    <p>Каждый атрибут формально определяется упорядоченной парой (τ, val), где τ ∈ AType — прикладной тип, а val ∈ Dom<sub>τ</sub> — значение, согласованное с этим типом.</p>
+
+    <h4>Базовые типы значений</h4>
+    <div class="formal-block">
+      <div class="label">Базовые типы</div>
+      <div class="math">
+        <div class="math-line">VType = {ℝ, ℤ, Bool, Cat(C), Enum(E), Distr(P), Struct(S), ℝ<sup>n</sup>, …}</div>
+      </div>
+    </div>
+    <p>Для каждого базового типа v ∈ VType фиксируется непустая вселенная значений Val<sub>v</sub> (например, Val<sub>ℝ</sub> = ℝ, Val<sub>Bool</sub> = {true, false}, Val<sub>Cat(C)</sub> = C).</p>
+
+    <h4>Прикладные типы</h4>
+    <p>Отображение β : AType → VType ассоциирует каждый прикладной тип τ с его базовым типом β(τ). Для каждого τ область допустимых значений определяется как:</p>
+    <div class="formal-block">
+      <div class="label">Ограничение области</div>
+      <div class="math">
+        <div class="math-line">Dom<sub>τ</sub> ⊆ Val<sub>β(τ)</sub></div>
+      </div>
+    </div>
+
+    <h4>Универсальное множество атрибутов</h4>
+    <div class="formal-block">
+      <div class="label">Множество всех атрибутов</div>
+      <div class="math">
+        <div class="math-line">A := ⋃<sub>τ∈AType</sub> { (τ, val) | val ∈ Dom<sub>τ</sub> }</div>
+      </div>
+    </div>
+
+    <h3>6.2 Отображения атрибутов</h3>
+    <div class="formal-block">
+      <div class="label">Отображения</div>
+      <div class="math">
+        <div class="math-line">attr<sub>V</sub> : V → ℘(A),&ensp; attr<sub>E</sub> : E<sub>hor</sub> ∪ E<sub>vert</sub> → ℘(A)</div>
+      </div>
+    </div>
+
+    <h3>Инвариант типовой корректности</h3>
+    <div class="formal-block">
+      <div class="label">Инвариант</div>
+      <div class="math">
+        <div class="math-line">∀(τ, val) ∈ A :  val ∈ Dom<sub>τ</sub> ⊆ Val<sub>β(τ)</sub></div>
+      </div>
+    </div>
+    <p>Это трёхуровневое разделение — «базовый тип → вселенная значений → область прикладного типа» — используется для верификации типовой корректности и выполнения агрегатных вычислений.</p>
+  </section>
+
+  <!-- ═══ §7: Aggregates ═══ -->
+  <section id="aggregates">
+    <h2><span class="sec-num">§7.</span> Агрегаты атрибутов и семантические обобщения</h2>
+    <hr class="section-rule">
+
+    <h3>7.2 Агрегатные функции</h3>
+    <p>Пусть Λ — множество агрегатных функций. Каждая функция α ∈ Λ имеет сигнатуру:</p>
+    <div class="formal-block">
+      <div class="label">Сигнатура</div>
+      <div class="math">
+        <div class="math-line">α : ℘(A) → Val<sub>ResType(α)</sub></div>
+        <div class="math-line">InBase(α) ∈ VType,&ensp; ResType(α) ∈ VType</div>
+        <div class="math-line">AcceptedTypes(α) ⊆ AType &ensp;(optional)</div>
+      </div>
+    </div>
+
+    <p>Для входного множества I ⊆ A фильтрованное множество определяется как:</p>
+    <div class="formal-block">
+      <div class="label">Фильтрация входных данных</div>
+      <div class="math">
+        <div class="math-line">Input<sub>α</sub> = { (τ, val) ∈ I | (AcceptedTypes(α) = ∅ ∨ τ ∈ AcceptedTypes(α)) ∧ β(τ) = InBase(α) }</div>
+      </div>
+    </div>
+
+    <table class="styled-table">
+      <thead><tr><th>Функция</th><th>InBase</th><th>ResType</th><th>Применение</th></tr></thead>
+      <tbody>
+        <tr><td><code>Sum</code></td><td>ℝ</td><td>ℝ</td><td>Сумма затрат</td></tr>
+        <tr><td><code>Avg</code></td><td>ℝ</td><td>ℝ</td><td>Среднее время</td></tr>
+        <tr><td><code>And</code></td><td>Bool</td><td>Bool</td><td>Готовность всех узлов</td></tr>
+        <tr><td><code>Count</code></td><td>Any†</td><td>ℤ</td><td>Количество компонентов</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--text-muted);">† «Any» означает, что Count принимает атрибуты любого базового типа, поскольку подсчитывает только их количество.</p>
+
+    <h3>7.3 Правила агрегирования</h3>
+    <p>Каждое правило r ∈ Σ<sub>agg</sub> задаётся кортежем:</p>
+    <div class="formal-block">
+      <div class="label">Правило агрегирования</div>
+      <div class="math">
+        <div class="math-line">r = (τ<sup>(r)</sup><sub>target</sub>, ContextSelector<sub>r</sub>, AttributeSelector<sub>r</sub>, α<sub>r</sub>, default_val<sub>r</sub>)</div>
+      </div>
+    </div>
+    <p>где τ<sup>(r)</sup><sub>target</sub> ∈ AType — тип результата, ContextSelector<sub>r</sub> определяет исходные элементы, AttributeSelector<sub>r</sub> фильтрует атрибуты, α<sub>r</sub> ∈ Λ — агрегатная функция, а default_val<sub>r</sub> используется при пустом входном множестве.</p>
+
+    <h4>Вычисление агрегированного значения</h4>
+    <div class="formal-block">
+      <div class="label">Двухэтапное вычисление</div>
+      <div class="math">
+        <div class="math-line">1.&ensp;Input<sub>α<sub>r</sub></sub>(elem) = AttributeSelector<sub>r</sub>(A(ContextSelector<sub>r</sub>(elem)), α<sub>r</sub>)</div>
+        <div class="math-line">2.&ensp;val<sup>(r)</sup><sub>target</sub> = α<sub>r</sub>(Input<sub>α<sub>r</sub></sub>(elem))&ensp; if Input ≠ ∅,&ensp; else default_val<sub>r</sub></div>
+      </div>
+    </div>
+
+    <div class="remark-block">
+      <strong>Ограничение DAG.</strong> Граф зависимостей правил в Σ<sub>agg</sub> должен образовывать направленный ациклический граф (DAG).
+    </div>
+
+    <h3>7.4–7.5 Расширенное множество атрибутов</h3>
+    <div class="formal-block">
+      <div class="label">Расширенные атрибуты</div>
+      <div class="math">
+        <div class="math-line">attr*(v) := attr(v) ∪ { (τ<sup>(r)</sup><sub>target</sub>, val<sup>(r)</sup><sub>target</sub>) | r ∈ Σ<sub>agg</sub>, r applicable to v, τ<sup>(r)</sup><sub>target</sub> ∉ Types(attr(v)) }</div>
+      </div>
+    </div>
+
+    <p>Инварианты расширенного множества:</p>
+    <ul class="inv-list">
+      <li data-inv="A1"><strong>Типовая корректность:</strong> For all (τ, val) ∈ attr*(v), <code>val ∈ Dom<sub>τ</sub></code></li>
+      <li data-inv="A2"><strong>Приоритет локальных атрибутов:</strong> Локальные атрибуты не перезаписываются агрегированными</li>
+      <li data-inv="A3"><strong>Монотонность:</strong> <code>attr(v) ⊆ attr*(v)</code></li>
+    </ul>
+
+    <table class="styled-table">
+      <thead><tr><th>Режим</th><th>Семантика</th></tr></thead>
+      <tbody>
+        <tr><td><code>PRIORITY</code></td><td>Локальное значение имеет приоритет над агрегированным</td></tr>
+        <tr><td><code>MERGE</code></td><td>Слияние по ключу с сохранением обоих</td></tr>
+        <tr><td><code>OVERRIDE</code></td><td>Агрегированное значение замещает локальное</td></tr>
+      </tbody>
+    </table>
+
+    <h3>7.6 Семантические обобщения на основе агрегатов</h3>
+    <div class="formal-block">
+      <div class="label">Производная классификация</div>
+      <div class="math">
+        <div class="math-line">κ' : V → ℘(C')</div>
+        <div class="math-line">κ'(v) := { c ∈ C' | Pr(c, v, attr*(v)) = true }</div>
+      </div>
+    </div>
+    <p>С параметризованным режимом наследования (SemInheritanceMode ∈ {STRICT, LOOSE}):</p>
+    <ul class="inv-list">
+      <li data-inv="S"><strong>STRICT:</strong> <code>∀s ∈ μ<sub>V</sub>(v) : κ'(s) ⊆ κ'(v)</code></li>
+      <li data-inv="L"><strong>LOOSE:</strong> <code>∀c<sub>s</sub> ∈ κ'(s) ∃c<sub>v</sub> ∈ κ'(v) : c<sub>s</sub> ⪯<sub>C'</sub> c<sub>v</sub></code> (requires partial order ⪯<sub>C'</sub>)</li>
+    </ul>
+
+    <h3>7.7 Интеграция с функциями оценки</h3>
+    <div class="formal-block">
+      <div class="label">Целевая метрика оценки</div>
+      <div class="math">
+        <div class="math-line">f<sub>eval</sub>(φ) = h(φ, ⋃<sub>v∈V</sub> attr*(v), ⋃<sub>e∈E</sub> attr*(e))</div>
+      </div>
+    </div>
+    <p>где h — прикладная функция, реализующая выбранный критерий качества (согласованность, полнота, предпочтения и т.д.).</p>
+  </section>
+
+  <!-- ═══ §8: Iterative Processes ═══ -->
+  <section id="iterative">
+    <h2><span class="sec-num">§8.</span> Итеративные процессы в G<sup>(l)</sup> (опционально)</h2>
+    <hr class="section-rule">
+
+    <p>Компонент Γ<sub>iter</sub> описывает управляемые итеративные процессы внутри ацикличной структуры G<sup>(l)</sup> как опциональное расширение. Итерация реализуется ветвлением между статически развёрнутым гиперпутём и прямым обходом:</p>
+    <div class="formal-block">
+      <div class="label">Итеративный компонент</div>
+      <div class="math">
+        <div class="math-line">Γ<sub>iter</sub> = { γ = (v<sub>entry</sub>, v<sub>exit</sub>, P<sub>loop</sub>, P<sub>bypass</sub>, N<sub>max</sub>, Cond) }</div>
+      </div>
+    </div>
+    <p>где v<sub>entry</sub>, v<sub>exit</sub> ∈ V<sup>(l)</sup> — входная и выходная вершины; P<sub>loop</sub> — простой направленный гиперпуть (статическое развёртывание цикла не более N<sub>max</sub> шагов); P<sub>bypass</sub> = (v<sub>entry</sub>, {v<sub>exit</sub>}) ∈ E<sub>hor</sub> — обходное ребро; а Cond : attr*(v<sub>entry</sub>) → {0, 1} выбирает, какая структура будет пройдена.</p>
+
+    <h3>Инварианты</h3>
+    <ul class="inv-list">
+      <li data-inv="Γ1"><strong>Ацикличность:</strong> P<sub>loop</sub> — простой; P<sub>bypass</sub> — единственное ребро; ни один из них не создаёт цикл в G<sup>(l)</sup></li>
+      <li data-inv="Γ2"><strong>Инкапсуляция:</strong> Все промежуточные вершины P<sub>loop</sub> инкапсулированы: вход только через v<sub>entry</sub>, выход только через v<sub>exit</sub></li>
+      <li data-inv="Γ3"><strong>Ограниченное развёртывание:</strong> |P<sub>loop</sub>| = m ≤ N<sub>max</sub></li>
+      <li data-inv="Γ4"><strong>Исключительная активация:</strong> P<sub>loop</sub>, если Cond(attr*(v<sub>entry</sub>)) = 1, иначе P<sub>bypass</sub></li>
+      <li data-inv="Γ5"><strong>Единый уровень:</strong> <code>∀v, w ∈ Vertices(γ) : θ(v) = θ(w) = l</code></li>
+    </ul>
+  </section>
+
+  <!-- ═══ §9: Admissible Transformations ═══ -->
+  <section id="transforms">
+    <h2><span class="sec-num">§9.</span> Допустимые преобразования и узлы принятия решений</h2>
+    <hr class="section-rule">
+
+    <h3>Сигнатура состояния</h3>
+    <div class="formal-block">
+      <div class="label">Состояние модели</div>
+      <div class="math">
+        <div class="math-line">M = (L, V, E<sub>hor</sub>, E<sub>vert</sub>, θ, κ<sub>V</sub>, κ<sub>E</sub>, attr<sub>V</sub>, attr<sub>E</sub>, Σ<sub>agg</sub>, …)</div>
+      </div>
+    </div>
+
+    <p>Пусть Inv(M) обозначает предикат, требующий выполнения всех структурных, семантических и типовых ограничений.</p>
+
+    <div class="formal-block">
+      <div class="label">Пространство состояний и преобразования</div>
+      <div class="math">
+        <div class="math-line">M<sub>M₀</sub> = { M | Inv(M) }</div>
+        <div class="math-line">F<sub>M₀</sub> = { f | f : M<sub>M₀</sub> → M<sub>M₀</sub> }</div>
+      </div>
+    </div>
+
+    <h3>Базовые свойства</h3>
+    <ul class="inv-list">
+      <li data-inv="P1"><strong>Замкнутость:</strong> M ∈ M<sub>M₀</sub> ⟹ f(M) ∈ M<sub>M₀</sub></li>
+      <li data-inv="P2"><strong>Композиция:</strong> f₂ ∘ f₁ ∈ F<sub>M₀</sub> for f₁, f₂ ∈ F<sub>M₀</sub></li>
+      <li data-inv="P3"><strong>Тождество:</strong> id ∈ F<sub>M₀</sub></li>
+    </ul>
+    <p>Таким образом, (M<sub>M₀</sub>, F<sub>M₀</sub>) образует <em>действие моноида</em>: композиция ассоциативна, а применение функции индуцирует переходы M →<sup>f</sup> M'.</p>
+
+    <h3>§10. Узлы принятия решений</h3>
+    <p>Пусть V<sub>dec</sub> ⊆ V — множество узлов принятия решений. Каждый узел v ∈ V<sub>dec</sub> ассоциирован с преобразованием f<sub>v</sub> ∈ F<sub>M₀</sub>, так что M' = f<sub>v</sub>(M). Реализация f<sub>v</sub> может зависеть от агрегированных атрибутов attr*(v). Опционально узел принятия решений может быть помечен специальным классом c<sub>dec</sub> ∈ C<sub>V</sub>.</p>
+  </section>
+
+  <!-- ═══ §11–12: Life Cycle ═══ -->
+  <section id="lifecycle">
+    <h2><span class="sec-num">§11–12.</span> Жизненный цикл и декомпозиция по фазам</h2>
+    <hr class="section-rule">
+
+    <h3>Иерархия вложенных подмоделей</h3>
+    <div class="formal-block">
+      <div class="label">Строгая вложенность</div>
+      <div class="math">
+        <div class="math-line">M<sub>PK</sub> ⊂ M<sub>Sys</sub> ⊂ M<sub>LC</sub> ⊂ M₀</div>
+      </div>
+    </div>
+    <p>M<sub>LC</sub> фиксирует последовательные фазы жизненного цикла. M<sub>Sys</sub> представляет физическую и функциональную конфигурацию. M<sub>PK</sub> — объединение всех пусковых комплексов.</p>
+
+    <h3>Декомпозиция по фазам</h3>
+    <div class="formal-block">
+      <div class="label">Фазы</div>
+      <div class="math">
+        <div class="math-line">LC = {ρ₁ &lt; ρ₂ &lt; ⋯ &lt; ρ<sub>n</sub>},&ensp; n ≥ 2</div>
+        <div class="math-line">G<sub>ρ<sub>i</sub></sub> = (V<sub>ρ<sub>i</sub></sub>, E<sub>ρ<sub>i</sub></sub>) ⊆ M<sub>LC</sub></div>
+      </div>
+    </div>
+
+    <h3>Инварианты разбиения</h3>
+    <ul class="inv-list">
+      <li data-inv="C1"><strong>Полное покрытие:</strong> <code>⋃<sup>n</sup><sub>i=1</sub> G<sub>ρ<sub>i</sub></sub> = M<sub>LC</sub></code> — каждый элемент принадлежит хотя бы одной фазе</li>
+      <li data-inv="C2"><strong>Локальное перекрытие:</strong> <code>G<sub>ρ<sub>i</sub></sub> ∩ G<sub>ρ<sub>j</sub></sub> ≠ ∅ ⟹ |i − j| ≤ 1</code> — элемент может принадлежать не более чем двум смежным фазам</li>
+    </ul>
+
+    <h3>Фазовые переходы</h3>
+    <p>Для каждой пары смежных фаз ρ<sub>i</sub> → ρ<sub>i+1</sub> определяется минимальное (по включению) непустое множество перехода:</p>
+    <div class="formal-block">
+      <div class="label">Множество перехода</div>
+      <div class="math">
+        <div class="math-line">Y*<sub>i</sub> ⊆ G<sub>ρ<sub>i</sub></sub> ∩ G<sub>ρ<sub>i+1</sub></sub>,&ensp; Y*<sub>i</sub> ≠ ∅</div>
+      </div>
+    </div>
+
+    <h3>Модель жизненного цикла M<sub>LC</sub></h3>
+    <div class="formal-block">
+      <div class="label">Объединение фаз</div>
+      <div class="math">
+        <div class="math-line">V<sub>LC</sub> = ⋃<sup>n</sup><sub>i=1</sub> V<sub>ρ<sub>i</sub></sub>,&ensp; E<sub>LC</sub> = ⋃<sup>n</sup><sub>i=1</sub> E<sub>ρ<sub>i</sub></sub></div>
+        <div class="math-line">M<sub>LC</sub> = (V<sub>LC</sub>, E<sub>LC</sub>) ⊆ M₀</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §13: System MSys ═══ -->
+  <section id="system">
+    <h2><span class="sec-num">§13.</span> Представление системы M<sub>Sys</sub></h2>
+    <hr class="section-rule">
+
+    <h3>Физическая и функциональная реализация</h3>
+    <p>Два специальных класса c<sub>phys</sub>, c<sub>func</sub> ∈ C<sub>V</sub> разделяют физическое существование и функциональную способность:</p>
+    <div class="formal-block">
+      <div class="label">Вершины и рёбра системы</div>
+      <div class="math">
+        <div class="math-line">V<sub>Sys</sub> = { v ∈ V | c<sub>phys</sub> ∈ κ<sub>V</sub>(v) }</div>
+        <div class="math-line">E<sub>Sys</sub> = { e ∈ E<sub>hor</sub> ∪ E<sub>vert</sub> | Ends(e) ⊆ V<sub>Sys</sub> }</div>
+        <div class="math-line">M<sub>Sys</sub> = (V<sub>Sys</sub>, E<sub>Sys</sub>)</div>
+      </div>
+    </div>
+
+    <ul class="inv-list">
+      <li data-inv="PF"><strong>Приоритет:</strong> <code>c<sub>func</sub> ∈ κ<sub>V</sub>(v) ⟹ c<sub>phys</sub> ∈ κ<sub>V</sub>(v)</code> — элемент может быть физически реализован без функциональной активности, но не наоборот</li>
+    </ul>
+
+    <h3>Пусковые комплексы</h3>
+    <div class="formal-block">
+      <div class="label">Пусковые комплексы</div>
+      <div class="math">
+        <div class="math-line">G<sup>(j)</sup><sub>PK</sub> = (V<sup>(j)</sup><sub>PK</sub>, E<sup>(j)</sup><sub>PK</sub>),&ensp; j = 1, …, m</div>
+        <div class="math-line">M<sub>PK</sub> = ⋃<sub>j</sub> (V<sup>(j)</sup><sub>PK</sub>, E<sup>(j)</sup><sub>PK</sub>) ⊆ M<sub>Sys</sub></div>
+        <div class="math-line">V<sub>shared</sub> = ⋂<sub>j≠k</sub> (V<sup>(j)</sup><sub>PK</sub> ∩ V<sup>(k)</sup><sub>PK</sub>)</div>
+      </div>
+    </div>
+
+    <h3>Модель атрибута готовности</h3>
+    <div class="formal-block">
+      <div class="label">Готовность</div>
+      <div class="math">
+        <div class="math-line">τ<sub>func</sub> ∈ [0, 1]</div>
+        <div class="math-line">α<sub>min</sub> : {τ<sub>func</sub>(w) | w ∈ μ<sub>V</sub>(v)} → min(·),&ensp; τ<sub>target</sub> = τ<sub>func</sub></div>
+        <div class="math-line">If (τ<sub>func</sub>, 1) ∈ attr*(v), then c<sub>func</sub> is added to κ<sub>V</sub>(v)</div>
+      </div>
+    </div>
+
+    <h3>Вертикальная согласованность</h3>
+    <div class="formal-block">
+      <div class="label">Инварианты</div>
+      <div class="math">
+        <div class="math-line">c<sub>phys</sub> ∈ κ<sub>V</sub>(v) ⟹ c<sub>phys</sub> ∈ κ<sub>V</sub>(w),&ensp; (v, w) ∈ E<sub>vert</sub></div>
+        <div class="math-line">c<sub>func</sub> ∈ κ<sub>V</sub>(v) ⟺ [∀w ∈ μ<sub>V</sub>(v) : c<sub>func</sub> ∈ κ<sub>V</sub>(w)] ∧ [κ'(w) ⊆ κ'(v)]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §14: Stage Filtration ═══ -->
+  <section id="filtration">
+    <h2><span class="sec-num">§14.</span> Стадийная фильтрация пускового комплекса</h2>
+    <hr class="section-rule">
+
+    <div class="formal-block">
+      <div class="label">Последовательность стадий</div>
+      <div class="math">
+        <div class="math-line">Stage<sup>(j)</sup><sub>0</sub> ⊂ Stage<sup>(j)</sup><sub>1</sub> ⊂ ⋯ ⊂ Stage<sup>(j)</sup><sub>m<sub>j</sub></sub> = G<sup>(j)</sup><sub>PK</sub></div>
+        <div class="math-line">Ready<sup>(j)</sup><sub>k</sub> = min<sub>x ∈ V<sup>(j)</sup><sub>k</sub> ∪ E<sup>(j)</sup><sub>k</sub></sub> τ<sub>func</sub>(x)</div>
+      </div>
+    </div>
+
+    <h3>Инварианты фильтрации</h3>
+    <ul class="inv-list">
+      <li data-inv="F-1"><strong>Достижимость корня:</strong> v<sup>(j)</sup><sub>root</sub> ∈ V<sup>(j)</sup><sub>k</sub>, with a directed path from root to any v ∈ V<sup>(j)</sup><sub>k</sub> along E<sup>(j)</sup><sub>k</sub> ∩ E<sub>vert</sub></li>
+      <li data-inv="F-2"><strong>Физическая полнота:</strong> <code>∀v ∈ V<sup>(j)</sup><sub>k</sub> : c<sub>phys</sub> ∈ κ<sub>V</sub>(v)</code></li>
+      <li data-inv="F-3"><strong>Строго возрастающая готовность:</strong> <code>0 = Ready<sup>(j)</sup><sub>0</sub> &lt; ⋯ &lt; Ready<sup>(j)</sup><sub>m<sub>j</sub></sub> = 1</code></li>
+      <li data-inv="F-4"><strong>Вертикальная замкнутость:</strong> <code>(u, w) ∈ E<sub>vert</sub>, w ∈ V<sup>(j)</sup><sub>k</sub> ⟹ u ∈ V<sup>(j)</sup><sub>k</sub></code></li>
+      <li data-inv="F-5"><strong>Минимальность шага:</strong> <code>∄ W ⊊ (V<sup>(j)</sup><sub>k+1</sub> \ V<sup>(j)</sup><sub>k</sub>) : min<sub>x</sub> τ<sub>func</sub>(x) ≥ Ready<sup>(j)</sup><sub>k+1</sub></code></li>
+    </ul>
+
+    <h3>Функция стадии и переход</h3>
+    <div class="formal-block">
+      <div class="label">Функция стадии и ввод в эксплуатацию</div>
+      <div class="math">
+        <div class="math-line">stg<sup>(j)</sup>(v) = min{k | v ∈ V<sup>(j)</sup><sub>k</sub>}</div>
+        <div class="math-line">(u, w) ∈ E<sub>vert</sub> ⟹ stg<sup>(j)</sup>(u) ≤ stg<sup>(j)</sup>(w)</div>
+        <div class="math-line">Trans<sup>(j)</sup><sub>k</sub> = [τ<sub>func</sub>(v<sup>(j)</sup><sub>root</sub>) ≥ Ready<sup>(j)</sup><sub>k+1</sub>] ∧ [∀v ∈ V<sup>(j)</sup><sub>k+1</sub> \ V<sup>(j)</sup><sub>k</sub> : c<sub>phys</sub> ∈ κ<sub>V</sub>(v)]</div>
+        <div class="math-line">System commissioned when: min<sub>j∈J</sub> stg<sup>(j)</sup><sub>curr</sub> = m<sub>j</sub></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ §15: PERT, GERT, PDM ═══ -->
+  <section id="pert">
+    <h2><span class="sec-num">§15.</span> Подграфы PERT, GERT и PDM</h2>
+    <hr class="section-rule">
+
+    <h3>15.1 Подграфы PERT</h3>
+    <div class="def-block">
+      <div class="def-header">Определение 15.1 (Подграф PERT)</div>
+      <p>Подграф G<sub>PERT</sub> = (V<sub>p</sub>, E<sub>p</sub>) ⊆ (V, E) является подграфом PERT, если:</p>
+      <p>1. G<sub>PERT</sub> является направленным ацикличным графом (DAG);</p>
+      <p>2. Каждое ребро e ∈ E<sub>p</sub> имеет трёхточечную оценку: <code>est(e) = (time<sub>min</sub>(e), time<sub>mid</sub>(e), time<sub>max</sub>(e))</code> with <code>time<sub>min</sub> &lt; time<sub>mid</sub> &lt; time<sub>max</sub></code>;</p>
+    </div>
+
+    <div class="formal-block">
+      <div class="label">Параметры распределения PERT</div>
+      <div class="math">
+        <div class="math-line">(𝔼[time<sub>e</sub>], Var(time<sub>e</sub>)) = f<sub>P</sub>(est(e)),&ensp; f<sub>P</sub> : ℝ³ → ℝ²<sub>&gt;0</sub></div>
+        <div class="math-line">time<sub>e</sub> ~ F<sub>PERT</sub>(𝔼[time<sub>e</sub>], Var(time<sub>e</sub>))</div>
+        <div class="math-line">Critical path: Slack(v) = t<sub>L</sub>(v) − t<sub>E</sub>(v) = 0</div>
+      </div>
+    </div>
+
+    <h3>15.2 Подграфы GERT</h3>
+    <p>Подграф Γ<sup>GERT</sup> = (V'', E'') моделирует стохастические процессы, в которых каждое ребро e = (v<sub>i</sub>, v<sub>j</sub>) имеет вероятность перехода p<sub>ij</sub> ∈ [0, 1] с условием нормировки Σ<sub>j</sub> p<sub>ij</sub> = 1 для каждого узла ветвления.</p>
+
+    <div class="formal-block">
+      <div class="label">Множество сценариев</div>
+      <div class="math">
+        <div class="math-line">Γ = { Γ<sub>i</sub> = (V<sub>i</sub>, E<sub>i</sub>) | Γ<sub>i</sub> ⊆ G<sub>PERT</sub> ∪ Γ<sup>GERT</sup>, Γ<sub>i</sub> ⊆ M }</div>
+      </div>
+    </div>
+
+    <h3>15.3 Подграф PDM</h3>
+    <div class="formal-block">
+      <div class="label">Метод диаграмм предшествования</div>
+      <div class="math">
+        <div class="math-line">Γ<sub>PDM</sub> = (V<sub>pdm</sub>, E<sub>pdm</sub>) ⊆ (V, E<sub>hor</sub>)</div>
+        <div class="math-line">C<sup>PDM</sup><sub>E</sub> = {FS, SS, FF, SF} ⊆ C<sub>E</sub></div>
+        <div class="math-line">∀e ∈ E<sub>pdm</sub> : κ<sub>E</sub>(e) ∈ C<sup>PDM</sup><sub>E</sub>,&ensp; |κ<sub>E</sub>(e)| = 1</div>
+      </div>
+    </div>
+    <p>Опциональный атрибут задержки (τ<sub>lag</sub>, ℓ) ∈ attr<sub>E</sub>(e) с ℓ ∈ ℤ допускается для каждого ребра PDM.</p>
+  </section>
+
+  <!-- ═══ §16–17: Matrices ═══ -->
+  <section id="matrices">
+    <h2><span class="sec-num">§16–17.</span> Матричное представление для приложений МО/ИИ</h2>
+    <hr class="section-rule">
+
+    <h3>16. Матрицы уровней</h3>
+    <p>Для каждого уровня L горизонтальные гиперрёбра сводятся к ориентированному графу G'(L) = (V<sub>L</sub>, E'<sub>L</sub>) заменой каждого (v, W) рёбрами {(v, w) | w ∈ W}. Пусть n<sub>L</sub> = |V<sub>L</sub>| и m<sub>L</sub> = |E'<sub>L</sub>|.</p>
+
+    <div class="formal-block">
+      <div class="label">Множество матриц уровней</div>
+      <div class="math">
+        <div class="math-line">M(L) = {A<sub>L</sub>, B<sub>L</sub>, D<sub>L</sub>, L<sub>L</sub>, L̃<sub>L</sub>, P<sub>L</sub>, A<sup>k</sup><sub>L</sub>, T<sub>L</sub>, R<sub>L</sub>}</div>
+      </div>
+    </div>
+
+    <table class="styled-table">
+      <thead><tr><th>Матрица</th><th>Название</th><th>Описание</th></tr></thead>
+      <tbody>
+        <tr><td><code>A<sub>L</sub></code></td><td>Смежности</td><td>A<sub>L</sub>[i,j] = сумма весов рёбер от v<sub>i</sub> к v<sub>j</sub> ∈ ℕ<sub>0</sub><sup>n<sub>L</sub>×n<sub>L</sub></sup></td></tr>
+        <tr><td><code>B<sub>L</sub></code></td><td>Инцидентности</td><td>B<sub>L</sub>[i,e] ∈ {−1, 0, 1}<sup>n<sub>L</sub>×m<sub>L</sub></sup></td></tr>
+        <tr><td><code>D<sub>L</sub></code></td><td>Степеней</td><td>D<sub>L</sub> = diag(deg⁺(v₁), …, deg⁺(v<sub>n<sub>L</sub></sub>))</td></tr>
+        <tr><td><code>L<sub>L</sub></code></td><td>Ненорм. лапласиан</td><td>L<sub>L</sub> = D<sub>L</sub> − A<sub>L</sub> (Kirchhoff matrix)</td></tr>
+        <tr><td><code>L̃<sub>L</sub></code></td><td>Норм. лапласиан</td><td>L̃<sub>L</sub> = D<sub>L</sub><sup>−½</sup> L<sub>L</sub> D<sub>L</sub><sup>−½</sup></td></tr>
+        <tr><td><code>P<sub>L</sub></code></td><td>Стохастич. перех.</td><td>P<sub>L</sub> = D<sub>L</sub><sup>−1</sup> A<sub>L</sub></td></tr>
+        <tr><td><code>A<sup>k</sup><sub>L</sub></code></td><td>k-шаговые пути</td><td>[i,j] = количество путей длины k от v<sub>i</sub> к v<sub>j</sub></td></tr>
+        <tr><td><code>T<sub>L</sub></code></td><td>Достижимости</td><td>T<sub>L</sub>[i,j] = 1, если путь существует, 0 иначе</td></tr>
+        <tr><td><code>R<sub>L</sub></code></td><td>Расстояний</td><td>R<sub>L</sub>[i,j] = длина кратчайшего пути; ∞, если недостижим</td></tr>
+      </tbody>
+    </table>
+
+    <h3>17. Глобальная блочная матрица</h3>
+    <div class="matrix-block">
+      <div class="matrix-label">Блочная матрица смежности A<sub>glob</sub></div>
+      <pre>
+        ┌                                        ┐
+        │  A⁽¹⁾    A⁽¹'²⁾    0        …         │
+        │  0        A⁽²⁾      A⁽²'³⁾   …         │
+        │  ⋮        ⋮         ⋱        ⋱         │
+        │  0        0         …        A⁽ᴴ⁾      │
+        └                                        ┘</pre>
+    </div>
+    <p>где A<sup>(h)</sup> обозначает внутриуровневые связи, а A<sup>(h,h+1)</sup> — межуровневые связи. Форматы хранения включают плотные массивы, классическое разреженное представление, блочно-разреженное и многоканальное представления.</p>
+  </section>
+
+  <!-- ═══ §18–19: Semantic Layer ═══ -->
+  <section id="semantics">
+    <h2><span class="sec-num">§18–19.</span> Семантический слой S и обогащение графа</h2>
+    <hr class="section-rule">
+
+    <h3>18. Определение семантического слоя</h3>
+    <div class="formal-block">
+      <div class="label">Формальное определение</div>
+      <div class="math">
+        <div class="math-line">S = (T, Rel, R; W, ℓ; C, γ; α<sub>T</sub>, α<sub>R</sub>; sym, tr, acyc)</div>
+      </div>
+    </div>
+
+    <p>где T — конечное множество терминов; Rel — конечное множество типов отношений; R ⊆ T × Rel × T — множество направленных триплетов; W — множество словоформ и лексем; ℓ : T → 2<sup>W</sup> отображает термины в лексические формы; C — конечное множество категорий терминов; γ : T → C — функция категоризации; α<sub>T</sub> и α<sub>R</sub> ассоциируют атрибуты с терминами и отношениями; sym, tr, acyc : Rel → {0, 1} — мета-теги свойств отношений.</p>
+
+    <h3>Инварианты целостности</h3>
+    <ul class="inv-list">
+      <li data-inv="S1"><strong>Локальная ацикличность:</strong> Если <code>acyc(λ) = 1</code>, то подграф R<sub>λ</sub> = {(t₁, λ, t₂) ∈ R} не содержит циклов</li>
+      <li data-inv="S2"><strong>Типовая корректность атрибутов:</strong> Для любой записи ⟨key, type, value, source⟩ выполняется <code>value ∈ Dom<sub>type</sub></code></li>
+    </ul>
+
+    <h3>Минимальные типы отношений</h3>
+    <table class="styled-table">
+      <thead><tr><th>Тип</th><th>Описание</th><th>sym</th><th>tr</th><th>acyc</th></tr></thead>
+      <tbody>
+        <tr><td><code>phaseOf</code></td><td>Принадлежность фазе жизненного цикла</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>partOf</code></td><td>Часть–целое (компонентная композиция)</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>covers</code></td><td>Покрывающее обобщение (нетранзитивное)</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>precedes</code></td><td>Логическое/временное предшествование</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>relatedTo</code></td><td>Симметричная ассоциация</td><td>1</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Рекомендуемые дополнительные типы отношений</h3>
+    <table class="styled-table">
+      <thead><tr><th>Тип</th><th>Описание</th><th>sym</th><th>tr</th><th>acyc</th></tr></thead>
+      <tbody>
+        <tr><td><code>subclassOf</code></td><td>Таксономия: род–вид</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>instanceOf</code></td><td>Типизация: индивидуум → класс</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>locatedIn</code></td><td>Пространственное включение / вложение</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>adjacentTo</code></td><td>Пространственная смежность</td><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td><code>before</code></td><td>Временное предшествование (строгое)</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>causes</code></td><td>Каузальное отношение</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>derivedFrom</code></td><td>Происхождение / цепочка вывода</td><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td><code>sameAs</code></td><td>Тождество / эквивалентность</td><td>1</td><td>1</td><td>0</td></tr>
+        <tr><td><code>differentFrom</code></td><td>Явное нетождество</td><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td><code>hasProperty</code></td><td>Имеет атрибут/характеристику</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>hasRole</code></td><td>Играет тематическую роль</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>participatesIn</code></td><td>Сущность участвует в событии/процессе</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td><code>memberOf</code></td><td>Членство в коллекции/группе</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td><code>preconditionOf</code></td><td>Предусловие для действия/события</td><td>0</td><td>0</td><td>1</td></tr>
+      </tbody>
+    </table>
+
+    <h3>19. Двунаправленная связь ψ / ω</h3>
+    <p>Интеграция M и S определяется взаимно обратными отображениями:</p>
+    <div class="formal-block">
+      <div class="label">Двунаправленные отображения</div>
+      <div class="math">
+        <div class="math-line">ψ : V ∪ E → ℘(T),&ensp; ω : T → ℘(V ∪ E)</div>
+        <div class="math-line">t ∈ ψ(x) ⟺ x ∈ ω(t)</div>
+      </div>
+    </div>
+
+    <h4>Формальные инварианты</h4>
+    <ul class="inv-list">
+      <li data-inv="B1"><strong>Взаимная согласованность:</strong> <code>t ∈ ψ(x) ⟺ x ∈ ω(t)</code></li>
+      <li data-inv="B2"><strong>Тотальность и ограниченная кратность:</strong> <code>∀x ∈ V ∪ E : 1 ≤ |ψ(x)| ≤ k<sub>max</sub></code> (recommended 1 ≤ k<sub>max</sub> ≤ 5)</li>
+      <li data-inv="B3"><strong>Категориальная совместимость:</strong> <code>v ∈ V ∧ t ∈ ψ(v) ⟹ γ(t) ∈ C<sub>V</sub></code> and <code>e ∈ E ∧ t ∈ ψ(e) ⟹ γ(t) ∈ C<sub>E</sub></code></li>
+      <li data-inv="B4"><strong>Согласованность с отношениями S:</strong> For e = (v₁, v₂) with λ = κ<sub>E</sub>(e): <code>∀t₁ ∈ ψ(v₁), t₂ ∈ ψ(v₂) : (t₁, λ, t₂) ∈ R</code></li>
+      <li data-inv="B5"><strong>Наследование атрибутов:</strong> <code>α(x) = fold<sub>t∈ψ(x)</sub> merge(α₀(x), α<sub>T</sub>(t))</code></li>
+    </ul>
+  </section>
+
+  <!-- ═══ §20–22: Corpus ═══ -->
+  <section id="corpus">
+    <h2><span class="sec-num">§20–22.</span> Корпус D, семантические указатели и отображения</h2>
+    <hr class="section-rule">
+
+    <h3>20. Определение корпуса</h3>
+    <div class="formal-block">
+      <div class="label">Корпус и указатели</div>
+      <div class="math">
+        <div class="math-line">D = { d<sub>i</sub> | i ∈ ℕ },&ensp; each d has id(d), type(d), ts(d)</div>
+        <div class="math-line">P = { p = (d, loc, meta) | d ∈ D, loc ∈ Loc(d), meta ∈ Meta(d) }</div>
+      </div>
+    </div>
+
+    <h3>21. Отображения между M, S и D</h3>
+    <div class="formal-block">
+      <div class="label">Три отображения</div>
+      <div class="math">
+        <div class="math-line">φ : V ∪ E → 2<sup>T</sup>,&ensp; ω : T → 2<sup>V∪E</sup>,&ensp; ψ : T → 2<sup>P</sup></div>
+        <div class="math-line">Axiom (A1): x ∈ ω(t) ⟺ t ∈ φ(x)</div>
+        <div class="math-line">Connectivity: im(φ) ⊆ dom(ψ)</div>
+        <div class="math-line">Evidence(x) = ⋃<sub>t∈φ(x)</sub> ψ(t)</div>
+      </div>
+    </div>
+
+    <h4>Инварианты целостности</h4>
+    <ul class="inv-list">
+      <li data-inv="I1"><strong>Существование источника:</strong> <code>∀p ∈ P : p.d ∈ D</code></li>
+      <li data-inv="I2"><strong>Валидность локализации:</strong> <code>∀p ∈ P : p.loc ∈ Loc(p.d)</code></li>
+      <li data-inv="I3"><strong>Неизменяемость содержимого:</strong> любое изменение порождает новый элемент d' ≠ d с id(d') ≠ id(d)</li>
+    </ul>
+
+    <div class="formal-block">
+      <div class="label">Требование покрытия</div>
+      <div class="math">
+        <div class="math-line">κ₀(x) = [Evidence(x) ≠ ∅],&ensp; x ∈ V ∪ E</div>
+        <div class="math-line">Model is documented iff κ₀(x) holds for every x ∈ V ∪ E</div>
+      </div>
+    </div>
+
+    <h3>22. Классификации корпуса</h3>
+    <p>Корпус организован по независимым классификациям. Для каждого i ∈ I задана иерархия H<sub>i</sub> = (C<sub>i</sub>, ⪯<sub>i</sub>) с тотальной функцией аннотации κ<sub>i</sub> : D → C<sub>i</sub>, присваивающей каждому документу ровно один класс в каждой иерархии. Классификации являются независимыми, иерархическими и композиционными (проекции сохраняют древовидную структуру).</p>
+  </section>
+
+  <!-- ═══ §24: Metrics ═══ -->
+  <section id="metrics">
+    <h2><span class="sec-num">§24.</span> Множество метрик Q</h2>
+    <hr class="section-rule">
+
+    <p>Пусть X = {M, S, D} и T — временна́я область.</p>
+    <div class="formal-block">
+      <div class="label">Определение метрики</div>
+      <div class="math">
+        <div class="math-line">q : (∏<sub>X<sub>k</sub>∈X'</sub> X<sub>k</sub>) × T → ℝ ∪ ℝ<sup>k</sup> ∪ [0, 1]</div>
+        <div class="math-line">Q = {q<sub>i</sub>}<sub>i∈I<sub>Q</sub></sub></div>
+      </div>
+    </div>
+
+    <h3>Классификация по области</h3>
+    <div class="formal-block">
+      <div class="label">Разбиение по областям</div>
+      <div class="math">
+        <div class="math-line">Q = Q<sup>(M)</sup> ∪ Q<sup>(S)</sup> ∪ Q<sup>(D)</sup> ∪ Q<sup>(M,S)</sup> ∪ Q<sup>(S,D)</sup> ∪ Q<sup>(M,S,D)</sup></div>
+      </div>
+    </div>
+
+    <h3>Алгебраическая структура</h3>
+    <div class="formal-block">
+      <div class="label">Операции</div>
+      <div class="math">
+        <div class="math-line">(Q, ⊛, ⊎, ς)</div>
+        <div class="math-line">⊛ : Q × Q → Q — композиция (взвешенное агрегирование)</div>
+        <div class="math-line">⊎ : Q × Q → Q — параллельное объединение (векторизация)</div>
+        <div class="math-line">ς : Q → Q — унарное преобразование (нормализация, масштабирование)</div>
+        <div class="math-line">q₁, q₂ ∈ [0, 1] ⟹ q₁ ⊛ q₂ ∈ [0, 1]</div>
+        <div class="math-line">(Q, ⊛, ⊎) is a commutative monoid with neutral element q<sub>⊥</sub></div>
+      </div>
+    </div>
+
+    <h3>Частичный порядок и оптимальность</h3>
+    <div class="formal-block">
+      <div class="label">Доминирование</div>
+      <div class="math">
+        <div class="math-line">q₁ ⪯ q₂ :⟺ ∀(m,s,d) ∈ M×S×D ∀t ∈ T : q₁(m,s,d,t) ≤ q₂(m,s,d,t)</div>
+      </div>
+    </div>
+    <p>Используется в анализе доминирования и оптимизации по Парето.</p>
+
+    <h3>Проекция и локальность</h3>
+    <ul class="inv-list">
+      <li data-inv="π"><strong>Проекция:</strong> π<sub>X</sub> : Q<sup>(M,S,D)</sup> → Q<sup>(X)</sup> извлекает локальный компонент</li>
+      <li data-inv="Loc"><strong>Принцип локальности:</strong> Если φ : M₁ → M₂ является структурным изоморфизмом, то <code>q(M₁, S, D, t) = q(φ(M₁), S, D, t)</code> for every q ∈ Q<sup>(M)</sup></li>
+    </ul>
+  </section>
+
+  <!-- ═══ §25: Meta-Level ═══ -->
+  <section id="meta">
+    <h2><span class="sec-num">§25.</span> Мета-уровень U</h2>
+    <hr class="section-rule">
+
+    <h3>25.1 Базовая конфигурация U₀</h3>
+    <div class="formal-block">
+      <div class="label">Определение мета-уровня</div>
+      <div class="math">
+        <div class="math-line">U₀ = (𝒳, F, Ω),&ensp; 𝒳 = {M, S, D, Q}</div>
+        <div class="math-line">F = { f<sub>ik</sub> : X<sub>i</sub> → X<sub>k</sub> }&ensp;— межслойные отображения</div>
+        <div class="math-line">Ω = { ω : 𝒳 → 𝒳 }&ensp;— мета-операции</div>
+      </div>
+    </div>
+
+    <div class="formal-block">
+      <div class="label">Инвариант согласованности</div>
+      <div class="math">
+        <div class="math-line">∀ω ∈ Ω, ∀X ∈ 𝒳<sub>valid</sub> : ω(X) ∈ 𝒳<sub>valid</sub></div>
+      </div>
+    </div>
+
+    <h3>25.2 Расширение МО</h3>
+    <div class="formal-block">
+      <div class="label">Расширение МО</div>
+      <div class="math">
+        <div class="math-line">U<sub>ML</sub> = (𝒳, F, Ω, ML)</div>
+        <div class="math-line">ML = (D<sub>train</sub>, A, Π, Z)</div>
+      </div>
+    </div>
+    <p>где D<sub>train</sub> ⊆ ℘(M ∪ S ∪ D ∪ Q) — обучающие наборы данных; A — алгоритмы и модели; Π = {π<sub>k</sub> : D<sub>k</sub> → D<sub>k+1</sub>} — итеративная стратегия уточнения данных; Z ⊆ ℘(M ∪ S ∪ D ∪ Q) × Y × Q — тестовые/валидационные бенчмарки.</p>
+
+    <h3>25.3 Классификация мета-операций</h3>
+    <div class="formal-block">
+      <div class="label">Дизъюнктная декомпозиция</div>
+      <div class="math">
+        <div class="math-line">Ω = Ω<sub>stat</sub> ⊔ Ω<sub>gen</sub> ⊔ Ω<sub>train</sub> ⊔ Ω<sub>eval</sub></div>
+      </div>
+    </div>
+    <p>Типичный цикл Ω<sub>gen</sub> → Ω<sub>train</sub> → Ω<sub>eval</sub> →<sup>фильтр по Q</sup> Ω<sub>gen</sub> гарантирует монотонное улучшение предпочтительной метрики μ ∈ Q.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-node"><span class="fl-sym">Ω<sub>gen</sub></span><span class="fl-label">Генерация</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">Ω<sub>train</sub></span><span class="fl-label">Обучение</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">Ω<sub>eval</sub></span><span class="fl-label">Оценка</span></div>
+      <span class="flow-arrow">⟶</span>
+      <div class="flow-node"><span class="fl-sym">Ω<sub>gen</sub></span><span class="fl-label">Адаптация</span></div>
+    </div>
+
+    <h3>25.4 Адаптивная генерация элементов</h3>
+    <div class="formal-block">
+      <div class="label">Функция генерации</div>
+      <div class="math">
+        <div class="math-line">Υ : (𝒳(t), Q(t)) → ℘(M) × ℘(S) × ℘(D) × ℘(Q)</div>
+      </div>
+    </div>
+    <p>Для любого сгенерированного элемента x, VALIDATE(x) проверяет: (1) синтаксическую корректность; (2) семантическую аннотацию ИИ-морфизмом f<sup>AI</sup> ∈ F<sub>AI</sub>; (3) пороги ошибок ε(x) ≤ ε<sub>max</sub>; (4) согласованную интеграцию в M, S, D или Q.</p>
+
+    <h3>25.5 Категориальная интерпретация</h3>
+    <p>Отображения F образуют малую категорию Cat<sub>F</sub> = ({M, S, D, Q}, F). ИИ-морфизм f<sup>AI</sup> сопровождается оператором тонкой настройки ∂f<sup>AI</sup> ∈ Ω<sub>train</sub>, с предположением функториальности ∂(g ∘ f) = ∂g ∘ ∂f (требует верификации для каждого конвейера МО).</p>
+  </section>
+
+  <!-- ═══ Conclusion ═══ -->
+  <section id="conclusion" style="margin-bottom: 20px;">
+    <h2><span class="sec-num">IX.</span> Применимость и переносимость</h2>
+    <hr class="section-rule">
+    <p>Модель не обязательно должна быть реализована полностью. Отдельные компоненты и механизмы могут быть адаптированы, упрощены или расширены для достижения конкретных целей приложений ИИ/МО. Формализация поддерживает как лёгкие исследовательские прототипы, так и, при целенаправленной инженерной проработке, практическое развёртывание в проектах АЭС.</p>
+    <p>Хотя работа сосредоточена на области атомных электростанций, предложенные принципы — иерархическая гиперграфовая структура, семантические морфизмы, типизированные атрибуты с агрегированием, прослеживаемость корпуса и оркестрирующий мета-уровень — переносимы на другие сложные системы, где требуются строгое управление жизненным циклом, многоуровневая декомпозиция и интеграция ИИ/МО.</p>
+  </section>
+
+</div>
+
+<footer>
+  <p>На основе «Формализация модели жизненного цикла атомной электростанции для приложений искусственного интеллекта и машинного обучения», Юрий Дмитришин, 2025</p>
+</footer>
+
+</body>
+</html>
