@@ -15,3 +15,23 @@ My areas of interest:
 - Risk management, internal control, and compliance in construction
 - EPC contract management and engineering contract management
 - Artificial intelligence and machine learning in engineering
+
+## Selected Research
+
+### Formalization of a Nuclear Power Plant Life-Cycle Model for AI and Machine Learning Applications
+
+**Yuriy Dmitrishin, 2025**
+
+A formal research-oriented model for NPP life-cycle management and AI/ML applications, integrating structural, semantic, documentary, quantitative, and orchestration layers.
+
+[GitHub repository](https://github.com/dmitrishin/npp-lifecycle-ai-ml-model)  
+[DOI: 10.5281/zenodo.18527396](https://doi.org/10.5281/zenodo.18527396)
+
+### Mathematical Optimization and Forecasting of Nuclear Power Plant Construction Progress using Probabilistic Models and Machine Learning Methods
+
+**Yuriy Dmitrishin, 2018**
+
+A probabilistic framework for forecasting and optimization of NPP construction projects using PERT/GERT models, Monte Carlo simulation, mathematical optimization, and machine learning.
+
+[GitHub repository](https://github.com/dmitrishin/npp-probabilistic-optimization)  
+[DOI: 10.5281/zenodo.15373676](https://doi.org/10.5281/zenodo.15373676)
