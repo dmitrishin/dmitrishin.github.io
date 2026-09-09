@@ -38,6 +38,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/style-user.css">
 
+    <!-- Monochrome links: preserve the existing static layout, remove Bootstrap blue -->
+    <style>
+        a,
+        a:visited {
+            color: #212529 !important;
+            text-decoration: underline;
+        }
+
+        a:hover,
+        a:focus {
+            color: #000000 !important;
+        }
+    </style>
+
     <!-- Favicons -->
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
@@ -146,7 +160,8 @@
                                 },
                                 "url": "https://zenodo.org/records/15373676",
                                 "sameAs": [
-                                    "https://doi.org/10.5281/zenodo.15373676"
+                                    "https://doi.org/10.5281/zenodo.15373676",
+                                    "https://github.com/dmitrishin/npp-probabilistic-optimization"
                                 ],
                                 "publisher": {
                                     "@type": "Organization",
@@ -190,7 +205,8 @@
                                 },
                                 "url": "https://zenodo.org/records/18527396",
                                 "sameAs": [
-                                    "https://doi.org/10.5281/zenodo.18527396"
+                                    "https://doi.org/10.5281/zenodo.18527396",
+                                    "https://github.com/dmitrishin/npp-lifecycle-ai-ml-model"
                                 ],
                                 "publisher": {
                                     "@type": "Organization",
@@ -338,19 +354,16 @@
                     concentrated on NPP life cycles, the proposed principles and methods are transferable to other
                     complex systems.
                 </p>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="https://zenodo.org/records/18527396" class="btn btn-primary btn-sm" target="_blank">
-                            <i class="bi bi-file-earmark-pdf"></i> View on Zenodo
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://doi.org/10.5281/zenodo.18527396" class="btn btn-outline-secondary btn-sm"
-                           target="_blank">
-                            DOI: 10.5281/zenodo.18527396
-                        </a>
-                    </li>
-                </ul>
+                <p class="mb-0">
+                    <a href="https://github.com/dmitrishin/npp-lifecycle-ai-ml-model"
+                       target="_blank" rel="noopener">GitHub repository</a>
+                    <span aria-hidden="true"> · </span>
+                    <a href="https://doi.org/10.5281/zenodo.18527396"
+                       target="_blank" rel="noopener">DOI: 10.5281/zenodo.18527396</a>
+                    <span aria-hidden="true"> · </span>
+                    <a href="https://zenodo.org/records/18527396"
+                       target="_blank" rel="noopener">Zenodo</a>
+                </p>
             </div>
         </div>
     </section>
@@ -373,19 +386,16 @@
                     critical and subcritical paths, perform local and global optimization, and ensure model adaptation
                     based on empirical data.
                 </p>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="https://zenodo.org/records/15373676" class="btn btn-primary btn-sm" target="_blank">
-                            <i class="bi bi-file-earmark-pdf"></i> View on Zenodo
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://doi.org/10.5281/zenodo.15373676" class="btn btn-outline-secondary btn-sm"
-                           target="_blank">
-                            DOI: 10.5281/zenodo.15373676
-                        </a>
-                    </li>
-                </ul>
+                <p class="mb-0">
+                    <a href="https://github.com/dmitrishin/npp-probabilistic-optimization"
+                       target="_blank" rel="noopener">GitHub repository</a>
+                    <span aria-hidden="true"> · </span>
+                    <a href="https://doi.org/10.5281/zenodo.15373676"
+                       target="_blank" rel="noopener">DOI: 10.5281/zenodo.15373676</a>
+                    <span aria-hidden="true"> · </span>
+                    <a href="https://zenodo.org/records/15373676"
+                       target="_blank" rel="noopener">Zenodo</a>
+                </p>
             </div>
         </div>
     </section>
@@ -478,4 +488,3 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-</body>
