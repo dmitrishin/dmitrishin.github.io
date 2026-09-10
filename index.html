@@ -148,46 +148,65 @@
             text-decoration: underline !important;
         }
 
+        .footer-main-row {
+            justify-content: space-between;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-left-group {
+            display: flex;
+            align-items: center;
+        }
+
         .footer-copyright {
-            text-align: left;
+            white-space: nowrap;
         }
 
         .footer-links {
-            text-align: left;
+            margin-left: 1rem;
+            white-space: nowrap;
         }
 
         .footer-social {
-            text-align: right;
+            margin-left: auto;
+            white-space: nowrap;
         }
 
         @media (max-width: 991.98px) {
             .footer-main-row {
                 flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            .footer-left-group {
+                display: contents;
             }
 
             .footer-copyright,
             .footer-links,
             .footer-social {
                 width: 100%;
-                max-width: 100%;
-                flex: 0 0 100%;
                 text-align: center;
+                white-space: normal;
             }
 
             .footer-copyright {
                 order: 1;
-                margin-bottom: 0 !important;
+                margin-bottom: 0;
             }
 
             .footer-links {
                 order: 2;
-                margin-top: 0.5rem !important;
-                margin-bottom: 0 !important;
+                margin-left: 0;
+                margin-top: 0.5rem;
+                margin-bottom: 0;
             }
 
             .footer-social {
                 order: 3;
-                margin-top: 0.75rem !important;
+                margin-left: 0;
+                margin-top: 0.75rem;
             }
         }
     </style>
@@ -760,30 +779,31 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <div class="row align-items-center footer-main-row">
+        <div class="d-flex align-items-center footer-main-row">
 
-            <!-- Copyright -->
-            <div class="col-lg-3 mb-3 mt-3 footer-copyright">
-                <p class="mb-0">2019 <span>© Yuriy Dmitrishin</span></p>
-            </div>
+            <!-- Left footer group -->
+            <div class="footer-left-group">
+                <div class="footer-copyright">
+                    <p class="mb-0">2019 <span>© Yuriy Dmitrishin</span></p>
+                </div>
 
-            <!-- Footer links -->
-            <div class="col-lg-4 mb-3 mt-3 footer-links">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                        <a href="https://dmitrishin.github.io/publications/" class="text-muted">Publications</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://dmitrishin.github.io/lang/" class="text-muted">Language</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://github.com/dmitrishin" class="text-muted" target="_blank" rel="noopener">GitHub</a>
-                    </li>
-                </ul>
+                <div class="footer-links">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a href="https://dmitrishin.github.io/publications/" class="text-muted">Publications</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://dmitrishin.github.io/lang/" class="text-muted">Language</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://github.com/dmitrishin" class="text-muted" target="_blank" rel="noopener">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Social icons -->
-            <div class="col-lg-5 mb-3 mt-3 footer-social">
+            <div class="footer-social">
                 <ul id="social" class="list-inline mb-0">
                     <!-- X -->
                     <li class="list-inline-item mr-4">
