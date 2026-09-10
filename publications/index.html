@@ -87,7 +87,7 @@
     <meta name="citation_language" content="en">
     <!-- <meta name="citation_pdf_url" content="DIRECT_PDF_URL"> -->
 
-    <!-- JSON-LD: WebSite / Person / CollectionPage / ItemList / ScholarlyArticle -->
+    <!-- JSON-LD: WebSite / Person / CollectionPage / ItemList / ScholarlyArticle / Report -->
 
     <script type="application/ld+json">
         {
@@ -137,7 +137,7 @@
                     "@type": "ItemList",
                     "@id": "https://dmitrishin.github.io/publications/#list",
                     "name": "Publications list",
-                    "numberOfItems": 2,
+                    "numberOfItems": 3,
                     "itemListOrder": "https://schema.org/ItemListOrderAscending",
                     "itemListElement": [
                         {
@@ -229,6 +229,55 @@
                                     "nuclear engineering",
                                     "construction management",
                                     "decommissioning"
+                                ]
+                            }
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "item": {
+                                "@type": "Report",
+                                "@id": "https://zenodo.org/records/22683709#report",
+                                "name": "Recommendations for Implementing Artificial Intelligence Technologies in Nuclear Power Plant Construction Processes",
+                                "abstract": "The report presents application areas for artificial intelligence technologies in nuclear power plant construction based on two complementary models developed by the author: a formal NPP life-cycle model for artificial intelligence and machine learning applications (2025), and a probabilistic optimization and forecasting model for NPP construction projects (2018). For each application area, the report describes the task, the underlying problem, the proposed solution, and examples of model-based implementation.",
+                                "author": {
+                                    "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin"
+                                },
+                                "datePublished": "2026-09-10",
+                                "inLanguage": "en",
+                                "identifier": {
+                                    "@type": "PropertyValue",
+                                    "propertyID": "DOI",
+                                    "value": "10.5281/zenodo.22683709"
+                                },
+                                "url": "https://zenodo.org/records/22683709",
+                                "sameAs": [
+                                    "https://doi.org/10.5281/zenodo.22683709",
+                                    "https://github.com/dmitrishin/ai-for-npp-construction"
+                                ],
+                                "publisher": {
+                                    "@type": "Organization",
+                                    "name": "Zenodo",
+                                    "url": "https://zenodo.org/"
+                                },
+                                "mainEntityOfPage": {
+                                    "@type": "WebPage",
+                                    "@id": "https://zenodo.org/records/22683709"
+                                },
+                                "isAccessibleForFree": true,
+                                "license": "https://creativecommons.org/licenses/by/4.0/",
+                                "keywords": [
+                                    "nuclear power plant",
+                                    "nuclear construction",
+                                    "artificial intelligence",
+                                    "machine learning",
+                                    "project management",
+                                    "project controls",
+                                    "risk management",
+                                    "digital twin",
+                                    "commissioning",
+                                    "configuration management",
+                                    "supply chain"
                                 ]
                             }
                         }
@@ -335,6 +384,38 @@
 <main class="container py-5">
     <h1 class="mb-4 h3">Publications</h1>
     <p class="lead">Peer-reviewed articles, technical reports, and research by Yuriy Dmitrishin.</p>
+
+    <!-- Отчет Zenodo — 2026 -->
+    <section>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title h6 mb-2 text-dark">
+                    <a href="https://zenodo.org/records/22683709" target="_blank" rel="noopener">
+                        Recommendations for Implementing Artificial Intelligence Technologies in Nuclear Power Plant Construction Processes
+                    </a>
+                </h2>
+                <h6 class="card-subtitle text-muted mb-2">Dmitrishin Yuriy · September 10, 2026</h6>
+                <p class="card-text">
+                    The report presents application areas for artificial intelligence technologies in nuclear power
+                    plant construction based on two complementary models developed by the author: a formal NPP
+                    life-cycle model for artificial intelligence and machine learning applications (2025), and a
+                    probabilistic optimization and forecasting model for NPP construction projects (2018). For each
+                    application area, the report describes the task, the underlying problem, the proposed solution,
+                    and examples of model-based implementation.
+                </p>
+                <p class="mb-0">
+                    <a href="https://github.com/dmitrishin/ai-for-npp-construction"
+                       target="_blank" rel="noopener">GitHub repository</a>
+                    <span aria-hidden="true"> · </span>
+                    <a href="https://doi.org/10.5281/zenodo.22683709"
+                       target="_blank" rel="noopener">DOI: 10.5281/zenodo.22683709</a>
+                    <span aria-hidden="true"> · </span>
+                    <a href="https://zenodo.org/records/22683709"
+                       target="_blank" rel="noopener">Zenodo</a>
+                </p>
+            </div>
+        </div>
+    </section>
 
     <!-- Публикация Zenodo — 2026 -->
     <section>
