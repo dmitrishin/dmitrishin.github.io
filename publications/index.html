@@ -122,17 +122,18 @@
     </style>
 
 
-    <!-- Monochrome links: preserve the existing static layout, remove Bootstrap blue -->
+    <!-- Monochrome links: no underline by default; underline on hover/focus -->
     <style>
         a,
         a:visited {
             color: #212529 !important;
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         a:hover,
         a:focus {
             color: #000000 !important;
+            text-decoration: underline;
         }
     </style>
 
@@ -579,16 +580,6 @@
         </div>
     </section>
 </main>
-
-<div class="container">
-    <div class="row">
-        <div class="col-12 mt-2 mb-2">
-            <br class="mt-4 mb-4">
-            <br class="mt-4 mb-4">
-            <br class="mt-4 mb-4">
-        </div>
-    </div>
-</div>
 
 <!--hr footer-->
 <div class="container">
