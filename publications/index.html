@@ -37,6 +37,74 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/style-user.css">
+    <style>
+        .top-linkedin-link:hover {
+            text-decoration: underline !important;
+        }
+
+        .footer-main-row {
+            justify-content: space-between;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-left-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-copyright {
+            white-space: nowrap;
+        }
+
+        .footer-links {
+            margin-left: 1rem;
+            white-space: nowrap;
+        }
+
+        .footer-social {
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 991.98px) {
+            .footer-main-row {
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            .footer-left-group {
+                display: contents;
+            }
+
+            .footer-copyright,
+            .footer-links,
+            .footer-social {
+                width: 100%;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .footer-copyright {
+                order: 1;
+                margin-bottom: 0;
+            }
+
+            .footer-links {
+                order: 2;
+                margin-left: 0;
+                margin-top: 0.5rem;
+                margin-bottom: 0;
+            }
+
+            .footer-social {
+                order: 3;
+                margin-left: 0;
+                margin-top: 0.75rem;
+            }
+        }
+    </style>
+
 
     <!-- Monochrome links: preserve the existing static layout, remove Bootstrap blue -->
     <style>
@@ -519,50 +587,65 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <div class="row">
-            <!-- footer menu-->
-            <div class="col-md-6 mb-3 mt-3">
-                <ul class="list-inline text-md-left text-center">
-                    <li class="list-inline-item">2019 <span>© Dmitrishin Yuriy</span></li>
-                </ul>
+        <div class="d-flex align-items-center footer-main-row">
+
+            <div class="footer-left-group">
+                <div class="footer-copyright">
+                    <p class="mb-0">2019 <span>© Yuriy Dmitrishin</span></p>
+                </div>
+
+                <div class="footer-links">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a href="https://dmitrishin.github.io/" class="text-muted">Home</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://dmitrishin.github.io/" class="text-muted">English</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://github.com/dmitrishin" class="text-muted" target="_blank" rel="noopener">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- social media (desktop) -->
-            <div class="col-md-6 mb-3 mt-3 d-none d-md-block">
-                <ul id="social" class="list-inline text-right">
-                    <!-- GitHub -->
+            <div class="footer-social">
+                <ul id="social" class="list-inline mb-0">
                     <li class="list-inline-item mr-4">
-                        <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener"
-                           aria-label="GitHub profile of Yuriy Dmitrishin">
+                        <a href="https://x.com/YDmitrishin" class="text-dark" target="_blank"
+                           rel="noopener" aria-label="X profile of Yuriy Dmitrishin">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="14" height="14" fill="currentColor"
+                                 class="bi bi-twitter-x" viewBox="0 0 16 16"
+                                 aria-hidden="true" focusable="false"
+                                 style="vertical-align: -0.125em;">
+                                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li class="list-inline-item mr-4">
+                        <a href="https://orcid.org/0009-0001-7957-3770" class="text-dark" target="_blank"
+                           rel="noopener" aria-label="ORCID profile of Yuriy Dmitrishin">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="14" height="14" fill="currentColor"
+                                 viewBox="0 0 24 24"
+                                 aria-hidden="true" focusable="false"
+                                 style="vertical-align: -0.125em;">
+                                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/>
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li class="list-inline-item mr-4">
+                        <a href="https://github.com/dmitrishin" class="text-dark" target="_blank"
+                           rel="noopener" aria-label="GitHub profile of Yuriy Dmitrishin">
                             <i class="bi bi-github"></i>
                         </a>
                     </li>
-                    <!-- LinkedIn -->
-                    <li class="list-inline-item mr-2">
-                        <a href="https://www.linkedin.com/in/dmitrishin/" class="text-dark" target="_blank"
-                           rel="noopener" aria-label="LinkedIn profile of Yuriy Dmitrishin">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
-        <!-- Links For mobile -->
-        <div class="row">
-            <div class="col-12 mb-2 d-md-none">
-                <ul id="social-mobile" class="list-inline text-center">
-                    <!-- GitHub -->
                     <li class="list-inline-item">
-                        <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener"
-                           aria-label="GitHub profile of Yuriy Dmitrishin">
-                            <i class="bi bi-github"></i>
-                        </a>
-                    </li>
-
-                    <!-- LinkedIn -->
-                    <li class="list-inline-item mr-3 ml-3">
-                        <a href="https://www.linkedin.com/in/dmitrishin" class="text-dark" target="_blank"
+                        <a href="https://www.linkedin.com/in/dmitrishin/" class="text-dark" target="_blank"
                            rel="noopener" aria-label="LinkedIn profile of Yuriy Dmitrishin">
                             <i class="bi bi-linkedin"></i>
                         </a>
