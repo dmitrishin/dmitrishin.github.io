@@ -1,865 +1,237 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="https://stackpath.bootstrapcdn.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://use.fontawesome.com">
-    <!-- Kept from original lang/index.html, though main page uses bootstrap-icons -->
-    <link rel="dns-prefetch" href="https://unpkg.com">
-    <!-- Added for ionicons used in the original lang/index.html footer -->
-
-    <!-- Main Meta -->
-    <link rel="canonical" href="https://dmitrishin.github.io/lang/"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- hreflang links indicating all available language versions -->
-    <!-- This section is crucial for telling search engines about the relationships between language versions -->
-    <link rel="alternate" hreflang="af" href="https://dmitrishin.github.io/lang/af/index.html"/>
-    <link rel="alternate" hreflang="am" href="https://dmitrishin.github.io/lang/am/index.html"/>
-    <link rel="alternate" hreflang="ar" href="https://dmitrishin.github.io/lang/ar/index.html"/>
-    <link rel="alternate" hreflang="ay" href="https://dmitrishin.github.io/lang/ay/index.html"/>
-    <link rel="alternate" hreflang="az" href="https://dmitrishin.github.io/lang/az/index.html"/>
-    <link rel="alternate" hreflang="be" href="https://dmitrishin.github.io/lang/be/index.html"/>
-    <link rel="alternate" hreflang="bg" href="https://dmitrishin.github.io/lang/bg/index.html"/>
-    <link rel="alternate" hreflang="bn" href="https://dmitrishin.github.io/lang/bn/index.html"/>
-    <link rel="alternate" hreflang="bs" href="https://dmitrishin.github.io/lang/bs/index.html"/>
-    <link rel="alternate" hreflang="ca" href="https://dmitrishin.github.io/lang/ca/index.html"/>
-    <link rel="alternate" hreflang="co" href="https://dmitrishin.github.io/lang/co/index.html"/>
-    <link rel="alternate" hreflang="cs" href="https://dmitrishin.github.io/lang/cs/index.html"/>
-    <link rel="alternate" hreflang="da" href="https://dmitrishin.github.io/lang/da/index.html"/>
-    <link rel="alternate" hreflang="de" href="https://dmitrishin.github.io/lang/de/index.html"/>
-    <link rel="alternate" hreflang="dv" href="https://dmitrishin.github.io/lang/dv/index.html"/>
-    <link rel="alternate" hreflang="ee" href="https://dmitrishin.github.io/lang/ee/index.html"/>
-    <link rel="alternate" hreflang="el" href="https://dmitrishin.github.io/lang/el/index.html"/>
-    <link rel="alternate" hreflang="es" href="https://dmitrishin.github.io/lang/es/index.html"/>
-    <link rel="alternate" hreflang="et" href="https://dmitrishin.github.io/lang/et/index.html"/>
-    <link rel="alternate" hreflang="eu" href="https://dmitrishin.github.io/lang/eu/index.html"/>
-    <link rel="alternate" hreflang="fa" href="https://dmitrishin.github.io/lang/fa/index.html"/>
-    <link rel="alternate" hreflang="fi" href="https://dmitrishin.github.io/lang/fi/index.html"/>
-    <link rel="alternate" hreflang="fj" href="https://dmitrishin.github.io/lang/fj/index.html"/>
-    <link rel="alternate" hreflang="fr" href="https://dmitrishin.github.io/lang/fr/index.html"/>
-    <link rel="alternate" hreflang="ga" href="https://dmitrishin.github.io/lang/ga/index.html"/>
-    <link rel="alternate" hreflang="gd" href="https://dmitrishin.github.io/lang/gd/index.html"/>
-    <link rel="alternate" hreflang="gl" href="https://dmitrishin.github.io/lang/gl/index.html"/>
-    <link rel="alternate" hreflang="gu" href="https://dmitrishin.github.io/lang/gu/index.html"/>
-    <link rel="alternate" hreflang="ha" href="https://dmitrishin.github.io/lang/ha/index.html"/>
-    <link rel="alternate" hreflang="he" href="https://dmitrishin.github.io/lang/he/index.html"/>
-    <link rel="alternate" hreflang="hi" href="https://dmitrishin.github.io/lang/hi/index.html"/>
-    <link rel="alternate" hreflang="hr" href="https://dmitrishin.github.io/lang/hr/index.html"/>
-    <link rel="alternate" hreflang="hu" href="https://dmitrishin.github.io/lang/hu/index.html"/>
-    <link rel="alternate" hreflang="hy" href="https://dmitrishin.github.io/lang/hy/index.html"/>
-    <link rel="alternate" hreflang="id" href="https://dmitrishin.github.io/lang/id/index.html"/>
-    <link rel="alternate" hreflang="ig" href="https://dmitrishin.github.io/lang/ig/index.html"/>
-    <link rel="alternate" hreflang="is" href="https://dmitrishin.github.io/lang/is/index.html"/>
-    <link rel="alternate" hreflang="it" href="https://dmitrishin.github.io/lang/it/index.html"/>
-    <link rel="alternate" hreflang="ja" href="https://dmitrishin.github.io/lang/ja/index.html"/>
-    <link rel="alternate" hreflang="jv" href="https://dmitrishin.github.io/lang/jv/index.html"/>
-    <link rel="alternate" hreflang="ka" href="https://dmitrishin.github.io/lang/ka/index.html"/>
-    <link rel="alternate" hreflang="kk" href="https://dmitrishin.github.io/lang/kk/index.html"/>
-    <link rel="alternate" hreflang="kn" href="https://dmitrishin.github.io/lang/kn/index.html"/>
-    <link rel="alternate" hreflang="ko" href="https://dmitrishin.github.io/lang/ko/index.html"/>
-    <link rel="alternate" hreflang="ku" href="https://dmitrishin.github.io/lang/ku/index.html"/>
-    <link rel="alternate" hreflang="ky" href="https://dmitrishin.github.io/lang/ky/index.html"/>
-    <link rel="alternate" hreflang="lo" href="https://dmitrishin.github.io/lang/lo/index.html"/>
-    <link rel="alternate" hreflang="lt" href="https://dmitrishin.github.io/lang/lt/index.html"/>
-    <link rel="alternate" hreflang="lv" href="https://dmitrishin.github.io/lang/lv/index.html"/>
-    <link rel="alternate" hreflang="mk" href="https://dmitrishin.github.io/lang/mk/index.html"/>
-    <link rel="alternate" hreflang="ml" href="https://dmitrishin.github.io/lang/ml/index.html"/>
-    <link rel="alternate" hreflang="mn" href="https://dmitrishin.github.io/lang/mn/index.html"/>
-    <link rel="alternate" hreflang="mr" href="https://dmitrishin.github.io/lang/mr/index.html"/>
-    <link rel="alternate" hreflang="ms" href="https://dmitrishin.github.io/lang/ms/index.html"/>
-    <link rel="alternate" hreflang="mt" href="https://dmitrishin.github.io/lang/mt/index.html"/>
-    <link rel="alternate" hreflang="my" href="https://dmitrishin.github.io/lang/my/index.html"/>
-    <link rel="alternate" hreflang="ne" href="https://dmitrishin.github.io/lang/ne/index.html"/>
-    <link rel="alternate" hreflang="nl" href="https://dmitrishin.github.io/lang/nl/index.html"/>
-    <link rel="alternate" hreflang="no" href="https://dmitrishin.github.io/lang/no/index.html"/>
-    <link rel="alternate" hreflang="or" href="https://dmitrishin.github.io/lang/or/index.html"/>
-    <link rel="alternate" hreflang="pa" href="https://dmitrishin.github.io/lang/pa/index.html"/>
-    <link rel="alternate" hreflang="pl" href="https://dmitrishin.github.io/lang/pl/index.html"/>
-    <link rel="alternate" hreflang="ps" href="https://dmitrishin.github.io/lang/ps/index.html"/>
-    <link rel="alternate" hreflang="pt-BR" href="https://dmitrishin.github.io/lang/pt-BR/index.html"/>
-    <link rel="alternate" hreflang="pt" href="https://dmitrishin.github.io/lang/pt/index.html"/>
-    <link rel="alternate" hreflang="qu" href="https://dmitrishin.github.io/lang/qu/index.html"/>
-    <link rel="alternate" hreflang="rm" href="https://dmitrishin.github.io/lang/rm/index.html"/>
-    <link rel="alternate" hreflang="ro" href="https://dmitrishin.github.io/lang/ro/index.html"/>
-    <link rel="alternate" hreflang="ru" href="https://dmitrishin.github.io/lang/ru/index.html"/>
-    <link rel="alternate" hreflang="rw" href="https://dmitrishin.github.io/lang/rw/index.html"/>
-    <link rel="alternate" hreflang="si" href="https://dmitrishin.github.io/lang/si/index.html"/>
-    <link rel="alternate" hreflang="sk" href="https://dmitrishin.github.io/lang/sk/index.html"/>
-    <link rel="alternate" hreflang="sl" href="https://dmitrishin.github.io/lang/sl/index.html"/>
-    <link rel="alternate" hreflang="sn" href="https://dmitrishin.github.io/lang/sn/index.html"/>
-    <link rel="alternate" hreflang="so" href="https://dmitrishin.github.io/lang/so/index.html"/>
-    <link rel="alternate" hreflang="sq" href="https://dmitrishin.github.io/lang/sq/index.html"/>
-    <link rel="alternate" hreflang="sr" href="https://dmitrishin.github.io/lang/sr/index.html"/>
-    <link rel="alternate" hreflang="su" href="https://dmitrishin.github.io/lang/su/index.html"/>
-    <link rel="alternate" hreflang="sv" href="https://dmitrishin.github.io/lang/sv/index.html"/>
-    <link rel="alternate" hreflang="sw" href="https://dmitrishin.github.io/lang/sw/index.html"/>
-    <link rel="alternate" hreflang="ta" href="https://dmitrishin.github.io/lang/ta/index.html"/>
-    <link rel="alternate" hreflang="te" href="https://dmitrishin.github.io/lang/te/index.html"/>
-    <link rel="alternate" hreflang="tg" href="https://dmitrishin.github.io/lang/tg/index.html"/>
-    <link rel="alternate" hreflang="th" href="https://dmitrishin.github.io/lang/th/index.html"/>
-    <link rel="alternate" hreflang="ti" href="https://dmitrishin.github.io/lang/ti/index.html"/>
-    <link rel="alternate" hreflang="tk" href="https://dmitrishin.github.io/lang/tk/index.html"/>
-    <link rel="alternate" hreflang="tl" href="https://dmitrishin.github.io/lang/tl/index.html"/>
-    <link rel="alternate" hreflang="tr" href="https://dmitrishin.github.io/lang/tr/index.html"/>
-    <link rel="alternate" hreflang="ts" href="https://dmitrishin.github.io/lang/ts/index.html"/>
-    <link rel="alternate" hreflang="tt" href="https://dmitrishin.github.io/lang/tt/index.html"/>
-    <link rel="alternate" hreflang="ur" href="https://dmitrishin.github.io/lang/ur/index.html"/>
-    <link rel="alternate" hreflang="uz" href="https://dmitrishin.github.io/lang/uz/index.html"/>
-    <link rel="alternate" hreflang="vi" href="https://dmitrishin.github.io/lang/vi/index.html"/>
-    <link rel="alternate" hreflang="xh" href="https://dmitrishin.github.io/lang/xh/index.html"/>
-    <link rel="alternate" hreflang="yo" href="https://dmitrishin.github.io/lang/yo/index.html"/>
-    <link rel="alternate" hreflang="zh-TW" href="https://dmitrishin.github.io/lang/zh-TW/index.html"/>
-    <link rel="alternate" hreflang="zh" href="https://dmitrishin.github.io/lang/zh/index.html"/>
-    <link rel="alternate" hreflang="zu" href="https://dmitrishin.github.io/lang/zu/index.html"/>
-    <!-- Link to the main English version -->
-    <link rel="alternate" hreflang="en" href="https://dmitrishin.github.io/"/>
-    <!-- Default version for unspecified languages -->
-    <link rel="alternate" hreflang="x-default" href="https://dmitrishin.github.io/"/>
-
-    <!-- Required meta tags -->
-    <meta name="description"
-          content="Dmitrishin Yuriy is an executive and analyst with expertise in EPC contracts, design, construction and risk management, nuclear projects, and IT-driven solutions.">
-    <meta name="keywords"
-          content="Dmitrishin Yury, Executive, Management, Construction, Engineering, EPC, contract management, Risk management, Risk, Nuclear Power Plants, Major Projects, Corporate Leadership, Data Science, Research, analysis, and strategic consulting">
-    <meta name="author" content="Dmitrishin Yury">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Dmitrishin Yuriy">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="color-scheme" content="light dark">
-    <meta name="msapplication-TileColor" content="#00a300">
-
-    <!-- Styles and Icons -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/style-user.css"> <!-- Absolute path -->
-
-    <!-- Icons -->
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"> <!-- Absolute path -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"> <!-- Absolute path -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"> <!-- Absolute path -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"> <!-- Absolute path -->
-    <link rel="manifest" href="/images/site.webmanifest"> <!-- Absolute path -->
-    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5"> <!-- Absolute path -->
-
-    <!-- Schema.org data -->
-    <meta itemprop="name" content="Dmitrishin Yuriy">
-    <meta itemprop="description"
-          content="Dmitrishin Yuriy is an executive and analyst with expertise in EPC contracts, design, construction and risk management, nuclear projects, and IT-driven solutions.">
-    <meta itemprop="image" content="https://dmitrishin.github.io/image/dmt_2.jpg">
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@YDmitrishin">
-    <meta name="twitter:title" content="Dmitrishin Yuriy">
-    <meta name="twitter:description"
-          content="Dmitrishin Yuriy is an executive and analyst with expertise in EPC contracts, design, construction and risk management, nuclear projects, and IT-driven solutions.">
-    <meta name="twitter:creator" content="@YDmitrishin">
-    <meta name="twitter:image" content="https://dmitrishin.github.io/image/dmt_2.jpg">
-
-    <!-- Open Graph data -->
-    <meta property="og:locale" content="en_US"/>
-    <meta property="og:title" content="Dmitrishin Yuriy"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://dmitrishin.github.io"/>
-    <meta property="og:image" content="https://dmitrishin.github.io/image/dmt_2.jpg"/>
-    <meta property="og:description"
-          content="Dmitrishin Yuriy is an executive and analyst with expertise in EPC contracts, design, construction and risk management, nuclear projects, and IT-driven solutions."/>
-    <meta property="og:site_name" content="Dmitrishin Yuriy"/>
-
-    <!-- Image for Social -->
-    <link rel="image_src" href="https://dmitrishin.github.io/image/dmt_2.jpg">
-
-    <script type="application/ld+json">
+<meta charset="utf-8"/>
+<!-- DNS Prefetch -->
+<link href="https://stackpath.bootstrapcdn.com" rel="dns-prefetch"/>
+<link href="https://cdnjs.cloudflare.com" rel="dns-prefetch"/>
+<link href="https://use.fontawesome.com" rel="dns-prefetch"/>
+<!-- Kept from original lang/index.html, though main page uses bootstrap-icons -->
+<link href="https://unpkg.com" rel="dns-prefetch"/>
+<!-- Added for ionicons used in the original lang/index.html footer -->
+<!-- Main Meta -->
+<link href="https://dmitrishin.github.io/lang/" rel="canonical">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Required meta tags -->
+<meta content="Main language versions of Yuriy Dmitrishin's website. The complete language list is available on the language map." name="description"/>
+<meta content="Yuriy Dmitrishin, languages, multilingual, language versions" name="keywords"/>
+<meta content="Yuriy Dmitrishin" name="author"/>
+<meta content="True" name="HandheldFriendly"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="Yuriy Dmitrishin" name="apple-mobile-web-app-title"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="#00a300" name="msapplication-TileColor"/>
+<!-- Styles and Icons -->
+<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="/css/style-user.css" rel="stylesheet"/> <!-- Absolute path -->
+<!-- Icons -->
+<link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/> <!-- Absolute path -->
+<link href="/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/> <!-- Absolute path -->
+<link href="/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/> <!-- Absolute path -->
+<link href="/images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/> <!-- Absolute path -->
+<link href="/images/site.webmanifest" rel="manifest"/> <!-- Absolute path -->
+<link color="#5bbad5" href="/images/safari-pinned-tab.svg" rel="mask-icon"/> <!-- Absolute path -->
+<!-- Schema.org data -->
+<meta content="Languages" itemprop="name"/>
+<meta content="Main language versions of Yuriy Dmitrishin's website. The complete language list is available on the language map." itemprop="description"/>
+<meta content="https://dmitrishin.github.io/image/dmt.jpg" itemprop="image"/>
+<!-- Twitter Card data -->
+<meta content="summary" name="twitter:card"/>
+<meta content="@YDmitrishin" name="twitter:site"/>
+<meta content="Languages | Yuriy Dmitrishin" name="twitter:title"/>
+<meta content="Main language versions of Yuriy Dmitrishin's website. The complete language list is available on the language map." name="twitter:description"/>
+<meta content="@YDmitrishin" name="twitter:creator"/>
+<meta content="https://dmitrishin.github.io/image/dmt.jpg" name="twitter:image"/>
+<!-- Open Graph data -->
+<meta content="en_US" property="og:locale">
+<meta content="Languages | Yuriy Dmitrishin" property="og:title">
+<meta content="website" property="og:type">
+<meta content="https://dmitrishin.github.io/lang/" property="og:url">
+<meta content="https://dmitrishin.github.io/image/dmt.jpg" property="og:image">
+<meta content="Main language versions of Yuriy Dmitrishin's website. The complete language list is available on the language map." property="og:description">
+<meta content="Yuriy Dmitrishin" property="og:site_name">
+<!-- Image for Social -->
+<link href="https://dmitrishin.github.io/image/dmt.jpg" rel="image_src"/>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
         {
-            "@context": "https://schema.org",
-            "@graph": [
+            "@type": "WebSite",
+            "@id": "https://dmitrishin.github.io/#website",
+            "url": "https://dmitrishin.github.io/",
+            "name": "Yuriy Dmitrishin",
+            "inLanguage": [
+                "en",
+                "ru"
+            ],
+            "publisher": {
+                "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin",
+            "name": "Yuriy Dmitrishin",
+            "url": "https://dmitrishin.github.io/"
+        },
+        {
+            "@type": "CollectionPage",
+            "@id": "https://dmitrishin.github.io/lang/#page",
+            "url": "https://dmitrishin.github.io/lang/",
+            "name": "Languages | Yuriy Dmitrishin",
+            "inLanguage": "en",
+            "description": "Main language versions of Yuriy Dmitrishin's website. The complete language list is available on the language map.",
+            "isPartOf": {
+                "@id": "https://dmitrishin.github.io/#website"
+            },
+            "about": {
+                "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin"
+            },
+            "breadcrumb": {
+                "@id": "https://dmitrishin.github.io/lang/#breadcrumb"
+            },
+            "mainEntity": {
+                "@id": "https://dmitrishin.github.io/lang/#nav"
+            }
+        },
+        {
+            "@type": "SiteNavigationElement",
+            "@id": "https://dmitrishin.github.io/lang/#nav",
+            "name": "Language versions",
+            "url": "https://dmitrishin.github.io/lang/",
+            "hasPart": [
                 {
-                    "@type": "WebSite",
-                    "@id": "https://dmitrishin.github.io/#website",
+                    "@type": "WebPage",
                     "url": "https://dmitrishin.github.io/",
-                    "name": "Yuriy Dmitrishin",
-                    "inLanguage": [
-                        "en",
-                        "ru"
-                    ],
-                    "publisher": {
-                        "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin"
-                    }
-                },
-                {
-                    "@type": "Person",
-                    "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin",
-                    "name": "Yuriy Dmitrishin",
-                    "url": "https://dmitrishin.github.io/"
-                },
-                {
-                    "@type": "CollectionPage",
-                    "@id": "https://dmitrishin.github.io/lang/#page",
-                    "url": "https://dmitrishin.github.io/lang/",
-                    "name": "Language Map | Multilingual site of Yuriy Dmitrishin",
                     "inLanguage": "en",
-                    "description": "Links to language-specific index pages for the site of Yuriy Dmitrishin.",
-                    "isPartOf": {
-                        "@id": "https://dmitrishin.github.io/#website"
-                    },
-                    "about": {
-                        "@id": "https://dmitrishin.github.io/#yuriy-dmitrishin"
-                    },
-                    "breadcrumb": {
-                        "@id": "https://dmitrishin.github.io/lang/#breadcrumb"
-                    },
-                    "mainEntity": {
-                        "@id": "https://dmitrishin.github.io/lang/#nav"
-                    }
+                    "name": "English(Main)"
                 },
                 {
-                    "@type": "SiteNavigationElement",
-                    "@id": "https://dmitrishin.github.io/lang/#nav",
-                    "name": "Language versions",
-                    "url": "https://dmitrishin.github.io/lang/",
-                    "hasPart": [
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/af/index.html",
-                            "inLanguage": "af",
-                            "name": "Afrikaans"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/sq/index.html",
-                            "inLanguage": "sq",
-                            "name": "Albanian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/am/index.html",
-                            "inLanguage": "am",
-                            "name": "Amharic"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ar/index.html",
-                            "inLanguage": "ar",
-                            "name": "Arabic"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/hy/index.html",
-                            "inLanguage": "hy",
-                            "name": "Armenian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ay/index.html",
-                            "inLanguage": "ay",
-                            "name": "Aymara"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/az/index.html",
-                            "inLanguage": "az",
-                            "name": "Azerbaijani"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ba/index.html",
-                            "inLanguage": "ba",
-                            "name": "Bashkir"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/eu/index.html",
-                            "inLanguage": "eu",
-                            "name": "Basque"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/be/index.html",
-                            "inLanguage": "be",
-                            "name": "Belarusian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/bn/index.html",
-                            "inLanguage": "bn",
-                            "name": "Bengali"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/bs/index.html",
-                            "inLanguage": "bs",
-                            "name": "Bosnian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/bg/index.html",
-                            "inLanguage": "bg",
-                            "name": "Bulgarian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/my/index.html",
-                            "inLanguage": "my",
-                            "name": "Burmese"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ca/index.html",
-                            "inLanguage": "ca",
-                            "name": "Catalan"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/zh/index.html",
-                            "inLanguage": "zh",
-                            "name": "Chinese (Simplified)"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/zh-TW/index.html",
-                            "inLanguage": "zh-TW",
-                            "name": "Chinese (Traditional)"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/co/index.html",
-                            "inLanguage": "co",
-                            "name": "Corsican"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/hr/index.html",
-                            "inLanguage": "hr",
-                            "name": "Croatian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/cs/index.html",
-                            "inLanguage": "cs",
-                            "name": "Czech"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/da/index.html",
-                            "inLanguage": "da",
-                            "name": "Danish"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/dv/index.html",
-                            "inLanguage": "dv",
-                            "name": "Divehi"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/nl/index.html",
-                            "inLanguage": "nl",
-                            "name": "Dutch"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/",
-                            "inLanguage": "en",
-                            "name": "English (Main)"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/et/index.html",
-                            "inLanguage": "et",
-                            "name": "Estonian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ee/index.html",
-                            "inLanguage": "ee",
-                            "name": "Ewe"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/fj/index.html",
-                            "inLanguage": "fj",
-                            "name": "Fijian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/fi/index.html",
-                            "inLanguage": "fi",
-                            "name": "Finnish"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/fr/index.html",
-                            "inLanguage": "fr",
-                            "name": "French"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/gl/index.html",
-                            "inLanguage": "gl",
-                            "name": "Galician"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ka/index.html",
-                            "inLanguage": "ka",
-                            "name": "Georgian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/de/index.html",
-                            "inLanguage": "de",
-                            "name": "German"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/el/index.html",
-                            "inLanguage": "el",
-                            "name": "Greek"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/gu/index.html",
-                            "inLanguage": "gu",
-                            "name": "Gujarati"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ha/index.html",
-                            "inLanguage": "ha",
-                            "name": "Hausa"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/he/index.html",
-                            "inLanguage": "he",
-                            "name": "Hebrew"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/hi/index.html",
-                            "inLanguage": "hi",
-                            "name": "Hindi"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/hu/index.html",
-                            "inLanguage": "hu",
-                            "name": "Hungarian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/is/index.html",
-                            "inLanguage": "is",
-                            "name": "Icelandic"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ig/index.html",
-                            "inLanguage": "ig",
-                            "name": "Igbo"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/id/index.html",
-                            "inLanguage": "id",
-                            "name": "Indonesian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ga/index.html",
-                            "inLanguage": "ga",
-                            "name": "Irish"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/it/index.html",
-                            "inLanguage": "it",
-                            "name": "Italian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ja/index.html",
-                            "inLanguage": "ja",
-                            "name": "Japanese"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/jv/index.html",
-                            "inLanguage": "jv",
-                            "name": "Javanese"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/kn/index.html",
-                            "inLanguage": "kn",
-                            "name": "Kannada"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/kk/index.html",
-                            "inLanguage": "kk",
-                            "name": "Kazakh"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/rw/index.html",
-                            "inLanguage": "rw",
-                            "name": "Kinyarwanda"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ko/index.html",
-                            "inLanguage": "ko",
-                            "name": "Korean"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ku/index.html",
-                            "inLanguage": "ku",
-                            "name": "Kurdish"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ky/index.html",
-                            "inLanguage": "ky",
-                            "name": "Kyrgyz"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/lo/index.html",
-                            "inLanguage": "lo",
-                            "name": "Lao"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/lv/index.html",
-                            "inLanguage": "lv",
-                            "name": "Latvian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/lt/index.html",
-                            "inLanguage": "lt",
-                            "name": "Lithuanian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/mk/index.html",
-                            "inLanguage": "mk",
-                            "name": "Macedonian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ms/index.html",
-                            "inLanguage": "ms",
-                            "name": "Malay"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ml/index.html",
-                            "inLanguage": "ml",
-                            "name": "Malayalam"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/mt/index.html",
-                            "inLanguage": "mt",
-                            "name": "Maltese"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/mr/index.html",
-                            "inLanguage": "mr",
-                            "name": "Marathi"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/mn/index.html",
-                            "inLanguage": "mn",
-                            "name": "Mongolian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ne/index.html",
-                            "inLanguage": "ne",
-                            "name": "Nepali"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/no/index.html",
-                            "inLanguage": "no",
-                            "name": "Norwegian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/or/index.html",
-                            "inLanguage": "or",
-                            "name": "Odia"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ps/index.html",
-                            "inLanguage": "ps",
-                            "name": "Pashto"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/fa/index.html",
-                            "inLanguage": "fa",
-                            "name": "Persian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/pl/index.html",
-                            "inLanguage": "pl",
-                            "name": "Polish"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/pt/index.html",
-                            "inLanguage": "pt",
-                            "name": "Portuguese"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/pt-BR/index.html",
-                            "inLanguage": "pt-BR",
-                            "name": "Portuguese (Brazil)"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/pa/index.html",
-                            "inLanguage": "pa",
-                            "name": "Punjabi"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/qu/index.html",
-                            "inLanguage": "qu",
-                            "name": "Quechua"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ro/index.html",
-                            "inLanguage": "ro",
-                            "name": "Romanian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/rm/index.html",
-                            "inLanguage": "rm",
-                            "name": "Romansh"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ru/index.html",
-                            "inLanguage": "ru",
-                            "name": "Russian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/gd/index.html",
-                            "inLanguage": "gd",
-                            "name": "Scottish Gaelic"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/sr/index.html",
-                            "inLanguage": "sr",
-                            "name": "Serbian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/sn/index.html",
-                            "inLanguage": "sn",
-                            "name": "Shona"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/si/index.html",
-                            "inLanguage": "si",
-                            "name": "Sinhala"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/sk/index.html",
-                            "inLanguage": "sk",
-                            "name": "Slovak"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/sl/index.html",
-                            "inLanguage": "sl",
-                            "name": "Slovenian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/so/index.html",
-                            "inLanguage": "so",
-                            "name": "Somali"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/es/index.html",
-                            "inLanguage": "es",
-                            "name": "Spanish"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/su/index.html",
-                            "inLanguage": "su",
-                            "name": "Sundanese"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/sw/index.html",
-                            "inLanguage": "sw",
-                            "name": "Swahili"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/sv/index.html",
-                            "inLanguage": "sv",
-                            "name": "Swedish"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/tl/index.html",
-                            "inLanguage": "tl",
-                            "name": "Tagalog"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/tg/index.html",
-                            "inLanguage": "tg",
-                            "name": "Tajik"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ta/index.html",
-                            "inLanguage": "ta",
-                            "name": "Tamil"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/tt/index.html",
-                            "inLanguage": "tt",
-                            "name": "Tatar"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/te/index.html",
-                            "inLanguage": "te",
-                            "name": "Telugu"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/th/index.html",
-                            "inLanguage": "th",
-                            "name": "Thai"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ti/index.html",
-                            "inLanguage": "ti",
-                            "name": "Tigrinya"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ts/index.html",
-                            "inLanguage": "ts",
-                            "name": "Tsonga"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/tr/index.html",
-                            "inLanguage": "tr",
-                            "name": "Turkish"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/tk/index.html",
-                            "inLanguage": "tk",
-                            "name": "Turkmen"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/uk/index.html",
-                            "inLanguage": "uk",
-                            "name": "Ukrainian"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/ur/index.html",
-                            "inLanguage": "ur",
-                            "name": "Urdu"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/uz/index.html",
-                            "inLanguage": "uz",
-                            "name": "Uzbek"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/vi/index.html",
-                            "inLanguage": "vi",
-                            "name": "Vietnamese"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/xh/index.html",
-                            "inLanguage": "xh",
-                            "name": "Xhosa"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/yo/index.html",
-                            "inLanguage": "yo",
-                            "name": "Yoruba"
-                        },
-                        {
-                            "@type": "WebPage",
-                            "url": "https://dmitrishin.github.io/lang/zu/index.html",
-                            "inLanguage": "zu",
-                            "name": "Zulu"
-                        }
-                    ]
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/ru/",
+                    "inLanguage": "ru",
+                    "name": "Russian"
                 },
                 {
-                    "@type": "BreadcrumbList",
-                    "@id": "https://dmitrishin.github.io/lang/#breadcrumb",
-                    "itemListElement": [
-                        {
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "Home",
-                            "item": "https://dmitrishin.github.io/"
-                        },
-                        {
-                            "@type": "ListItem",
-                            "position": 2,
-                            "name": "Language Map",
-                            "item": "https://dmitrishin.github.io/lang/"
-                        }
-                    ]
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/tr/",
+                    "inLanguage": "tr",
+                    "name": "Turkish"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/de/",
+                    "inLanguage": "de",
+                    "name": "German"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/fr/",
+                    "inLanguage": "fr",
+                    "name": "French"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/es/",
+                    "inLanguage": "es",
+                    "name": "Spanish"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/pt-BR/",
+                    "inLanguage": "pt-BR",
+                    "name": "Portuguese (Brazil)"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/it/",
+                    "inLanguage": "it",
+                    "name": "Italian"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/ar/",
+                    "inLanguage": "ar",
+                    "name": "Arabic"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/fa/",
+                    "inLanguage": "fa",
+                    "name": "Persian"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/hi/",
+                    "inLanguage": "hi",
+                    "name": "Hindi"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/zh/",
+                    "inLanguage": "zh",
+                    "name": "Chinese (Simplified)"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/ja/",
+                    "inLanguage": "ja",
+                    "name": "Japanese"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/ko/",
+                    "inLanguage": "ko",
+                    "name": "Korean"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/id/",
+                    "inLanguage": "id",
+                    "name": "Indonesian"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/vi/",
+                    "inLanguage": "vi",
+                    "name": "Vietnamese"
+                },
+                {
+                    "@type": "WebPage",
+                    "url": "https://dmitrishin.github.io/lang/map.html",
+                    "name": "other"
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://dmitrishin.github.io/lang/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://dmitrishin.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Languages",
+                    "item": "https://dmitrishin.github.io/lang/"
                 }
             ]
         }
-    </script>
-
-
-    <!-- Analytics -->
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
+    ]
+}
+</script>
+<!-- Analytics -->
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
         (function (m, e, t, r, i, k, a) {
             m[i] = m[i] || function () {
                 (m[i].a = m[i].a || []).push(arguments)
@@ -881,14 +253,13 @@
             webvisor: true
         });
     </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/55867912" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WFW092MJ6"></script>
-    <script>
+<noscript>
+<div><img alt="" src="https://mc.yandex.ru/watch/55867912" style="position:absolute; left:-9999px;"/></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3WFW092MJ6"></script>
+<script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -898,10 +269,9 @@
         gtag('js', new Date());
         gtag('config', 'G-3WFW092MJ6');
     </script>
-    <!-- /Google tag (gtag.js) -->
-
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
+<!-- /Google tag (gtag.js) -->
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
             c[a] = c[a] || function () {
                 (c[a].q = c[a].q || []).push(arguments)
@@ -913,654 +283,184 @@
             y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "qwji2bphqu");
     </script>
-    <!-- /Microsoft Clarity -->
-
-    <!-- Page Title -->
-    <title>Language Map | Multilingual site of Yuriy Dmitrishin</title>
-
-</head>
+<!-- /Microsoft Clarity -->
+<!-- Page Title -->
+<title>Languages | Yuriy Dmitrishin</title>
+</meta></meta></meta></meta></meta></meta></meta></link></head>
 <body>
-
 <!--Navbar Desktop-->
 <nav class="navbar navbar-expand-lg navbar-light bg-white d-none d-md-block">
-    <div class="container mt-2">
-        <a class="navbar-brand" href="#" title="Home">
-            <h4></h4>
-        </a>
-        <ul class="nav justify-content-end menubar">
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="https://dmitrishin.github.io/">Main page</a>
-            </li>
-        </ul>
-    </div>
+<div class="container mt-2">
+<a class="navbar-brand" href="#" title="Home">
+<h4></h4>
+</a>
+<ul class="nav justify-content-end menubar">
+<li class="nav-item">
+<a class="nav-link text-dark" href="https://dmitrishin.github.io/">Main page</a>
+</li>
+</ul>
+</div>
 </nav>
 <!-- hr top -->
 <div class="container d-none d-lg-block">
-    <hr>
+<hr/>
 </div>
 <!-- Navigation Mobil -->
 <div class="container mt-2 d-md-none">
-    <a class="navbar-brand" href="#" title="Home">
-        <h4></h4>
-    </a>
-    <ul class="nav justify-content-end menubar">
-        <li class="nav-item">
-        </li>
-    </ul>
+<a class="navbar-brand" href="#" title="Home">
+<h4></h4>
+</a>
+<ul class="nav justify-content-end menubar">
+<li class="nav-item">
+</li>
+</ul>
 </div>
 <div class="container mt-3 mb-3">
-    <div class="row">
-        <div class="col-12">
-        </div>
-    </div>
-    <!-- Content Block -->
-    <div class="container mt-3 mb-3">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="mb-4 h3">Language Map</h1>
-                <p class="mb-4">This page contains links to the language-specific index pages for Dmitrishin Yury's
-                    website.</p>
-                <div class="row">
-                    <!-- Column 1 -->
-                    <div class="col-md-3 col-sm-6">
-                        <ul class="text-li" itemscope itemtype="https://schema.org/SiteNavigationElement">
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/af/index.html"
-                                                                                                      hreflang="af">Afrikaans</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/sq/index.html"
-                                                                                                      hreflang="sq">Albanian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/am/index.html"
-                                                                                                      hreflang="am">Amharic</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ar/index.html"
-                                                                                                      hreflang="ar">Arabic</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/hy/index.html"
-                                                                                                      hreflang="hy">Armenian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ay/index.html"
-                                                                                                      hreflang="ay">Aymara</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/az/index.html"
-                                                                                                      hreflang="az">Azerbaijani</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ba/index.html"
-                                                                                                      hreflang="ba">Bashkir</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/eu/index.html"
-                                                                                                      hreflang="eu">Basque</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/be/index.html"
-                                                                                                      hreflang="be">Belarusian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/bn/index.html"
-                                                                                                      hreflang="bn">Bengali</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/bs/index.html"
-                                                                                                      hreflang="bs">Bosnian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/bg/index.html"
-                                                                                                      hreflang="bg">Bulgarian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/my/index.html"
-                                                                                                      hreflang="my">Burmese</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ca/index.html"
-                                                                                                      hreflang="ca">Catalan</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/zh/index.html"
-                                                                                                      hreflang="zh">Chinese
-                                (Simplified)</a></li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/zh-TW/index.html"
-                                                                                                      hreflang="zh-TW">Chinese
-                                (Traditional)</a></li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/co/index.html"
-                                                                                                      hreflang="co">Corsican</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/hr/index.html"
-                                                                                                      hreflang="hr">Croatian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/cs/index.html"
-                                                                                                      hreflang="cs">Czech</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/da/index.html"
-                                                                                                      hreflang="da">Danish</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/dv/index.html"
-                                                                                                      hreflang="dv">Divehi</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/nl/index.html"
-                                                                                                      hreflang="nl">Dutch</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io"
-                                                                                                      hreflang="en">English(Main)</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/et/index.html"
-                                                                                                      hreflang="et">Estonian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ee/index.html"
-                                                                                                      hreflang="ee">Ewe</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Column 2 -->
-                    <div class="col-md-3 col-sm-6">
-                        <ul class="text-li" itemscope itemtype="https://schema.org/SiteNavigationElement">
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/fj/index.html"
-                                                                                                      hreflang="fj">Fijian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/fi/index.html"
-                                                                                                      hreflang="fi">Finnish</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/fr/index.html"
-                                                                                                      hreflang="fr">French</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/gl/index.html"
-                                                                                                      hreflang="gl">Galician</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ka/index.html"
-                                                                                                      hreflang="ka">Georgian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/de/index.html"
-                                                                                                      hreflang="de">German</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/el/index.html"
-                                                                                                      hreflang="el">Greek</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/gu/index.html"
-                                                                                                      hreflang="gu">Gujarati</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ha/index.html"
-                                                                                                      hreflang="ha">Hausa</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/he/index.html"
-                                                                                                      hreflang="he">Hebrew</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/hi/index.html"
-                                                                                                      hreflang="hi">Hindi</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/hu/index.html"
-                                                                                                      hreflang="hu">Hungarian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/is/index.html"
-                                                                                                      hreflang="is">Icelandic</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ig/index.html"
-                                                                                                      hreflang="ig">Igbo</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/id/index.html"
-                                                                                                      hreflang="id">Indonesian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ga/index.html"
-                                                                                                      hreflang="ga">Irish</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/it/index.html"
-                                                                                                      hreflang="it">Italian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ja/index.html"
-                                                                                                      hreflang="ja">Japanese</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/jv/index.html"
-                                                                                                      hreflang="jv">Javanese</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/kn/index.html"
-                                                                                                      hreflang="kn">Kannada</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/kk/index.html"
-                                                                                                      hreflang="kk">Kazakh</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/rw/index.html"
-                                                                                                      hreflang="rw">Kinyarwanda</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ko/index.html"
-                                                                                                      hreflang="ko">Korean</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ku/index.html"
-                                                                                                      hreflang="ku">Kurdish</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ky/index.html"
-                                                                                                      hreflang="ky">Kyrgyz</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/lo/index.html"
-                                                                                                      hreflang="lo">Lao</a>
-                            </li>
-                        </ul>
-                    </div>
+<div class="row">
+<div class="col-12">
+</div>
+</div>
+<!-- Content Block -->
+<div class="container mt-3 mb-3">
+<div class="row">
+<div class="col-12">
+<h1 class="mb-4 h3">Languages</h1>
+<p class="mb-4">Select a language:</p>
+<div class="row">
+<div class="col-md-3 col-sm-6">
+<ul class="text-li" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/" hreflang="en" itemprop="url name">English(Main)</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/ru/" hreflang="ru" itemprop="url name">Russian</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/tr/" hreflang="tr" itemprop="url name">Turkish</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/de/" hreflang="de" itemprop="url name">German</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/fr/" hreflang="fr" itemprop="url name">French</a>
+</li>
+</ul>
+</div>
+<div class="col-md-3 col-sm-6">
+<ul class="text-li" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/es/" hreflang="es" itemprop="url name">Spanish</a>
+</li>
 
-                    <!-- Column 3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <ul class="text-li" itemscope itemtype="https://schema.org/SiteNavigationElement">
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/lv/index.html"
-                                                                                                      hreflang="lv">Latvian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/lt/index.html"
-                                                                                                      hreflang="lt">Lithuanian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/mk/index.html"
-                                                                                                      hreflang="mk">Macedonian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ms/index.html"
-                                                                                                      hreflang="ms">Malay</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ml/index.html"
-                                                                                                      hreflang="ml">Malayalam</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/mt/index.html"
-                                                                                                      hreflang="mt">Maltese</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/mr/index.html"
-                                                                                                      hreflang="mr">Marathi</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/mn/index.html"
-                                                                                                      hreflang="mn">Mongolian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ne/index.html"
-                                                                                                      hreflang="ne">Nepali</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/no/index.html"
-                                                                                                      hreflang="no">Norwegian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/or/index.html"
-                                                                                                      hreflang="or">Odia</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ps/index.html"
-                                                                                                      hreflang="ps">Pashto</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/fa/index.html"
-                                                                                                      hreflang="fa">Persian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/pl/index.html"
-                                                                                                      hreflang="pl">Polish</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/pt/index.html"
-                                                                                                      hreflang="pt">Portuguese</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/pt-BR/index.html"
-                                                                                                      hreflang="pt-BR">Portuguese
-                                (Brazil)</a></li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/pa/index.html"
-                                                                                                      hreflang="pa">Punjabi</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/qu/index.html"
-                                                                                                      hreflang="qu">Quechua</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ro/index.html"
-                                                                                                      hreflang="ro">Romanian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/rm/index.html"
-                                                                                                      hreflang="rm">Romansh</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ru/index.html"
-                                                                                                      hreflang="ru">Russian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/gd/index.html"
-                                                                                                      hreflang="gd">Scottish
-                                Gaelic</a></li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/sr/index.html"
-                                                                                                      hreflang="sr">Serbian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/sn/index.html"
-                                                                                                      hreflang="sn">Shona</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/si/index.html"
-                                                                                                      hreflang="si">Sinhala</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/sk/index.html"
-                                                                                                      hreflang="sk">Slovak</a>
-                            </li>
-                        </ul>
-                    </div>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/pt-BR/" hreflang="pt-BR" itemprop="url name">Portuguese (Brazil)</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/it/" hreflang="it" itemprop="url name">Italian</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/ar/" hreflang="ar" itemprop="url name">Arabic</a>
+</li>
+</ul>
+</div>
+<div class="col-md-3 col-sm-6">
+<ul class="text-li" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/fa/" hreflang="fa" itemprop="url name">Persian</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/hi/" hreflang="hi" itemprop="url name">Hindi</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/zh/" hreflang="zh" itemprop="url name">Chinese (Simplified)</a>
+</li>
 
-                    <!-- Column 4 -->
-                    <div class="col-md-3 col-sm-6">
-                        <ul class="text-li" itemscope itemtype="https://schema.org/SiteNavigationElement">
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/sl/index.html"
-                                                                                                      hreflang="sl">Slovenian</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/so/index.html"
-                                                                                                      hreflang="so">Somali</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/es/index.html"
-                                                                                                      hreflang="es">Spanish</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/su/index.html"
-                                                                                                      hreflang="su">Sundanese</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/sw/index.html"
-                                                                                                      hreflang="sw">Swahili</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/sv/index.html"
-                                                                                                      hreflang="sv">Swedish</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/tl/index.html"
-                                                                                                      hreflang="tl">Tagalog</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/tg/index.html"
-                                                                                                      hreflang="tg">Tajik</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ta/index.html"
-                                                                                                      hreflang="ta">Tamil</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/tt/index.html"
-                                                                                                      hreflang="tt">Tatar</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/te/index.html"
-                                                                                                      hreflang="te">Telugu</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/th/index.html"
-                                                                                                      hreflang="th">Thai</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ti/index.html"
-                                                                                                      hreflang="ti">Tigrinya</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ts/index.html"
-                                                                                                      hreflang="ts">Tsonga</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/tr/index.html"
-                                                                                                      hreflang="tr">Turkish</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/tk/index.html"
-                                                                                                      hreflang="tk">Turkmen</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/ur/index.html"
-                                                                                                      hreflang="ur">Urdu</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/uz/index.html"
-                                                                                                      hreflang="uz">Uzbek</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/vi/index.html"
-                                                                                                      hreflang="vi">Vietnamese</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/xh/index.html"
-                                                                                                      hreflang="xh">Xhosa</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/yo/index.html"
-                                                                                                      hreflang="yo">Yoruba</a>
-                            </li>
-                            <li itemprop="hasPart" itemscope itemtype="https://schema.org/WebPage"><a class="text-dark"
-                                                                                                      itemprop="url name"
-                                                                                                      href="https://dmitrishin.github.io/lang/zu/index.html"
-                                                                                                      hreflang="zu">Zulu</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div> <!-- Closing col-12 -->
-        </div> <!-- Closing row -->
-    </div>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/ja/" hreflang="ja" itemprop="url name">Japanese</a>
+</li>
+</ul>
+</div>
+<div class="col-md-3 col-sm-6">
+<ul class="text-li" itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/ko/" hreflang="ko" itemprop="url name">Korean</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/id/" hreflang="id" itemprop="url name">Indonesian</a>
+</li>
+<li itemprop="hasPart" itemscope="" itemtype="https://schema.org/WebPage">
+<a class="text-dark" href="https://dmitrishin.github.io/lang/vi/" hreflang="vi" itemprop="url name">Vietnamese</a>
+</li>
+<li><a class="text-dark" href="https://dmitrishin.github.io/lang/map.html">other</a></li></ul>
+</div>
+</div>
 
-    <br mt-2>
-
-    <!--hr footer-->
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <hr class="mb-2">
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <!-- footer menu-->
-                <div class="col-md-6 mb-3 mt-3">
-                    <ul class="list-inline text-md-left text-center">
-                        <li class="list-inline-item">2019 <span>© Yuriy Dmitrishin</span></li>
-                    </ul>
-                </div>
-
-                <!-- social media (desktop) -->
-                <div class="col-md-6 mb-3 mt-3 d-none d-md-block">
-                    <ul id="social" class="list-inline text-right">
-                        <!-- GitHub -->
-                        <li class="list-inline-item mr-4">
-                            <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener"
-                               aria-label="GitHub profile of Yuriy Dmitrishin">
-                                <i class="bi bi-github"></i>
-                            </a>
-                        </li>
-                        <!-- LinkedIn -->
-                        <li class="list-inline-item mr-2">
-                            <a href="https://www.linkedin.com/in/dmitrishin/" class="text-dark" target="_blank"
-                               rel="noopener" aria-label="LinkedIn profile of Yuriy Dmitrishin">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Links For mobile -->
-            <div class="row">
-                <div class="col-12 mb-2 d-md-none">
-                    <ul id="social-mobile" class="list-inline text-center">
-                        <!-- GitHub -->
-                        <li class="list-inline-item">
-                            <a href="https://github.com/dmitrishin" class="text-dark" target="_blank" rel="noopener"
-                               aria-label="GitHub profile of Yuriy Dmitrishin">
-                                <i class="bi bi-github"></i>
-                            </a>
-                        </li>
-
-                        <!-- LinkedIn -->
-                        <li class="list-inline-item mr-3 ml-3">
-                            <a href="https://www.linkedin.com/in/dmitrishin" class="text-dark" target="_blank"
-                               rel="noopener" aria-label="LinkedIn profile of Yuriy Dmitrishin">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/ionicons@4.2.6/dist/ionicons.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</div>
+</div>
+</div>
+<br class="mt-2"/>
+<!--hr footer-->
+<div class="container">
+<div class="row">
+<div class="col-12">
+<hr class="mb-2"/>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="row">
+<!-- footer menu-->
+<div class="col-md-6 mb-3 mt-3">
+<ul class="list-inline text-md-left text-center">
+<li class="list-inline-item">2019 <span>© Yuriy Dmitrishin</span></li>
+</ul>
+</div>
+<!-- social media (desktop) -->
+<div class="col-md-6 mb-3 mt-3 d-none d-md-block">
+<ul class="list-inline text-right" id="social">
+<!-- GitHub -->
+<li class="list-inline-item mr-4">
+<a aria-label="GitHub profile of Yuriy Dmitrishin" class="text-dark" href="https://github.com/dmitrishin" rel="noopener" target="_blank">
+<i class="bi bi-github"></i>
+</a>
+</li>
+<!-- LinkedIn -->
+<li class="list-inline-item mr-2">
+<a aria-label="LinkedIn profile of Yuriy Dmitrishin" class="text-dark" href="https://www.linkedin.com/in/dmitrishin/" rel="noopener" target="_blank">
+<i class="bi bi-linkedin"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Links For mobile -->
+<div class="row">
+<div class="col-12 mb-2 d-md-none">
+<ul class="list-inline text-center" id="social-mobile">
+<!-- GitHub -->
+<li class="list-inline-item">
+<a aria-label="GitHub profile of Yuriy Dmitrishin" class="text-dark" href="https://github.com/dmitrishin" rel="noopener" target="_blank">
+<i class="bi bi-github"></i>
+</a>
+</li>
+<!-- LinkedIn -->
+<li class="list-inline-item mr-3 ml-3">
+<a aria-label="LinkedIn profile of Yuriy Dmitrishin" class="text-dark" href="https://www.linkedin.com/in/dmitrishin" rel="noopener" target="_blank">
+<i class="bi bi-linkedin"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script src="https://unpkg.com/ionicons@4.2.6/dist/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </div>
 </body>
 </html>
