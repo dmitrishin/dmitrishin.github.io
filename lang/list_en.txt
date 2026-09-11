@@ -89,7 +89,6 @@ tl      – Tagalog (Filipino)
 tr      – Turkish  
 ts      – Tsonga  
 tt      – Tatar  
-uk      – Ukrainian  
 ur      – Urdu  
 uz      – Uzbek  
 vi      – Vietnamese  
