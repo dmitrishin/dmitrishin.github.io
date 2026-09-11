@@ -140,6 +140,22 @@
             text-decoration: underline !important;
         }
 
+        /* Arabic profile content: explicit RTL alignment */
+        main .col-xl-8.col-lg-8.col-md-12 {
+            text-align: right;
+        }
+
+        main .col-xl-8.col-lg-8.col-md-12 .text-li {
+            direction: rtl;
+            text-align: right;
+            padding-right: 1.25rem;
+            padding-left: 0;
+        }
+
+        main .col-xl-8.col-lg-8.col-md-12 .text-li li {
+            text-align: right;
+        }
+
         .footer-main-row {
             direction: ltr;
             justify-content: space-between;
@@ -566,7 +582,7 @@
             <div class="col-xl-8 col-lg-8 col-md-12">
 
                 <!-- H1 -->
-                <h1 class="mb-4 h3" itemprop="name">يوري ديمتريشين</h1>
+                <h1 class="mb-4 h3" itemprop="name"><span lang="ar">يوري ديمتريشين</span> <span aria-hidden="true">|</span> <span lang="en" dir="ltr">Yuriy Dmitrishin</span></h1>
                 <p class="mt-2" itemprop="description">مسؤول عن وظيفة المشاريع، وخبير في القطاع ومهندس يتمتع بخبرة في المشاريع الدولية لبناء محطات الطاقة النووية والبحث العلمي، إلى جانب خبرة إضافية في تطبيق تقنيات الذكاء الاصطناعي والنمذجة الرياضية في بناء محطات الطاقة النووية وقطاع التشييد.</p>
 
                 <!-- Image mobile -->
