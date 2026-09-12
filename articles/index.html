@@ -121,15 +121,80 @@ article p {
     </style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Articles",
-  "url": "https://dmitrishin.github.io/articles/",
-  "inLanguage": "en",
-  "author": {
-    "@type": "Person",
-    "name": "Yuriy Dmitrishin",
-    "url": "https://dmitrishin.github.io/"
-  }
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://dmitrishin.github.io/articles/#webpage",
+      "url": "https://dmitrishin.github.io/articles/",
+      "name": "Articles",
+      "description": "Articles by Yuriy Dmitrishin.",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "@id": "https://dmitrishin.github.io/#person",
+        "name": "Yuriy Dmitrishin",
+        "url": "https://dmitrishin.github.io/"
+      },
+      "breadcrumb": {
+        "@id": "https://dmitrishin.github.io/articles/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://dmitrishin.github.io/articles/#itemlist"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://dmitrishin.github.io/articles/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Main",
+          "item": "https://dmitrishin.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://dmitrishin.github.io/articles/"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://dmitrishin.github.io/articles/#itemlist",
+      "name": "Articles",
+      "numberOfItems": 2,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Article",
+            "headline": "AI in Nuclear Power Plant Construction: From Individual Tools to an Integrated Project Model",
+            "url": "https://dmitrishin.github.io/articles/ai-npp-integrated-project-model.html",
+            "datePublished": "2026-09-11",
+            "author": {
+              "@id": "https://dmitrishin.github.io/#person"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Article",
+            "headline": "The Earlier an AI-Enabled Project Model Starts, the More Value It Can Create in an NPP Project",
+            "url": "https://dmitrishin.github.io/articles/early-ai-enabled-project-model.html",
+            "datePublished": "2026-09-11",
+            "author": {
+              "@id": "https://dmitrishin.github.io/#person"
+            }
+          }
+        }
+      ]
+    }
+  ]
 }</script>
 </head>
 <body>
@@ -139,7 +204,7 @@ article p {
 <p></p>
 </a>
 <ul class="nav justify-content-end menubar">
-<li class="nav-item"><a class="nav-link text-dark top-linkedin-link" href="https://dmitrishin.github.io/">Main</a></li><li class="nav-item"><span class="nav-link text-dark top-linkedin-link">Articles</span></li><li class="nav-item">
+<li class="nav-item"><a class="nav-link text-dark top-linkedin-link" href="https://dmitrishin.github.io/">Main</a></li><li class="nav-item">
 <a class="nav-link text-dark top-linkedin-link" href="https://linkedin.com/in/dmitrishin" target="_blank">linkedin</a>
 </li>
 </ul>
@@ -154,7 +219,7 @@ article p {
 <p class="mb-0"></p>
 </a>
 <ul class="nav menubar">
-<li class="nav-item"><a class="nav-link text-dark top-linkedin-link" href="https://dmitrishin.github.io/">Main</a></li><li class="nav-item"><span class="nav-link text-dark top-linkedin-link">Articles</span></li><li class="nav-item">
+<li class="nav-item"><a class="nav-link text-dark top-linkedin-link" href="https://dmitrishin.github.io/">Main</a></li><li class="nav-item">
 <a class="nav-link text-dark top-linkedin-link" href="https://www.linkedin.com/in/dmitrishin" rel="noopener">
                     linkedin
                 </a>
@@ -163,7 +228,7 @@ article p {
 </div>
 </div>
 <div class="container mt-5 mb-5"><div class="row"><div class="col-12"></div></div></div><main>
-<div class="container mt-5"><div class="row"><div class="col-12"><h1 class="mb-4 h3">Articles</h1><p><a href="/articles/ai-npp-integrated-project-model.html" style="font-weight: 400; font-style: normal; text-decoration: underline;">AI in Nuclear Power Plant Construction: From Individual Tools to an Integrated Project Model</a></p><p><a href="/articles/early-ai-enabled-project-model.html" style="font-weight: 400; font-style: normal; text-decoration: underline;">The Earlier an AI-Enabled Project Model Starts, the More Value It Can Create in an NPP Project</a></p></div></div></div>
+<div class="container mt-5"><div class="row"><div class="col-12"><h1 class="mb-4 h3">Articles</h1><p><a href="/articles/ai-npp-integrated-project-model.html" style="font-weight: 400; font-style: normal; text-decoration: underline; color: #212529;">AI in Nuclear Power Plant Construction: From Individual Tools to an Integrated Project Model</a></p><p><a href="/articles/early-ai-enabled-project-model.html" style="font-weight: 400; font-style: normal; text-decoration: underline; color: #212529;">The Earlier an AI-Enabled Project Model Starts, the More Value It Can Create in an NPP Project</a></p></div></div></div>
 </main>
 <div class="container">
 <div class="row">
@@ -184,9 +249,6 @@ article p {
 <ul class="list-inline mb-0">
 <li class="list-inline-item">
 <a class="text-muted" href="https://dmitrishin.github.io/publications/">Publications</a>
-</li>
-<li class="list-inline-item">
-<span class="text-muted">Articles</span>
 </li>
 <li class="list-inline-item">
 <a class="text-muted" href="https://github.com/dmitrishin" rel="noopener" target="_blank">GitHub</a>
